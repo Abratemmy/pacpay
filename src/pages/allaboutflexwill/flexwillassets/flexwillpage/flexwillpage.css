@@ -1,0 +1,312 @@
+.flexwillpage {
+    padding: 10px 60px 30px 30px;
+    font-family: var(--textFamily);
+    color: var(--blackColor)
+}
+
+.flexwillpage .form-icon {
+    height: 40px;
+    border-left: 1px solid var(--blueColor);
+    border-top: 1px solid var(--blueColor);
+    border-bottom: 1px solid var(--blueColor);
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #1378a313;
+
+}
+
+.flexwillpage .form-icon .icon {
+    color: var(--blueColor);
+    background: #1378a338;
+    padding: 7px;
+    border-radius: 50%;
+    font-size: 30px;
+
+}
+
+.flexwillpage .inputfield {
+    border-right: 1px solid var(--blueColor);
+    border-top: 1px solid var(--blueColor);
+    border-bottom: 1px solid var(--blueColor);
+    border-radius: 10px;
+    background-color: #1378a313;
+    font-size: 15px;
+}
+
+
+.flexwillpage label {
+    color: var(--blackColor);
+    font-size: 17px;
+    padding-bottom: 10px;
+    font-weight: 600
+}
+
+.flexwillpage .form-div {
+    margin: 20px 0px;
+}
+
+.flexwillpage .form-div span {
+    pointer-events: none;
+    color: rgba(128, 128, 128, 0.493)
+}
+
+.flexwillpage .asset-nav {
+    background-color: var(--blueColor);
+    padding: 10px 50px;
+    color: #fff;
+    border-radius: 10px;
+    transition: 0.4s all ease;
+}
+
+.flexwillpage .asset-nav:hover {
+    background-color: var(--blueColor2);
+}
+
+/* css for distributeasset1 */
+.flexwillpage .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.flexwillpage .top .left {
+    flex: 1;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.flexwillpage .top .right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.flexwillpage .top .right .add-beneficiary {
+    color: var(--orangeColor);
+    border: none;
+    background: none;
+    font-size: 14px;
+}
+
+.flexwillpage .button-nav {
+    background: var(--blueColor2) !important;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 13px;
+    border: none;
+}
+
+.flexwillpage .middle {
+    padding-top: 30px;
+}
+
+.flexwillpage .asset-middle .title {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.flexwillpage .asset1 .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexwillpage .asset1 .text {
+    border-right: 1px solid rgba(128, 128, 128, 0.342);
+    padding: 10px;
+    padding-right: 200px;
+}
+
+.flexwillpage .asset1 .input {
+    width: 100px;
+    background: #5e9eb913;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+.flexwillpage .asset1 .icon {
+    color: var(--blueColor)
+}
+
+.flexwillpage .asset1 span {
+    padding-left: 10px;
+}
+
+.flexwillpage .asset1 .description {
+    margin: 20px 0px
+}
+
+.flexwillpage .asset1 .assetinputfield {
+    border: 1px solid var(--blueColor);
+}
+
+.flexwillpage .asset1last {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+.flexwillpage .asset1 .ps span,
+.flexwillpage .asset1 .ps span .icon {
+    color: var(--orangeColor);
+}
+
+/* css for distribute assets2 */
+.distribute-2 {
+    padding: 10px 60px 30px 30px;
+}
+
+/* css for assets tabs */
+.distributeAssets {
+    margin: 30px 0px;
+}
+
+.distributeAssets .bloc-tabs span {
+    padding-right: 10px;
+}
+
+.distributeAssets .bloc-tabs {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    width: 100%;
+    background-color: var(--blueColor);
+    border-radius: 20px;
+    position: relative;
+}
+
+.distributeAssets .disable-bloc {
+    background-color: var(--grayColor);
+}
+
+.distributeAssets .bloc-tabs .disable {
+    pointer-events: none;
+}
+
+.distributeAssets .tabs {
+    padding: 8px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+    transition: 0.4s all ease;
+    font-family: var(--textFamily);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.4s all ease;
+}
+
+.distributeAssets .active-tabs {
+    background: var(--blueColor2);
+    border-bottom: 1px solid transparent;
+    color: #fff;
+    transition: 0.4s all ease;
+    position: relative;
+    border-radius: 20px
+}
+
+.distributeAssets .active-tabs::before {
+    /* content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(30%);
+    width: calc(100% + 20px);
+    height: 5px;
+    background: var(--mainBlue);
+    border-radius: 50px; */
+}
+
+.distributeAssets .content {
+    width: 100%;
+    display: none;
+}
+
+.distributeAssets .active-content {
+    display: block;
+}
+
+.distributeAssets .distributeasset-content {
+    background: #7E98C8;
+    display: flex;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.distributeAssets .distributeasset-content .text {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+}
+
+.distributeasset-content .text span {
+    background: #B8E6F9;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+}
+
+.distributeasset-content .action {
+    flex: 1;
+    align-items: flex-start;
+    display: flex;
+    justify-content: end;
+}
+
+.distributeasset-content .title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    padding-bottom: 5px;
+}
+
+.distributeasset-content p {
+    color: #FEFEFE;
+    font-size: 12px;
+}
+
+.distributeasset-content .action button {
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.distributeasset-content .action>:nth-child(1) {
+    background: var(--blueColor);
+    margin-right: 30px;
+
+}
+
+.distributeasset-content .action>:nth-child(2) {
+    background: var(--orangeColor);
+
+}
+
+.distributeAssets .asset-nav1 {
+    background: var(--blueColor);
+    border-radius: 10px;
+    padding: 10px 100px !important;
+    color: #fff;
+    padding: 5px;
+    font-weight: 600;
+    text-decoration: none;
+}

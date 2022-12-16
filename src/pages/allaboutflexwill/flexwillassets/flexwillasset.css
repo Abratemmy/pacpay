@@ -1,0 +1,63 @@
+.flexwillasset {
+    padding: 30px 60px 30px 30px;
+    font-family: var(--textFamily);
+    color: var(--blackColor)
+}
+
+.flexwillasset .text {
+    font-size: 15px;
+    padding-bottom: 30px;
+}
+
+.flexwillasset .subtitle {
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.flexwillasset .card {
+    width: 400px;
+    margin: 30px 20px 50px 50px;
+    background-color: #D8F3FF;
+    border: none;
+}
+
+.flexwillasset .card .content {
+    display: flex;
+    gap: 2rem;
+    padding: 20px;
+}
+
+.flexwillasset .card .content-disable {
+    pointer-events: none;
+}
+
+.flexwillasset .card-content .asset-nav {
+    text-decoration: none;
+    color: var(--blackColor);
+    border-radius: 10px;
+    cursor: pointer !important;
+    transition: 0.4s all ease;
+}
+
+.flexwillasset .card-content .asset-nav:hover {
+    background: var(--blueColor);
+    color: #fff;
+}
+
+.flexwillasset .card .content span {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+
+
+.flexwillasset .card .content span img {
+    width: 100%;
+}
+
+.flexwillasset .card .content p {
+    flex: 2
+}

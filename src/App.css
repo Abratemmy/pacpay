@@ -1,38 +1,108 @@
-.App {
+:root {
+  --blueColor: #00B3FF;
+  --blueColor2: #002A76;
+  --lightblue: #009de12f;
+  --orangeColor: #E06C41;
+  --offWhite: #FBFCFD;
+  --textFamily: 'Montserrat', sans-serif;
+  --blackColor: #273238;
+  --grayColor: rgba(168, 164, 164, 0.733);
+}
+
+
+
+
+/* personal modal  */
+.personal-modal {
+  position: absolute;
+  right: 60px;
+  top: 50px;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.personal-modal .personal-modalContainer {
+  background-color: var(--lightblue);
+  width: 300px;
+  padding: 2px 20px 10px;
   text-align: center;
+  box-shadow: rgba(99, 176, 179, 0.16) 0px 3px 6px, rgba(51, 134, 145, 0.23) 0px 3px 6px;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.personal-modalContainer .line img {
+  width: 80%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.personal-modalContainer .close {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.personal-modalContainer .close button {
+  padding: 2px solid var(--blackColor);
+  border-radius: 5px;
+  padding: 1px 7px;
+}
+
+.personal-modalContainer .emoji {
+  margin: 5px 0px 20px 0px;
+}
+
+.personal-modalContainer .emoji img {
+  width: 70px;
+}
+
+.personal-modalContainer .title {
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.personal-modalContainer .text {
+  font-size: 14px;
+  width: 200px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.personal-modalContainer .personalmodal-btn {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2rem
 }
 
-.App-link {
-  color: #61dafb;
+.personal-modalContainer .personalmodal-btn button {
+  width: 200px;
+  margin: auto;
+  border-radius: 10px;
+  padding: 6px
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.personal-modalContainer .personalmodal-btn .first {
+  border: none;
+  background: var(--blueColor);
+  color: #fff;
+}
+
+.personal-modalContainer .personalmodal-btn .second {
+  border-top: 1px solid var(--blueColor);
+  border-left: 1px solid var(--blueColor);
+  border-right: 1px solid var(--blueColor);
+  border-bottom: 1px solid var(--blueColor2);
+}
+
+.Personal-container .footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Personal-container .footer button {
+  background: var(--blueColor);
+  border: none;
+  width: 200px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px;
+
 }

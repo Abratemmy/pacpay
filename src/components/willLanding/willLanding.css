@@ -1,0 +1,92 @@
+.willLanding {
+    padding: 30px 60px 30px 30px;
+    font-family: var(--textFamily);
+    color: var(--blackcolor);
+
+}
+
+.willLanding .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.willLanding .top .first {
+    font-size: 20px;
+}
+
+.willLanding .top img {
+    position: relative;
+    top: -8px;
+    width: 30px;
+}
+
+.willLanding .second {
+    text-align: right;
+}
+
+.willLanding .second .title {
+    font-size: 40px;
+    font-weight: 600;
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 350px;
+}
+
+.willLanding .second .text {
+    font-size: 13px;
+}
+
+.willLanding .will-content {
+    padding-top: 30px;
+}
+
+.willLanding .will-content .text {
+    font-size: 16px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+.willLanding .card-session .card {
+    background: var(--lightblue);
+    text-align: center;
+    padding: 10px 0px;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+
+.willLanding .card-session .done {
+    background: var(--blueColor);
+}
+
+.willLanding .card-session .active {
+    background: var(--blueColor2);
+}
+
+.willLanding .card-session .disable {
+    pointer-events: none;
+}
+
+.willLanding .card-session .card img {
+    width: 60px;
+
+}
+
+.willLanding .card-session .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.willLanding .card-session .icon {
+    font-size: 40px;
+    color: var(--orangeColor);
+    text-align: center;
+    align-items: center;
+}
+
+.willLanding .navlink {
+    text-decoration: none;
+}

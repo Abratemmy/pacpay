@@ -1,0 +1,61 @@
+.input-container {
+    padding: 10px 0px
+}
+
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon {
+    left: 3px;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    background: rgba(0, 109, 91, 0.06);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.left-addon .glyphicon .icon {
+    color: var(--lightblue);
+
+}
+
+/* add padding  */
+.left-addon input,
+.left-addon select {
+    padding-left: 40px;
+    width: 90%;
+    background: rgba(240, 250, 255, 0.68);
+    height: 40px;
+    outline: none;
+    border: 1px solid var(--blueColor);
+    border-radius: 10px;
+    color: var(--blackColor);
+}
+
+.left-addon textarea {
+    padding-left: 40px;
+    width: 90%;
+    background: rgba(240, 250, 255, 0.68);
+    outline: none;
+    border: 1px solid var(--blueColor);
+    border-radius: 10px;
+    color: var(--blackColor);
+}
+
+.left-addon input:focus,
+.left-addon textarea:focus {
+    border: 1px solid var(--blueColor2);
+}

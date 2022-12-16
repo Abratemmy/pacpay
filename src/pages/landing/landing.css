@@ -1,0 +1,172 @@
+.landing-page {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    font-family: var(--textFamily);
+    position: relative;
+}
+
+.landing-page .first {
+    flex: 1 1;
+    padding: 20px 60px;
+    background-color: #fff;
+    height: 100vh;
+}
+
+.landing-page .second {
+    flex: 1 1;
+    background: url("../../assets/secondbg.png");
+    height: 100vh;
+    position: relative;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    align-items: center;
+    width: 100%;
+}
+
+.landing-page .second .content {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 10px;
+    align-items: center;
+}
+
+.landing-page .second img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.landing-page .second .title {
+    font-weight: 900;
+    color: #fff;
+    font-size: 36px;
+}
+
+.landing-page .second p {
+    color: var(--offWhite);
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.landing-page .first .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.landing-page .top .logo {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.landing-page .top .logo .img1 {
+    position: relative;
+}
+
+.landing-page .top .logo img {
+    width: 100%;
+}
+
+.landing-page .top .logo .black-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--blueColor);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.landing-page .top .text {
+    font-size: 14px;
+    color: #000;
+}
+
+/* another section here */
+.landing-page .first .star {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+
+.landing-page .image-design {
+    position: relative;
+}
+
+.landing-page .image-design img {
+    width: 30%;
+}
+
+.landing-page .image-design .back-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.landing-page .content {
+    padding-bottom: 30px;
+    max-width: 400px;
+}
+
+.landing-page .content .other {
+    font-weight: 700;
+    color: #273238;
+    font-size: 40px;
+    line-height: 20px;
+}
+
+.landing-page .middle p {
+    font-size: 15px;
+    color: var(--blackColor);
+    line-height: 25px;
+    padding-bottom: 40px;
+}
+
+.landing-page .button {
+    width: 50%;
+}
+
+.landing-page .nav-link {
+    width: 100%;
+    background-color: var(--blueColor);
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.landing-page .no-acc {
+    margin: 20px 0px;
+    display: flex;
+    gap: 8px;
+    color: var(--blackColor);
+    font-size: 15px;
+}
+
+.landing-page .no-acc .signup {
+    color: var(--blueColor);
+    text-decoration: none;
+}
+
+.landing-page .no-acc span {
+    position: relative;
+    top: -7px;
+}
+
+.landing-page .last {
+    bottom: 30px;
+    position: absolute;
+    font-size: 12px;
+    color: var(--blackColor)
+}

@@ -1,0 +1,118 @@
+.review-details {
+    padding: 30px 60px 30px 30px
+}
+
+.review-details .top {
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 10px;
+}
+
+.review-details .review-nav {
+    color: var(--blueColor);
+}
+
+.review-details .review-nav .icon2 {
+    position: relative;
+    left: -5px
+}
+
+.review-details .review-container {
+    position: relative;
+}
+
+.review-details .review-container .content {
+    padding: 20px 10px;
+    background: var(--lightblue);
+    border-radius: 10px;
+    margin: 20px 0px
+}
+
+.review-details .review-container .content-executor {
+    background: #DFEAFF;
+}
+
+.review-details .review-container .content-asset {
+    background: #FFF5F2;
+}
+
+.review-container .review-top-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review-container .review-top-wrapper span {
+    background: var(--blueColor2);
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.review-container .review-top-wrapper img {
+    width: 40px;
+}
+
+.review-container .review-top-wrapper .edit {
+    position: absolute;
+    right: 10px;
+}
+
+.review-container .review-top-wrapper button {
+    background: var(--blueColor);
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0px 15px
+}
+
+.review-container .input-content {
+    padding-top: 20px;
+}
+
+.review-container .input-content label {
+    font-weight: 600
+}
+
+.review-container .input-content .group {
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+    border: 1px solid var(--blueColor);
+    padding: 7px;
+    border-radius: 5px;
+
+}
+
+.review-container .input-content .group span {
+    background: rgba(245, 244, 244, 0.685);
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.review-container .input-content .group .icon {
+    color: var(--lightblue);
+}
+
+.review-container .nav-button {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.review-container .nav-button button {
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
+    border: none;
+    background: var(--blueColor);
+    width: 220px;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+}

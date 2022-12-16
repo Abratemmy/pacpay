@@ -1,0 +1,175 @@
+.sidebar {
+    background: linear-gradient(180deg, #00b3fff5, #00b3ffee);
+    border-bottom-right-radius: 170px;
+    position: fixed;
+    left: 0;
+    width: 230px;
+    height: 100%;
+    overflow-y: auto;
+    transition: 0.4s;
+    transition-property: left;
+    z-index: 100;
+    font-family: var(--textFamily);
+}
+
+.sidebar-logo {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.sidebar-logo::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 60vh;
+    background: #F2F2F2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat-x;
+    opacity: 1;
+    border-radius: 50%;
+    transform-origin: bottom;
+    transform: translateX(-50%) scale(2);
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.sidebar li {
+    padding: 10px 0px;
+}
+
+.sidebar li .sidebar-navlink {
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 40px;
+    text-decoration: none;
+    padding-left: 30px;
+    box-sizing: border-box;
+    transition: 0.5s all ease;
+    font-size: 15px;
+}
+
+.sidebar li .sidebar-navlink:hover,
+.active {
+    background: var(--blueColor2);
+}
+
+.sidebar .sidebar-navlink .icon {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-right: 15px;
+    padding: 1px 3px 3px;
+}
+
+.sidebar .sidebar-navlink .icon img {
+    width: 15px;
+    height: 15px;
+}
+
+.sidebarlabel {
+    display: flex;
+    justify-content: end;
+}
+
+.sidebarlabel #sidebar_btn {
+    position: relative;
+    background-color: var(--blueColor2);
+    z-index: 100;
+    color: #fff;
+    cursor: pointer;
+    font-size: 23px;
+    transition: 0.5s ease;
+    border-radius: 20px;
+}
+
+.sidebarlabel #sidebar_btn:hover {
+    color: var(--blueColor);
+}
+
+.sidebar-signout .sidebar-icons {
+    color: crimson;
+    background-color: #fff;
+    width: 20px;
+    height: 15px;
+    padding: 2px;
+}
+
+.sidebar-signout span {
+    color: crimson;
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+#interface-check:checked~.sidebar {
+    left: -120px;
+    overflow: hidden;
+}
+
+#interface-check:checked~.sidebar .sidebar-navlink .text {
+    display: none;
+    opacity: 0;
+}
+
+#interface-check:checked~.sidebar .img2 {
+    display: none;
+}
+
+#interface-check:checked~.sidebar .logo {
+    font-size: 20px;
+    margin-left: 100px;
+    width: 80px;
+}
+
+#interface-check:checked~.sidebar .sidebar-navlink {
+    font-size: 20px;
+    margin-left: 120px;
+    width: 120px;
+}
+
+.interface-content {
+    margin-left: 240px;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    transition: 0.4s all ease;
+    padding-left: 5px;
+    position: relative;
+}
+
+.interface-content .product-type-container {
+    position: absolute;
+    bottom: 0;
+    left: -247px;
+    background: linear-gradient(180deg, #002A76f5, #002A76f5);
+    min-width: 100vw;
+    height: auto;
+    overflow: hidden;
+    padding-left: 250px;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+
+}
+
+#interface-check:checked~.interface-content {
+    margin-left: 120px;
+}
+
+#interface-check {
+    display: none;
+}

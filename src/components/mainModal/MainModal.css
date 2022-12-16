@@ -1,0 +1,134 @@
+.mainModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(102, 149, 170, 0.836);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainModal-inner {
+    position: relative;
+    padding: 13px 20px;
+    max-width: 350px !important;
+    background-color: #fff;
+    border-radius: 15px;
+    animation: modalfadeInDown 0.8s;
+    color: var(--blackColor);
+    font-family: var(--textFamily);
+}
+
+@keyframes modalfadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.mainModal-inner .image-line {
+    display: flex;
+    justify-content: center;
+}
+
+.mainModal .image-line img {
+    width: 70%;
+}
+
+.mainModal .closeButton {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0px;
+}
+
+.mainModal .closeButton .closeBtn {
+    border: 2px solid rgba(51, 51, 51, 0.842);
+    border-radius: 5px;
+    background: none;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    color: var(--blackColor) !important;
+    font-weight: 600;
+}
+
+.mainModal .modalContent {
+    text-align: center;
+}
+
+.mainModal .modalContent img {
+    width: 100%;
+}
+
+.mainModal .modalContent .title {
+    font-size: 17px;
+    padding: 20px 0px 40px 0px;
+    font-weight: 600;
+}
+
+.mainModal .modalContent button {
+    width: 180px;
+    background: var(--blueColor);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
+
+.mainModal .modalContent .modal-nav {
+    width: 180px;
+    background: var(--blueColor);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 20px !important;
+    text-decoration: none;
+    padding: 7px 60px;
+}
+
+.mainModal .modalContent .text {
+    font-size: 13px;
+    width: 250px;
+    margin: auto;
+    line-height: 24px;
+    padding-bottom: 40px;
+}
+
+.mainModal .modalContent .last p {
+    font-size: 12px;
+}
+
+.mainModal .modalContent .last .modal-link {
+    position: relative;
+    top: -10px;
+    color: var(--orangeColor);
+    text-decoration: none;
+}
+
+.mainModal .modalContent .subtitle {
+    position: relative;
+    top: -30px;
+    font-size: 13px;
+}
+
+.mainModal .modalContent .group {
+    display: flex;
+    gap: 10px;
+    text-align: left;
+    padding: 20px 10px;
+}
+
+.mainModal .modalContent label {
+    font-size: 15px;
+    position: relative;
+    top: -5px;
+}

@@ -1,0 +1,152 @@
+.will-products {
+    padding: 30px 50px 30px 30px;
+    font-family: var(--textFamily);
+    width: 100%;
+}
+
+.will-products .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.will-products .top .name {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: var(--blackColor)
+}
+
+.will-products .top .name img {
+    width: 30px;
+    position: relative;
+    top: -5px;
+}
+
+.will-products .top .subtitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--blackColor)
+}
+
+.will-products .text {
+    font-size: 15px;
+    color: var(--blackColor);
+    font-weight: 600;
+    padding-bottom: 30px;
+    line-height: 30px;
+}
+
+/* 
+.will-products .will-container {
+    width: 80%;
+} */
+
+.will-products .will-nav {
+    display: flex;
+    background: var(--blueColor);
+    color: #fff;
+    text-decoration: none;
+    align-items: center;
+    gap: 1rem;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.will-products .will-nav-darkblue {
+    background: var(--blueColor2)
+}
+
+.will-products .will-nav .image {
+    background: #fff;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.will-products .will-nav img {
+    width: 35px;
+}
+
+.will-products .will-nav .title {
+    font-size: 20px;
+    line-height: 30px;
+    padding-bottom: 7px;
+}
+
+.will-products .will-nav p {
+    font-size: 15px;
+    line-height: 27px;
+}
+
+.willproduct-page {
+    font-family: var(--textFamily);
+    color: #fff;
+}
+
+.willproduct-page .subtitle {
+    font-size: 17px;
+    padding-bottom: 10px;
+
+}
+
+.willproduct-page p {
+    max-width: 900px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.willproduct-page .card {
+    background: #fff;
+    color: var(--blackColor);
+    padding: 20px 35px;
+    height: 220px;
+}
+
+.willproduct-page .content-container {
+    display: flex;
+    gap: 10rem;
+    align-items: flex-end;
+}
+
+.willproduct-page .first-content,
+.second-content {
+    display: flex;
+    gap: 2rem;
+}
+
+.willproduct-page .first-content .text1,
+.second-content .text1 {
+    flex: 2;
+}
+
+.willproduct-page .card .text {
+    font-size: 13px;
+    color: var(--blackColor);
+    padding-bottom: 10px;
+}
+
+.willproduct-page .first-content .text1 .note {
+    font-size: 10px;
+    color: var(--blackColor);
+    display: inline;
+}
+
+.willproduct-page .card span {
+    display: block;
+    color: var(--blueColor);
+    font-size: 16px;
+}
+
+.willproduct-page .card .span1 {
+    color: var(--orangeColor)
+}
+
+.willproduct-page .will-container-nav {
+    background-color: var(--blueColor);
+    color: #fff;
+    padding: 8px 80px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+}

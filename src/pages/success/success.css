@@ -1,0 +1,93 @@
+.success-page .top {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.success-page .top::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 100vh;
+    background: url("../../assets/secondbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat-x;
+    opacity: 1;
+    border-radius: 50%;
+    transform-origin: bottom;
+    transform: translateX(-50%) scale(1.5);
+}
+
+.success-page .top .content {
+    color: #fff !important;
+    z-index: 1;
+    text-align: center;
+}
+
+.success-page .top .content img {
+    width: 80%;
+}
+
+.success-page .rectangle {
+    position: relative;
+    text-align: center;
+}
+
+.success-page .rectangle img {
+    width: 60% !important;
+    height: 50px;
+}
+
+.success-page .content .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.success-page .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--blackColor);
+    font-family: var(--textFamily);
+}
+
+.success-page .bottom .title {
+    color: var(--blackColor);
+    font-size: 25px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 30px 0px 0px 0px;
+}
+
+.success-page .bottom p {
+    font-size: 15px;
+    padding-bottom: 30px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.success-page .bottom .text {
+    font-size: 12px;
+    padding-bottom: 20px;
+}
+
+.success-page .bottom .nav-link {
+    background-color: var(--blueColor);
+    color: #fff;
+    padding: 5px 50px;
+    border-radius: 8px;
+}

@@ -1,0 +1,24 @@
+.topasset {
+    padding: 30px 60px 30px 30px;
+}
+
+.topasset .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topasset .top .icon {
+    position: relative;
+    color: var(--blueColor);
+    font-size: 20px;
+}
+
+.topasset .top .icon2 {
+    left: -8px;
+}
+
+.topasset .top .name {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: var(--blackColor);
+}
