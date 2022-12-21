@@ -1,0 +1,25 @@
+.payment .content-container .card {
+    height: fit-content !important
+}
+
+.payment-form {
+    display: flex;
+    gap: 5px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.payment label {
+    position: relative;
+    top: -3px;
+}
+
+.payment-button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.payment-button button {
+    border: none;
+}

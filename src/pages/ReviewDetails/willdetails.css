@@ -105,9 +105,9 @@
 }
 
 .review-container .nav-button button {
-    position: absolute;
-    bottom: 13px;
-    right: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 60px;
     border: none;
     background: var(--blueColor);
     width: 220px;

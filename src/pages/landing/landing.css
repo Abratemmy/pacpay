@@ -146,27 +146,18 @@
     border-radius: 10px;
 }
 
-.landing-page .no-acc {
-    margin: 20px 0px;
-    display: flex;
-    gap: 8px;
-    color: var(--blackColor);
-    font-size: 15px;
-}
-
 .landing-page .no-acc .signup {
     color: var(--blueColor);
     text-decoration: none;
 }
 
-.landing-page .no-acc span {
-    position: relative;
-    top: -7px;
-}
 
 .landing-page .last {
-    bottom: 30px;
-    position: absolute;
-    font-size: 12px;
     color: var(--blackColor)
+}
+
+.landing-page .no-acc {
+    display: flex;
+    gap: 1rem;
+    font-size: 15px;
 }

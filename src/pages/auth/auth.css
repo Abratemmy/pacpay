@@ -24,22 +24,6 @@
 
 }
 
-.auth .form-icon .icon {
-    color: var(--blueColor);
-    background: #1378a338;
-    padding: 7px;
-    border-radius: 50%;
-    font-size: 30px;
-
-}
-
-.auth .inputfield {
-    border: 1px solid var(--blueColor);
-    border-radius: 10px;
-    background-color: #1378a313;
-    font-size: 15px;
-}
-
 
 .auth label {
     color: var(--blackColor);
@@ -48,12 +32,34 @@
 }
 
 .auth .form-div {
-    margin: 10px 0px;
+    margin: 2px 0px;
+}
+
+.auth .middle p {
+    padding: 5px 0px;
+    font-size: 12px;
+    color: crimson !Important;
+    /* line-height: 10px !important; */
+    padding-bottom: 20px !important;
+}
+
+.error {
+    padding: 0px;
+    font-size: 12px;
+    color: crimson
+        /* margin: 10px 0px; */
+}
+
+.auth .left-addon input,
+.auth .left-addon select {
+    width: 100%;
+    height: 39px;
+    margin-bottom: -20px;
 }
 
 .auth .show-icon {
     position: absolute;
-    right: 15px;
+    right: 10px;
     top: 12px;
     color: rgba(168, 164, 164, 0.733);
     font-size: 20px;
@@ -71,11 +77,56 @@
     padding: 0 5px;
 }
 
-.auth .line .google-img {
+.auth .line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth .line .or-line {
+    position: relative;
+}
+
+.auth .line .or-line:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 250px;
+    background-color: rgba(39, 50, 56, 0.199);
+    background-position: center;
+    background-size: 2.25rem;
+    background-repeat: no-repeat;
+    left: 30px;
+}
+
+.auth .line .or-line:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 250px;
+    background-color: rgba(39, 50, 56, 0.199);
+    background-position: center;
+    background-size: 2.25rem;
+    background-repeat: no-repeat;
+    right: 30px;
+}
+
+.auth .line img {
+    width: 50px;
+    position: relative;
+    top: -10px;
+}
+
+/* .auth .line .google-img {
     position: absolute;
     left: 30%;
     padding-top: 15px;
-}
+} */
 
 
 .pop_up_body {
@@ -177,6 +228,12 @@ input[type=checkbox] {
     margin-bottom: 50px;
 }
 
+.remember_content .error {
+    padding: 0Important;
+    color: crimson !important;
+    font-size: 12px
+}
+
 .remember_content .close h6 {
     border: 1px solid var(--blackColor);
     width: fit-content;
@@ -202,5 +259,113 @@ input[type=checkbox] {
     margin-left: 60%;
     color: rgb(199, 53, 53);
     font-size: 10px;
-    padding: 5px 0px;
+}
+
+/* register pop css */
+
+.registerpop-page {
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    font-family: var(--textFamily);
+}
+
+.registerpop-page .register-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--grayColor);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.registerpop-page .close {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.registerpop-page .close .registerpop-nav {
+    text-decoration: none;
+    color: var(--grayColor);
+    padding: 0px 6px;
+    border: 2px solid var(--grayColor);
+    border-radius: 5px;
+}
+
+.registerpop-page .image {
+    background: #EBF3FC;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerpop-page .image img {
+    width: 20px;
+}
+
+.registerpop-page .title {
+    padding: 40px 0px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.registerpop-page .text {
+    width: 300px;
+    margin: 0 auto;
+    font-size: 13px;
+    padding-bottom: 40px;
+}
+
+.registerpop-page .subtitle {
+    width: 300px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.registerpop-page .nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.registerpop-page .nav-button .nav-link {
+    width: 200px;
+    border: none;
+    color: #fff;
+    background: var(--blueColor);
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.registerpop-page .otp-session {
+    position: relative;
+    top: -30px;
+}
+
+.registerpop-page .otp {
+    font-size: 30px;
+    letter-spacing: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--blueColor);
+}
+
+.registerpop-page .otp-resend {
+    padding: 20px 0px;
+    font-size: 12px;
+}
+
+.registerpop-page .otp-resend button {
+    background: #EBF3FC !important;
+    color: var(--blueColor) !important;
+    width: auto !important
 }

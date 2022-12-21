@@ -13,7 +13,7 @@ function ProPersonalLanding() {
             <WillLanding >
                 <div className='row'>
                     <div className='col-lg-5 col-md-4 col-sm-12'>
-                        <NavLink to="/pro_personalinfo" className="navlink ">
+                        <NavLink to="/pro_personalinfo/1" className="navlink ">
                             <div className="card active">
                                 <span><img src={personal} alt="" /></span>
                                 <p>Personal Information</p>

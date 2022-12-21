@@ -5,9 +5,8 @@ import logo from "../../assets/logo.png";
 import { MdOutlineEmail, } from "react-icons/md";
 import { BsArrowUpRight } from "react-icons/bs";
 import { AiOutlineLock, AiFillEyeInvisible } from "react-icons/ai";
-import line from "../../assets/line.png";
 import Google from "../../assets/Google.png";
-import { NavLink } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import brush from "../../assets/brush.png";
 
 
@@ -19,10 +18,48 @@ function Signin() {
         setPasswordShown(!passwordShown);
     };
 
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+    });
+    const [errors, setErrors] = useState({});
 
-    const handleSubmit = (e) => {
-        // e.preventDefault()
-        console.log("submitted")
+    // get input values
+    const handleChange = (ev) => {
+        setValues({
+            ...values,
+            [ev.target.name]: ev.target.value,
+        });
+    };
+    const handleError = (targets) => {
+        let errorsValue = {};
+        if (!targets.email) errorsValue.email = "Email  is required";
+        else if (!/\S+@\S+\.\S+/.test(targets.email)) errorsValue.email = "Email is invalid";
+        if (!targets.password) {
+            errorsValue.password = "Password is required"
+        } else if (targets.password.length < 8) {
+            errorsValue.password = "Password must be more than 8 character"
+        }
+        if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
+        else setErrors({});
+
+        return Object.keys(errorsValue).length;
+
+    };
+
+    const navigate = useNavigate()
+    const handleSubmit = (ev) => {
+        ev.preventDefault()
+        let v = handleError(values);
+        // check if there is any eror available and handle here 
+        if (v > 0) {
+            console.log("error");
+        }
+        //submit form here if no error availble
+        else {
+            console.log("submitted");
+            navigate("/product_landing")
+        }
     }
 
     const [modal, setModal] = useState(false);
@@ -50,33 +87,30 @@ function Signin() {
                     <div className='auth-title'>Welcome Back!</div>
                     <div className='text'>Glad to see you again! Kindly fill the details below</div>
                     <form className="form-inline" onSubmit={handleSubmit}>
-                        <div className='form-input form-div'>
+                        <div className='form-input form-div' style={{ padding: "10px 0px" }}>
                             <label>Email Address</label>
-                            <div className="input-group ">
-                                <div className="input-group-prepend">
-                                    <div className="input-group-text form-icon"><MdOutlineEmail className='icon' /></div>
-                                </div>
-                                <input type="text" className="form-control inputfield" placeholder="Enter email address" />
+                            <div class="inner-addon left-addon">
+                                <i class="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
+                                <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
                             </div>
+                            {errors ? <p className='error'> {errors.email}</p> : ""}
                         </div>
 
                         <div className='form-input form-div'>
                             <label>Password</label>
-                            <div className="input-group ">
-                                <div className="input-group-prepend">
-                                    <div className="input-group-text form-icon"><AiOutlineLock className='icon' /></div>
-                                </div>
+                            <div class="inner-addon left-addon">
+                                <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
+                                <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
                                 <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
-                                <input type={passwordShown ? "text" : "password"} className="form-control inputfield" placeholder="Enter password" />
-
                             </div>
+                            {errors ? <p className='error'> {errors.password}</p> : ""}
                         </div>
 
                         <div className='forgot-session'>
                             <div className=''>
-                                <input type="checkbox" id="check" className="headerinput" onClick={toggleModal} />
+                                <input type="checkbox" id="login" className="headerinput" onClick={toggleModal} />
 
-                                <label className="headerlabel" onClick={toggleModal}>
+                                <label for="login" className="headerlabel" >
                                     Remember me
                                 </label>
                                 {
@@ -85,30 +119,26 @@ function Signin() {
                                             <div onClick={toggleModal} className="close"><h6>X</h6></div>
                                             <div className="">
                                                 <label>Email Address</label>
-                                                <div className="input-group ">
-                                                    <div className="input-group-prepend">
-                                                        <div className="input-group-text form-icon"><MdOutlineEmail className='icon' /></div>
-                                                    </div>
-                                                    <input type="text" className="form-control inputfield" placeholder="Enter email address" />
+                                                <div class="inner-addon left-addon">
+                                                    <i class="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
+                                                    <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
                                                 </div>
+                                                {errors ? <p className='error'> {errors.email}</p> : ""}
                                             </div>
 
                                             <div className=''>
                                                 <label>Password</label>
-                                                <div className="input-group ">
-                                                    <div className="input-group-prepend">
-                                                        <div className="input-group-text form-icon"><AiOutlineLock className='icon' /></div>
-                                                    </div>
+                                                <div class="inner-addon left-addon">
+                                                    <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
+                                                    <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
                                                     <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
-                                                    <input type={passwordShown ? "text" : "password"} className="form-control inputfield" placeholder="Enter password" />
-
                                                 </div>
+                                                {errors ? <p className='error'> {errors.password}</p> : ""}
                                             </div>
 
                                             <div className='' style={{ padding: "20px 0px", cursor: "pointer" }}>
-                                                <NavLink to="/product_landing" className="nav-link" style={{ border: "0" }}>save and proceed</NavLink>
+                                                <button type="submit" onSubmit={handleSubmit} className="nav-link" style={{ border: "0" }}>save and proceed</button>
                                             </div>
-
                                             <div className='text' onClick={toggleModal}>Never <BsArrowUpRight className="icon" /> </div>
 
                                         </div>
@@ -129,11 +159,9 @@ function Signin() {
 
 
 
-
                         <div className='line'>
-                            <img src={line} alt="" />
-                            <span>OR <img src={Google} alt="" className='google-img' /> </span>
-                            <img src={line} alt="" />
+                            <div className="or-line">OR </div>
+                            <span> <img src={Google} alt="" className='google-img' /> </span>
 
                         </div>
                     </form>

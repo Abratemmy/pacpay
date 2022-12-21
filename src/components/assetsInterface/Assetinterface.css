@@ -1,0 +1,24 @@
+.AssetInterface {
+    padding: 30px 60px 20px 30px;
+}
+
+.AssetInterface .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.AssetInterface .will-nav {
+    color: var(--blueColor);
+}
+
+.AssetInterface .will-nav .icon2 {
+    position: relative;
+    left: -8px;
+}
+
+.AssetInterface .name {
+    color: var(--blackColor);
+    font-family: var(--textFamily);
+    font-size: 20px;
+}

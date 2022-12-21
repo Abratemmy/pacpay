@@ -59,7 +59,7 @@ function Burial({ formData, setFormData }) {
                 <div className='col-lg-6 col-md-6 col-sm-12'></div>
 
                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                    <div className="input-container">
+                    <div className="input-container-check">
                         <input type="checkbox" id="burial" />
                         <label for="burial">I direct that my burial expense which includes vault procurement, casket purchase, service</label>
                     </div>

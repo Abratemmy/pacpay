@@ -11,14 +11,20 @@ import { useNavigate, NavLink, useParams } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
 import line from "../../../assets/line.png"
 import happy from "../../../assets/happy.png"
-import Landing from "../../landing/landing";
+import { BsArrowUpRight } from "react-icons/bs";
+import { AiOutlineMinus } from "react-icons/ai"
 
 
 function Personalform() {
 
-    const [buttonpopup, setbuttonpopup] = useState(false);
-    const popup = () => {
-        setbuttonpopup(!buttonpopup)
+    const [spousebuttonpopup, setspousebuttonpopup] = useState(false);
+    const spousepopup = () => {
+        setspousebuttonpopup(!spousebuttonpopup)
+    }
+
+    const [childpopupbtn, setchildpopupbtn] = useState(false);
+    const childpopup = () => {
+        setchildpopupbtn(!childpopupbtn)
     }
 
     const [guardianFirstShow, setguardianFirstShow] = useState(true);
@@ -37,24 +43,23 @@ function Personalform() {
         resState: "",
         resCity: "",
         resAddress: "",
-        spouse: {
-            spousetitle: "",
-            spouseName: "",
-            spousebirth: "",
-            spousephone: "",
-            spouseresState: "",
-            spouseresCity: "",
-            spouseresAddress: ""
-        },
-        child: [{
-            childtitle: "",
-            childName: "",
-            childbirth: "",
-            childphone: "",
-            childGender: "",
-            childresCity: "",
-            childresAddress: ""
-        }],
+
+        spousetitle: "",
+        spouseName: "",
+        spousebirth: "",
+        spousephone: "",
+        spouseresState: "",
+        spouseresCity: "",
+        spouseresAddress: "",
+
+        childtitle: "",
+        childName: "",
+        childbirth: "",
+        childphone: "",
+        childGender: "",
+        childresCity: "",
+        childresAddress: "",
+
         guardianName: "",
         guardianEmail: "",
         guardianPhone: "",
@@ -125,9 +130,10 @@ function Personalform() {
                                     key={i}
                                 >
                                     <div className="step">
-                                        {i - 1 < page ? (<div className="color"> {i + 1}</div>) : i + 1}
-                                        <p className="text-gray-500">{step}</p>
+                                        {i - 1 < page ? (<div className="personal-iteration active"> {i + 1}</div>) : <div className="personal-iteration"> {i + 1} </div>}
+
                                     </div>
+                                    <p className="text-gray-500">{step}</p>
                                 </div>
                             ))}
                         </div>
@@ -137,9 +143,10 @@ function Personalform() {
                             <div className="footer">
                                 <div className="skip">
                                     {
-                                        (page == 1) || page == 2 || page == 4 ? (
+                                        (page === 1) ? (
                                             <div className="skip-content">
-                                                PS: You don’t have a child? you can <span><button
+                                                PS: You don’t have a spouse? you can <span><button
+                                                    className="skip-btn"
                                                     onClick={() => {
                                                         if (page === FormTitles.length - 1) {
                                                             console.log(formData);
@@ -149,35 +156,75 @@ function Personalform() {
                                                             setPage((currPage) => currPage + 1);
                                                         }
                                                     }}
-                                                >Skip</button></span>
+                                                >Skip <BsArrowUpRight className="icon" /> </button></span>
                                             </div>
-                                        ) : ""
+                                        ) :
+
+                                            page === 2 ? (
+                                                <div className="skip-content">
+                                                    PS: You don’t have a child? you can <span><button
+                                                        className="skip-btn"
+                                                        onClick={() => {
+                                                            if (page === FormTitles.length - 1) {
+                                                                console.log(formData);
+                                                                navigate("/flex_personal_success")
+                                                            }
+                                                            else {
+                                                                setPage((currPage) => currPage + 1);
+                                                            }
+                                                        }}
+                                                    >Skip <BsArrowUpRight className="icon" /> </button></span>
+                                                </div>
+                                            ) :
+
+                                                page === 4 ? (
+                                                    <div className="skip-content">
+                                                        PS: You don’t want any burial refreshment? you can <span><button
+                                                            className="skip-btn"
+                                                            onClick={() => {
+                                                                if (page === FormTitles.length - 1) {
+                                                                    console.log(formData);
+                                                                    navigate("/flex_personal_success")
+                                                                }
+                                                                else {
+                                                                    setPage((currPage) => currPage + 1);
+                                                                }
+                                                            }}
+                                                        >Skip <BsArrowUpRight className="icon" /> </button></span>
+                                                    </div>
+                                                ) :
+
+                                                    ""
                                     }
 
                                 </div>
 
                                 {page === 1 ? (
                                     <div className="">
-
-                                        <button onClick={popup}>Save and Proceed</button>
+                                        <button onClick={spousepopup} className="proceed-btn">Save and Proceed</button>
+                                    </div>
+                                ) : page === 2 ? (
+                                    <div className="">
+                                        <button onClick={childpopup} className="proceed-btn">Save and Proceed</button>
                                     </div>
                                 ) :
-                                    page === 3 ? <div>
-                                        {guardianSecondShow ? <button onClick={() => {
-                                            if (page === FormTitles.length - 1) {
-                                                console.log(formData);
-                                                navigate("/flex_personal_success")
-                                            }
-                                            else {
-                                                setbuttonpopup(false)
-                                                setPage((currPage) => currPage + 1);
-                                            }
-                                        }}>Save And Proceed</button> :
+                                    page === 3 ? (
+                                        <div>
+                                            {guardianSecondShow ? <button onClick={() => {
+                                                if (page === FormTitles.length - 1) {
+                                                    console.log(formData);
+                                                    navigate("/flex_personal_success")
+                                                }
+                                                else {
+                                                    setspousebuttonpopup(false)
+                                                    setPage((currPage) => currPage + 1);
+                                                }
+                                            }} className="proceed-btn">Save And Proceed</button> :
 
-                                            <button onClick={guardianSecondDisplay}>Save And Proceed</button>
-                                        }
-
-                                    </div>
+                                                <button onClick={guardianSecondDisplay} className="proceed-btn">Save And Proceed</button>
+                                            }
+                                        </div>
+                                    )
                                         :
                                         (
                                             <button
@@ -191,18 +238,19 @@ function Personalform() {
                                                         setPage((currPage) => currPage + 1);
                                                     }
                                                 }}
+                                                className="proceed-btn"
                                             >
                                                 {page === FormTitles.length - 1 ? "Save And Proceed" : "Save And Proceed"}
                                             </button>
                                         )}
                             </div>
 
-                            {buttonpopup && (
+                            {spousebuttonpopup && (
                                 <div className="personal-modal">
                                     <div className="personal-modalContainer">
                                         <div className="line"><img src={line} alt="" /></div>
 
-                                        <div className="close"><button onClick={() => setbuttonpopup(false)}>X</button></div>
+                                        <div className="close"><button onClick={() => setspousebuttonpopup(false)}>X</button></div>
 
                                         <div className="emoji"><img src={happy} alt="" /></div>
 
@@ -212,10 +260,9 @@ function Personalform() {
                                         <div className="personalmodal-btn">
                                             <button className="first"
                                                 onClick={() => {
-                                                    setbuttonpopup(false);
+                                                    setspousebuttonpopup(false);
                                                     // clear();
                                                     console.log("formdata", formData);
-                                                    console.log("dghh")
                                                 }}
                                             >Yes</button>
                                             <button className="second"
@@ -225,9 +272,46 @@ function Personalform() {
                                                         navigate("/flex_personal_success")
                                                     }
                                                     else {
-                                                        setbuttonpopup(false)
+                                                        setspousebuttonpopup(false)
                                                         navigate("/spouse_review")
-                                                        // setPage((currPage) => currPage + 1);
+                                                    }
+                                                }}
+                                            >No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+
+                            {childpopupbtn && (
+                                <div className="personal-modal">
+                                    <div className="personal-modalContainer">
+                                        <div className="line"><img src={line} alt="" /></div>
+
+                                        <div className="close"><button onClick={() => setchildpopupbtn(false)}>X</button></div>
+
+                                        <div className="emoji"><img src={happy} alt="" /></div>
+
+                                        <div className="title">WAIT!</div>
+                                        <div className="text">Do you want to upload another Child’s details? </div>
+
+                                        <div className="personalmodal-btn">
+                                            <button className="first"
+                                                onClick={() => {
+                                                    setchildpopupbtn(false);
+                                                    // clear();
+                                                    console.log("formdata", formData);
+                                                }}
+                                            >Yes</button>
+                                            <button className="second"
+                                                onClick={() => {
+                                                    if (page === FormTitles.length - 1) {
+                                                        console.log(formData);
+                                                        navigate("/flex_personal_success")
+                                                    }
+                                                    else {
+                                                        setspousebuttonpopup(false)
+                                                        navigate("/child_review")
                                                     }
                                                 }}
                                             >No</button>

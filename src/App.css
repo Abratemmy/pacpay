@@ -7,6 +7,7 @@
   --textFamily: 'Montserrat', sans-serif;
   --blackColor: #273238;
   --grayColor: rgba(168, 164, 164, 0.733);
+  --borderColor: 0.8px solid rgba(0, 0, 0, 0.15);
 }
 
 
@@ -93,16 +94,27 @@
 }
 
 .Personal-container .footer {
+  /* position: absolute;
+  bottom: 2px; */
   display: flex;
   justify-content: space-between;
+  margin: 10px 0px;
+
 }
 
-.Personal-container .footer button {
+.Personal-container .footer .proceed-btn {
   background: var(--blueColor);
   border: none;
-  width: 200px;
+  width: 250px;
   color: #fff;
   border-radius: 10px;
-  padding: 5px;
+  padding: 8px;
+  font-size: 13px;
 
+}
+
+.Personal-container .footer .skip-btn {
+  border: none;
+  background: none;
+  color: var(--orangeColor)
 }

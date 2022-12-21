@@ -39,13 +39,15 @@ function Landing() {
                         <NavLink to="/login" className="nav-link">Signin</NavLink>
                     </div>
 
-                    <div className='no-acc'>
-                        Don't have an account? <NavLink to="/register" className="signup"><div>Register Here</div>
-                            <span><img src={brush} alt="" /></span></NavLink>
+                    <div className='last' style={{ padding: "30px 0px 40px" }}>
+                        <div className='no-acc'>
+                            Don't have an account? <NavLink to="/register" className="signup"><div>Register Here</div>
+                                <span><img src={brush} alt="" /></span></NavLink>
+                        </div>
                     </div>
                 </div>
 
-                <div className='last'>
+                <div className='copyright'>
                     Copyright {new Date().getFullYear()} &copy;PAC .
                 </div>
             </div>

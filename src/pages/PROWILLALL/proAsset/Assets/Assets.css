@@ -1,0 +1,260 @@
+.Assets-container {
+    padding: 10px 60px 30px 60px;
+    position: relative;
+    font-family: var(--textFamily);
+    color: var(--blackColor)
+}
+
+.Assets-container .assetType {
+    display: flex;
+    border: 1px solid var(--blueColor);
+    border-radius: 10px;
+    width: 90%;
+    height: 39px;
+    align-items: center;
+}
+
+.Assets-container .assetType span {
+    color: #BEC1C3;
+    padding-left: 40px;
+}
+
+.Assets-container .asset-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 60px;
+}
+
+.Assets-container .asset-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.Assets-container .asset-button button {
+    width: 220px;
+    border: none;
+    background: var(--blueColor);
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.Assets-container .asset-content label {
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 7px;
+}
+
+.Assets-container .asset-check {
+    font-size: 13px;
+    position: relative;
+    top: -3px;
+}
+
+.Assets-container .top {
+    display: flex;
+}
+
+.Assets-container .top .left {
+    flex: 1;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.Assets-container .top .right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 2rem;
+    font-size: 14px
+}
+
+.Assets-container .top .right .first {
+    color: var(--orangeColor);
+    border: none;
+    background: transparent;
+}
+
+.Assets-container .top .right span {
+    padding-left: 4px;
+}
+
+.Assets-container .top .right .edit {
+    background: var(--blueColor2);
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 7px;
+}
+
+.Assets-container .asset-middle {
+    padding: 3px 45px;
+}
+
+.Assets-container .asset-middle .title {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.Assets-container .asset1 .content {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.Assets-container .asset1 .text {
+    border-right: 1px solid rgba(51, 51, 51, 0.63);
+    padding-right: 100px;
+}
+
+.Assets-container .asset1 .content .icon {
+    color: var(--blueColor)
+}
+
+.Assets-container .asset1 .content span {
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.Assets-container .asset1 .input {
+    width: 100px;
+    border: none;
+    background: var(--lightblue);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    height: 30px
+}
+
+.Assets-container .asset1last {
+    display: flex;
+    justify-content: space-between;
+    gap: 15rem
+}
+
+.Assets-container .asset1last .ps {
+    font-size: 14px
+}
+
+.Assets-container .asset1last span {
+    color: var(--orangeColor)
+}
+
+/* css for the popup */
+.Assets-container .input-content {}
+
+.Assetmain-page .input-content .form-group {
+    display: flex !important;
+    gap: 1rem;
+    border-bottom: 1px solid var(--blackColor);
+    padding: 2px;
+    margin: 15px;
+}
+
+.Assetmain-page .input-content .form-group label {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.Assetmain-page .input-content .form-group .identity {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.Assetmain-page .modalContent .pop {
+    background: none;
+    border-top: 1px solid var(--blueColor);
+    border-left: 1px solid var(--blueColor);
+    border-right: 1px solid var(--blueColor);
+    border-bottom: 1px solid var(--blueColor2);
+    color: var(--blueColor)
+}
+
+/* css for asset tabs here */
+.listofasset {
+    /* overflow: hidden; */
+}
+
+.listofasset .toptext {
+    padding: 5px 60px 20px 40px;
+}
+
+.listofasset .distributeAssets {
+    padding: 10px 60px 20px 30px
+}
+
+.listofasset .bloc-tabs img {
+    margin-right: 15px;
+    width: 27px;
+}
+
+.listofasset .bloc-tabs {
+    display: flex;
+    background-color: var(--blueColor);
+    border-radius: 20px;
+    position: relative;
+    width: 100%
+}
+
+.listofasset .bloc-design {
+    width: 1800px;
+    padding-left: 30px;
+}
+
+.listofasset .disable-bloc {
+    background-color: transparent;
+}
+
+.listofasset .disable-bloc .done {
+    background: var(--blueColor);
+}
+
+.listofasset .bloc-tabs .disable {
+    pointer-events: none;
+}
+
+.listofasset .tabs {
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+    transition: 0.4s all ease;
+    font-family: var(--textFamily);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.4s all ease;
+    width: 400px !important;
+    background-color: var(--grayColor);
+    border-radius: 10px
+        /* border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px */
+}
+
+
+.listofasset .active-tabs {
+    background: var(--blueColor2);
+    border-bottom: 1px solid transparent;
+    color: #fff;
+    transition: 0.4s all ease;
+    position: relative;
+    border-radius: 10px
+}
+
+.listofasset .assetModal-nav {
+    width: 200px;
+    margin: auto;
+    padding: 5px 8px;
+    border-radius: 10px;
+    text-decoration: none;
+}

@@ -25,7 +25,7 @@ function ProExecutorLanding() {
             <WillLanding >
                 <div className='row'>
                     <div className='col-lg-5 col-md-4 col-sm-12'>
-                        <NavLink to="/pro_personalinfo" className="navlink disable">
+                        <NavLink to="/pro_personalinfo/1" className="navlink disable">
                             <div className="card done ">
                                 <span><img src={personal} alt="" /></span>
                                 <p>Personal Information</p>

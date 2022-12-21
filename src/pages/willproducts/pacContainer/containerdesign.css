@@ -59,6 +59,22 @@
     border-radius: 10px;
 }
 
+.product-type-page .middle .box {
+    background: rgba(224, 108, 65, 0.28);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.product-type-page .middle .box .total {
+    color: var(--blackColor)
+}
+
+.product-type-page .middle .box .amount {
+    font-size: 40px;
+    color: var(--orangeColor)
+}
+
 .product-type-container .content {
     padding: 20px 100px 30px 40px;
+
 }

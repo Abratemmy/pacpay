@@ -3,7 +3,6 @@ import Interface from '../../../../components/flexwillinterface/interface'
 import Topasset from '../interfaceasset/topasset';
 import assetrsa from "../../../../assets/assetrsa.png";
 import assetcash from "../../../../assets/assetcash.png";
-import line from "../../../../assets/line.png"
 import { NavLink } from 'react-router-dom';
 import MainModal from '../../../../components/mainModal/MainModal';
 import happy from "../../../../assets/happy.png"

@@ -10,14 +10,13 @@ import assets from "../../assets/flex-assets.png"; import MainModal from '../../
 ;
 
 
-function Flexwilldetails({ ispayment, setispayment }) {
+function Flexwilldetails() {
     const navigate = useNavigate()
     const [buttonpopup, setbuttonpopup] = useState(false);
 
     const goToPaymentcontainer = (e) => {
         e.preventDefault()
-        setispayment(true);
-        navigate("/pac_flex_will_main")
+        navigate("/flex_payment")
     }
     return (
         <div>

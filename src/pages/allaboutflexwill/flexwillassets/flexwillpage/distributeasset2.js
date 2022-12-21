@@ -13,7 +13,7 @@ function Distributeasset2() {
     return (
         <div className=''>
             <Interface>
-                <Topasset name="Distribute Assets" link="asset_rsa_flex_will" />
+                <Topasset name="Distribute Assets" link="flex_will_distribute_assets1" />
                 <div className='distribute-2'>
                     <div className='text'>Below are the available asset you have</div>
 

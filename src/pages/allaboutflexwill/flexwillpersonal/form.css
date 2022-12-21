@@ -1,43 +1,164 @@
 .Personal-container {
     padding: 30px 60px 30px 30px;
-}
-
-.step-item {
+    font-family: var(--textFamily);
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    /* @apply relative flex flex-col justify-center items-center w-36; */
 }
 
-.step-item:not(:first-child):before {
+
+/* .personal-iteration {
+    color: rgba(39, 50, 56, 0.7);
+    padding: 0 20px;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 170px;
+    position: relative;
+
+} */
+
+/* .personal-iteration+.personal-iteration:after {
     content: "";
     position: absolute;
-    right: 2/4;
-    top: 1/3;
-    transform: translateY(2/4);
-    /* @apply content-[''] bg-slate-200 absolute w-full h-[3px] right-2/4 top-1/3 -translate-y-2/4; */
-}
+    left: 0;
+    top: 19px;
+    background: #21d4fd;
+    width: 100%;
+    height: 2px;
+    transform: translateX(-50%);
+    z-index: -10;
+} */
 
-.color {
-    color: red;
-}
 
 .stepperss {
     display: flex;
-    gap: 3rem;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
+    position: relative;
+    width: 100%;
 }
+
+.stepperss p {
+    font-size: 12px;
+    padding-left: 20px;
+    width: 80px
+}
+
 
 .step {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* @apply w-10 h-10 flex items-center justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-white; */
+    gap: 3px;
+    position: relative;
 }
+
+.personal-iteration {
+    position: relative;
+    background: rgba(39, 50, 56, 0.7);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blackColor);
+    z-index: 2
+}
+
+.personal-iteration:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 67px;
+    background-color: rgba(39, 50, 56, 0.7);
+    background-position: center;
+    background-size: 2.25rem;
+    background-repeat: no-repeat;
+    left: 30px;
+    z-index: 1;
+}
+
+.step .active {
+    color: var(--blackColor);
+    position: relative;
+    background: var(--orangeColor);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step .active::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 67px;
+    background-color: var(--orangeColor);
+    background-position: center;
+    background-size: 2.25rem;
+    background-repeat: no-repeat;
+    left: 30px;
+    z-index: 1;
+}
+
+
+
+/* .step:last-child:before {
+    background-color: transparent !important;
+} */
+
+/* .personal-iteration .image {
+    width: 100px;
+    border-bottom: 2px solid rgba(39, 50, 56, 0.7);
+    height: 2px;
+    position: relative;
+    left: 10px;
+    top: -13px;
+
+}
+
+.personal-iteration:last-child .image {
+    display: none !important;
+} */
+
+/* .step:after {
+    content: "";
+    height: 40px;
+    width: 40px;
+    background: #21d4fd;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -10;
+}
+
+.step:before {
+    content: "";
+    height: 10px;
+    width: 20px;
+    border-left: 3px solid red;
+    border-bottom: 3px solid red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%) rotate(-45deg);
+    transform-origin: center center;
+} */
 
 .active .step {
     /* @apply bg-sky-600; */
@@ -46,6 +167,10 @@
 .Personal-container .top {
     display: flex;
     justify-content: space-between;
+}
+
+.Personal-container .top .top-title {
+    padding-left: 15px;
 }
 
 .Personal-container .top .personal-nav {
@@ -62,4 +187,107 @@
     font-size: 24px;
     color: var(--blackColor);
 
+}
+
+.Personal-container .top .tiny-text {
+    width: 300px;
+    text-align: right;
+    font-size: 13px;
+}
+
+.Personal-list-content {
+    margin-top: 50px;
+    border: var(--borderColor);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.Personal-list-content .list-content-top {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.Personal-list-content .nav-btn {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    text-decoration: none;
+    background: var(--blueColor);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.Personal-list-content .nav-btn1 {
+    background: var(--blueColor2);
+}
+
+.Personal-list-content .image {
+    background: var(--blueColor);
+    padding: 9px 12px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.Personal-list-content .image1 {
+    background: var(--blueColor2);
+}
+
+.Personal-list-content .name {
+    color: var(--blackColor);
+    font-size: 17px;
+}
+
+.Personal-list-content .name span {
+    display: block;
+}
+
+.Personal-list-content .list-content-row {
+    margin-top: 20px;
+}
+
+.Personal-list-content .list-content-row label {
+    font-size: 13px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.Personal-list-content .details {
+    border: 1px solid var(--blueColor);
+    border-radius: 10px;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: rgba(240, 250, 255, 0.68);
+    font-size: 13px;
+    color: var(--blackColor)
+}
+
+.Personal-list-content .details span {
+    padding-left: 15px;
+}
+
+.Personal-container .Personal-list-button {
+    position: fixed;
+    bottom: 30px;
+    display: flex;
+    gap: 10rem;
+    right: 50px;
+}
+
+.Personal-container .Personal-list-button .nav-link {
+    background: var(--blueColor);
+    color: #fff;
+    width: 250px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.Personal-container .Personal-list-button .nav-link1 {
+    background: var(--blueColor2);
 }

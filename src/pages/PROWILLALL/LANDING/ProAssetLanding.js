@@ -17,7 +17,7 @@ function ProAssetLanding() {
             <WillLanding >
                 <div className='row'>
                     <div className='col-lg-5 col-md-4 col-sm-12'>
-                        <NavLink to="/pro_personalinfo" className="navlink disable">
+                        <NavLink to="/pro_personalinfo/1" className="navlink disable">
                             <div className="card done">
                                 <span><img src={personal} alt="" /></span>
                                 <p>Personal Information</p>
@@ -82,8 +82,8 @@ function ProAssetLanding() {
                     <div className='modalimage'><img src={assetbg} alt="" style={{ width: "60%" }} /> </div>
                     <div className='title'>LET’S GET YOU STARTED WITH YOUR ASSETS!</div>
 
-                    <div className='navButtton'>
-                        <button >Get Started</button>
+                    <div className='navButtton' style={{ marginBottom: "30px" }}>
+                        <NavLink to="/pro_assets" className="modal-nav" >Get Started</NavLink>
                     </div>
                 </div>
             </MainModal>

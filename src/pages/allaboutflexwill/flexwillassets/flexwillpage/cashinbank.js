@@ -1,138 +1,176 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Interface from '../../../../components/flexwillinterface/interface'
 import Topasset from '../interfaceasset/topasset';
 import { MdOutlinePersonPin } from "react-icons/md";
 import { FaRegListAlt } from "react-icons/fa"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { BsPersonSquare } from 'react-icons/bs';
 
 function Cashinbank() {
-    const navigate = useNavigate()
+    const [values, setValues] = useState({
+        bankname: "",
+        bvn: "",
+        accountType: "",
+        branch: "",
+        accNo: "",
+        ownership: "",
+        checked: ""
+    });
+    const [errors, setErrors] = useState({});
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("submitted");
-        navigate("/flex_will_distribute_cash_assets1")
+    // get input values
+    const handleChange = (ev) => {
+        setValues({
+            ...values,
+            [ev.target.name]: ev.target.value,
+        });
+    };
+    const handleError = (targets) => {
+        let errorsValue = {};
+        if (!targets.bankname) errorsValue.bankname = "Pension banknameistration  is required";
+        if (!targets.bvn) errorsValue.bvn = "BVN  is required";
+        if (!targets.accountType) errorsValue.accountType = "Account type  is required";
+        if (!targets.branch) errorsValue.branch = "Branch  is required";
+        if (!targets.accNo) errorsValue.accNo = "Account number is required";
+        if (!targets.ownership) errorsValue.ownership = "BVN  is required";
+        if (!targets.checked) errorsValue.checked = "Checked the box";
+
+        if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
+        else setErrors({});
+
+        return Object.keys(errorsValue).length;
+
+    };
+
+    const navigate = useNavigate()
+    const handleSubmit = (ev) => {
+        ev.preventDefault()
+        let v = handleError(values);
+        // check if there is any eror available and handle here 
+        if (v > 0) {
+            console.log("error");
+        }
+        //submit form here if no error availble
+        else {
+            console.log("submitted", values);
+            navigate("/flex_will_distribute_cash_assets1")
+        }
     }
     return (
         <div>
             <Interface>
                 <Topasset name="Cash In Bank" link="flex_will_distribute_asset2" />
 
-                <div className='flexwillpage' >
+                <div className='flexwillpage Assets-container' >
                     <div className='container'>
-                        <form onSubmit={handleSubmit} >
-                            <div className='row gx-5'>
+                        <form onSubmit={handleSubmit} style={{ position: "relative" }}>
+                            <div className='row'>
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='content'>
-                                        <div className='form-input form-div'>
-                                            <label>Type of Asset</label>
-                                            <div className="input-group ">
-                                                <div className="input-group-prepend">
-                                                    <div className="input-group-text form-icon"><MdOutlinePersonPin className='icon' /></div>
-                                                </div>
-                                                <span className="form-control inputfield">Cash In Bank</span>
-                                            </div>
+                                    <div className='asset-content' style={{ padding: "20px 0px" }}>
+                                        <label style={{ color: "#7c848a " }}>Type of Asset</label>
+                                        <div class="inner-addon left-addon assetType disable">
+                                            <i class="glyphicon glyphicon-user"><MdOutlinePersonPin className='icon' /></i>
+                                            <span >CASH IN BANK</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col-lg-6 col-md-6 col-sm-12'></div>
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='form-input form-div'>
+
+                                <div className='col-lg-6 col-md-6 col-sm-12' >
+                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
                                         <label>Bank Name</label>
-                                        <div className="input-group ">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text form-icon"><FaRegListAlt className='icon' /></div>
-                                            </div>
-                                            <input type="text" className="form-control inputfield" placeholder="Enter Bank name" />
+                                        <div class="inner-addon left-addon">
+                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                            <input type="text" placeholder="Enter Bank Name" name="bankname" onChange={handleChange}
+                                            />
                                         </div>
+                                        {errors ? <p className='error'> {errors.bankname}</p> : ""}
                                     </div>
                                 </div>
 
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='form-input form-div'>
+                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
                                         <label>BVN</label>
-                                        <div className="input-group ">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text form-icon"><FaRegListAlt className='icon' /></div>
-                                            </div>
-                                            <input type="text" className="form-control inputfield" placeholder="Enter BVN" />
+                                        <div class="inner-addon left-addon">
+                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                            <input type="text" placeholder="Enter BVN " name="bvn" onChange={handleChange}
+                                            />
                                         </div>
+                                        {errors ? <p className='error'> {errors.bvn}</p> : ""}
                                     </div>
                                 </div>
 
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='form-input form-div'>
+                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
                                         <label>Account Type</label>
-                                        <div className="input-group select">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text form-icon"><FaRegListAlt className='icon' /></div>
-                                            </div>
-                                            <select class="custom-select form-control inputfield" id="inlineFormCustomSelect">
-                                                <option selected>Select Option ..</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
+                                        <div class="inner-addon left-addon">
+                                            <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
+                                            <select placeholder='Select an option' name="accountType" onChange={handleChange}
+                                            >
+                                                <option >Select Option </option>
+                                                <option value="savings"><i class="fa fa-email"></i>Savings</option>
+                                                <option value="current"><i class="fa fa-email"></i>Current</option>
+                                                <option value="corporate"><i class="fa fa-home"></i>Corporate</option>
                                             </select>
                                         </div>
+                                        {errors ? <p className='error'> {errors.accountType}</p> : ""}
                                     </div>
                                 </div>
 
-
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='form-input form-div'>
+                                    <div className='asset-content' sstyle={{ padding: "5px 0px" }}>
                                         <label>Branch</label>
-                                        <div className="input-group ">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text form-icon"><FaRegListAlt className='icon' /></div>
-                                            </div>
-                                            <input type="text" className="form-control inputfield" placeholder="Enter First Name" />
+                                        <div class="inner-addon left-addon">
+                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                            <input type="text" placeholder="Enter First Name" name="branch" onChange={handleChange}
+                                            />
                                         </div>
+                                        {errors ? <p className='error'> {errors.branch}</p> : ""}
                                     </div>
                                 </div>
 
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='form-input form-div'>
+                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
                                         <label>Account Number</label>
-                                        <div className="input-group ">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text form-icon"><FaRegListAlt className='icon' /></div>
-                                            </div>
-                                            <input type="text" className="form-control inputfield" placeholder="Enter First Name" />
+                                        <div class="inner-addon left-addon">
+                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                            <input type="text" placeholder="Enter First Name" name="accNo" onChange={handleChange}
+                                            />
                                         </div>
+                                        {errors ? <p className='error'> {errors.accNo}</p> : ""}
                                     </div>
                                 </div>
-
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='form-input form-div'>
+                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
                                         <label>Ownership Status</label>
-                                        <div className="input-group select">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text form-icon"><FaRegListAlt className='icon' /></div>
-                                            </div>
-                                            <select class="custom-select form-control inputfield" id="inlineFormCustomSelect">
-                                                <option selected>Select Option ..</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
+                                        <div class="inner-addon left-addon">
+                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                            <select placeholder='Select an option' name="ownership" onChange={handleChange}
+
+                                            >
+                                                <option >Select Option </option>
+                                                <option value="mrs"><i class="fa fa-email"></i> Mrs</option>
+                                                <option value="miss"><i class="fa fa-home"></i>Miss</option>
+                                                <option value="master"><i class="fa fa-home"></i>Master</option>
                                             </select>
                                         </div>
+                                        {errors ? <p className='error'> {errors.ownership}</p> : ""}
                                     </div>
                                 </div>
 
-                                <div className='col-12' style={{ paddingTop: "40px" }}>
+                                <div className='col-lg-6 col-md-6 col-sm-12'>
                                     <div className="form-group">
-                                        <input type="checkbox" id="cash" />
-                                        <label for="cash">I declare that I own and operate the bank details above</label>
+                                        <input type="checkbox" id="flexCash" name="checked" onChange={handleChange} />
+                                        <label for="flexCash" className='asset-check'> I declare that I own and operate the bank details above</label>
                                     </div>
+                                    {errors ? <p className='error'> {errors.checked}</p> : ""}
                                 </div>
                             </div>
 
-                            <div className='button' style={{ textAlign: "right", paddingRight: "60px", marginTop: "30px" }}>
-                                <button type="submit" className="asset-nav" style={{ border: "none" }}>
-                                    Assign Beneficiary
-                                </button>
+                            <div className='asset-btn'>
+                                <div className='asset-button'><button type="submit" className="asset-nav">Assign Beneficiary</button></div>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </Interface>
