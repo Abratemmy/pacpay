@@ -27,7 +27,7 @@ function Productsmain() {
                             <div className='col-lg-6 col-md-6 col-sm-12'>
                                 <div className="will-container">
                                     <NavLink to="/pac_flex_will_main" className='will-nav'>
-                                        <div className='image'><img src={flexwillicon1} /></div>
+                                        <div className='image'><img src={flexwillicon1} alt="" /></div>
                                         <div className='will-content'>
                                             <div className='title'>PAC Flex Will</div>
                                             <p>Kindly select the appropriate will of your choice</p>
@@ -38,7 +38,7 @@ function Productsmain() {
                             <div className='col-lg-6 col-md-6 col-sm-12'>
                                 <div className="will-container">
                                     <NavLink to="/pac_pro_will_main" className='will-nav will-nav-darkblue'>
-                                        <div className='image'><img src={flexwillicon2} /></div>
+                                        <div className='image'><img src={flexwillicon2} alt="" /></div>
                                         <div className='will-content'>
                                             <div className='title'>PAC Pro Will</div>
                                             <p>Kindly select the appropriate will of your choice</p>
@@ -49,7 +49,7 @@ function Productsmain() {
                             <div className='col-lg-6 col-md-6 col-sm-12 order-lg-2'>
                                 <div className="will-container">
                                     <NavLink to="/pac_compact_will_main" className='will-nav'>
-                                        <div className='image'><img src={flexwillicon1} /></div>
+                                        <div className='image'><img src={flexwillicon1} alt="" /></div>
                                         <div className='will-content'>
                                             <div className='title'>PAC Compact Will</div>
                                             <p>Kindly select the appropriate will of your choice</p>
@@ -60,7 +60,7 @@ function Productsmain() {
                             <div className='col-lg-6 col-md-6 col-sm-12 order-lg-1'>
                                 <div className="will-container">
                                     <NavLink to="/pac_testamentary_trust_main" className='will-nav will-nav-darkblue'>
-                                        <div className='image'><img src={flexwillicon1} /></div>
+                                        <div className='image'><img src={flexwillicon1} alt="" /></div>
                                         <div className='will-content'>
                                             <div className='title'>PAC Testamentary Trust</div>
                                             <p>Click on the product to introduce Trust into your will</p>

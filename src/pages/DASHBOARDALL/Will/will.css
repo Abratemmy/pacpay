@@ -1,0 +1,98 @@
+.will {
+    padding: 20px 60px 20px 20px;
+    font-family: var(--textFamily);
+    color: var(--blackColor);
+}
+
+.will .first-session {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.will .first-session span {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.will .first-session img {
+    width: 30%;
+}
+
+.will .top .subtitle {
+    color: var(--blueColor2);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.will .top p {
+    font-size: 13px;
+    text-align: center;
+}
+
+.will .top .button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.will .top button {
+    margin: auto;
+    width: 250px;
+    background: var(--blueColor);
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 7px;
+    border: none;
+    font-size: 16px;
+}
+
+.will .other .will-nav {
+    text-decoration: none;
+}
+
+.will .other .will-content {
+    background-color: var(--blueColor2);
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    gap: 1rem;
+    padding: 10px;
+    width: 80%;
+    height: 100px;
+}
+
+.will .other .will-content1 {
+    background-color: var(--blueColor);
+}
+
+.will .other .will-content .image {
+    background: #fff;
+    width: 70px;
+    height: 70px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.will .other .will-content .image img {
+    width: 50px
+}
+
+.will .other .will-content .text {
+    font-size: 18px;
+}
+
+.will .other .will-content .text span {
+    display: block;
+    font-size: 13px;
+    padding-top: 5px;
+}

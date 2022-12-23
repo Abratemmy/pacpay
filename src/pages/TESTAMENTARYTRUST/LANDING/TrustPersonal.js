@@ -1,9 +1,7 @@
 import React from 'react'
 import WillLanding from '../../../components/willLanding/willLanding';
-import { BsArrowRight, BsArrowDown, BsArrowLeft } from "react-icons/bs";
-import asset from "../../../assets/flex-assets.png";
+import { BsArrowRight } from "react-icons/bs";
 import executor from "../../../assets/flex-assets.png";
-import info from "../../../assets/flex-info.png";
 import personal from "../../../assets/flex-personal.png"
 import { NavLink } from 'react-router-dom';
 

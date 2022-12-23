@@ -37,10 +37,10 @@
 
 .auth .middle p {
     padding: 5px 0px;
-    font-size: 12px;
+    font-size: 11px !important;
     color: crimson !Important;
     /* line-height: 10px !important; */
-    padding-bottom: 20px !important;
+    padding-bottom: 5px !important;
 }
 
 .error {
@@ -296,7 +296,8 @@ input[type=checkbox] {
     border-radius: 5px;
 }
 
-.registerpop-page .image {
+.registerpop-page .image,
+.resetpassword-page .image {
     background: #EBF3FC;
     width: 50px;
     height: 50px;
@@ -307,37 +308,38 @@ input[type=checkbox] {
     justify-content: center;
 }
 
-.registerpop-page .image img {
+.registerpop-page .image img,
+.resetpassword-page .image img {
     width: 20px;
 }
 
-.registerpop-page .title {
+.register-container .title {
     padding: 40px 0px;
     font-weight: 600;
     font-size: 20px;
 }
 
-.registerpop-page .text {
+.register-container .text {
     width: 300px;
     margin: 0 auto;
     font-size: 13px;
     padding-bottom: 40px;
 }
 
-.registerpop-page .subtitle {
+.register-container .subtitle {
     width: 300px;
     margin: 0 auto;
     padding-bottom: 40px;
 }
 
-.registerpop-page .nav-button {
+.register-container .nav-button {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.registerpop-page .nav-button .nav-link {
+.register-container .nav-button .nav-link {
     width: 200px;
     border: none;
     color: #fff;
@@ -347,24 +349,24 @@ input[type=checkbox] {
     font-size: 14px;
 }
 
-.registerpop-page .otp-session {
+.register-container .otp-session {
     position: relative;
     top: -30px;
 }
 
-.registerpop-page .otp {
+.register-container .otp {
     font-size: 30px;
     letter-spacing: 15px;
     font-weight: 600;
     border-bottom: 1px solid var(--blueColor);
 }
 
-.registerpop-page .otp-resend {
+.register-container .otp-resend {
     padding: 20px 0px;
     font-size: 12px;
 }
 
-.registerpop-page .otp-resend button {
+.register-container .otp-resend button {
     background: #EBF3FC !important;
     color: var(--blueColor) !important;
     width: auto !important

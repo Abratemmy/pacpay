@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import WillLanding from '../../../components/willLanding/willLanding';
-import { BsArrowRight, BsArrowDown, BsArrowLeft } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 import executor from "../../../assets/flex-assets.png";
 import emoji from "../../../assets/emoji.png";
 import personal from "../../../assets/flex-personal.png"

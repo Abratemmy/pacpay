@@ -1,0 +1,52 @@
+.dashboard {
+    padding: 30px 60px 20px 20px;
+    font-family: var(--textFamily);
+    color: var(--blackColor);
+}
+
+.dashboard .title {
+    font-size: 21px;
+    color: var(--blueColor2);
+    padding-bottom: 60px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.dashboard .card {
+    border: 1px solid var(--grayColor);
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.dashboard .image-container {
+    background: var(--blueColor2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 170px;
+}
+
+.dashboard .image-container1 {
+    background: var(--blueColor);
+}
+
+.dashboard .image-container img {
+    width: 80px;
+}
+
+.dashboard .dashboard-content .name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5px 5px 5px;
+    font-size: 20px;
+    color: var(--blueColor2)
+}
+
+.dashboard .dashboard-content button {
+    border: none;
+    background: none;
+}

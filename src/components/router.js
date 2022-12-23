@@ -88,6 +88,16 @@ import CompactSpouseReview from '../pages/COMPACTALL/CompactPersonalInfo/Compact
 import CompactExecutorLanding from '../pages/COMPACTALL/LANDING/Compactexecutorlanding';
 import Compactexecutorsuccess from '../pages/success/compactexecutorsuccess';
 import CompactAssetLanding from '../pages/COMPACTALL/LANDING/CompactAssetlanding';
+import Dashboard from '../pages/DASHBOARDALL/dashboard/dashboard';
+import Will from '../pages/DASHBOARDALL/Will/Will';
+import Settings from '../pages/DASHBOARDALL/Settings/Settings';
+import DashboardFaqs from '../pages/DASHBOARDALL/FAQs/Faqs';
+import Register1 from '../pages/auth/register1';
+import Register2 from '../pages/auth/register2';
+import RESETPassword from '../pages/auth/password/RESETpassword/resetpassword';
+import ResetCreatepassword from '../pages/auth/password/RESETpassword/resetCreatepss';
+import ResetCreatePwdsuccess from '../pages/success/resetCreatepsSuccess';
+import RegFaq from '../pages/RegFAQs/RegFaq';
 
 
 const Router = () => {
@@ -97,7 +107,9 @@ const Router = () => {
     return (
         <Routes>
             <Route exact path="/" caseSensitive={false} element={<Landing />} />
-            <Route exact path="/register" caseSensitive={false} element={<Register />} />
+            <Route exact path="/register1" caseSensitive={false} element={<Register />} />
+            <Route exact path="/register" caseSensitive={false} element={<Register1 />} />
+            <Route exact path="/register2" caseSensitive={false} element={<Register2 />} />
             <Route exact path="/login" caseSensitive={false} element={<Signin />} />
             <Route exact path="/register_pop" caseSensitive={false} element={<Registerpop />} />
             <Route exact path="/register_success" caseSensitive={false} element={<Registersuccess />} />
@@ -107,6 +119,11 @@ const Router = () => {
             <Route exact path="/createpassword_success" caseSensitive={false} element={<CreatePwdsuccess />} />
             <Route exact path="/product_landing" caseSensitive={false} element={<Productlanding />} />
             <Route exact path="/executor_success" caseSensitive={false} element={<Executorsuccess />} />
+
+            <Route exact path="/reset_password" caseSensitive={false} element={<RESETPassword />} />
+            <Route exact path="/reset_create_password" caseSensitive={false} element={<ResetCreatepassword />} />
+
+            <Route exact path="/faqs" caseSensitive={false} element={<RegFaq />} />
 
             {/* will products */}
             <Route exact path="/will_products" caseSensitive={false} element={<Productsmain />} />
@@ -198,6 +215,7 @@ const Router = () => {
             <Route exact path="/trust_review_success" caseSensitive={false} element={<TrustReviewSuccess />} />
             <Route exact path="/compact_personal_success" caseSensitive={false} element={<CompactPersonalSuccess />} />
             <Route exact path="/compact_executor_success" caseSensitive={false} element={<Compactexecutorsuccess />} />
+            <Route exact path="/success_password_reset" caseSensitive={false} element={<ResetCreatePwdsuccess />} />
             {/* review details */}
             <Route exact path="/flex_review_details" caseSensitive={false} element={<Flexwilldetails />} />
             <Route exact path="/pro_review_details" caseSensitive={false} element={<ProReviewDetails />} />
@@ -207,6 +225,13 @@ const Router = () => {
             <Route exact path="/flex_payment" caseSensitive={false} element={<FlexPayment />} />
 
             <Route exact path="/spouse_review" caseSensitive={false} element={<SpouseReview />} />
+
+
+            {/* dashboard */}
+            <Route exact path="/dashboard" caseSensitive={false} element={<Dashboard />} />
+            <Route exact path="/will" caseSensitive={false} element={<Will />} />
+            <Route exact path="/settings" caseSensitive={false} element={<Settings />} />
+            <Route exact path="/dashboard_faqs" caseSensitive={false} element={<DashboardFaqs />} />
         </Routes>
     )
 }

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
+import "./auth.css";
 import blacklogo from "../../assets/blacklogo.png";
 import handshake from "../../assets/handshake.png";
 import logo from "../../assets/logo.png";
-import { MdOutlineEmail, } from "react-icons/md";
-import { BsArrowUpRight } from "react-icons/bs";
+import brush from "../../assets/brush.png";
+import { useNavigate, NavLink } from 'react-router-dom';
+import { MdOutlineEmail } from "react-icons/md";
 import { AiOutlineLock, AiFillEyeInvisible } from "react-icons/ai";
 import Google from "../../assets/Google.png";
-import { useNavigate, NavLink } from 'react-router-dom';
-import brush from "../../assets/brush.png";
 
-
-function Signin() {
+function Register1() {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePassword = () => {
         // When the handler is invoked
@@ -18,9 +17,17 @@ function Signin() {
         setPasswordShown(!passwordShown);
     };
 
+    const [ConfirmpasswordShown, setconfirmPasswordShown] = useState(false);
+    const toggleconfirmPassword = () => {
+        // When the handler is invoked
+        // inverse the boolean state of passwordShown
+        setconfirmPasswordShown(!ConfirmpasswordShown);
+    };
+
     const [values, setValues] = useState({
         email: "",
         password: "",
+        confirmpassword: ""
     });
     const [errors, setErrors] = useState({});
 
@@ -40,6 +47,9 @@ function Signin() {
         } else if (targets.password.length < 8) {
             errorsValue.password = "Password must be more than 8 character"
         }
+        if (!targets.confirmpassword) errorsValue.confirmpassword = "Confirm Your Password"
+        else if (targets.password !== targets.confirmpassword) errorsValue.confirmpassword = "Password do not match"
+
         if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
         else setErrors({});
 
@@ -57,19 +67,14 @@ function Signin() {
         }
         //submit form here if no error availble
         else {
-            console.log("submitted");
-            navigate("/dashboard")
+            navigate("/register2")
         }
+        // else {
+        //     console.log("submitted");
+        // }
     }
-
-    const [modal, setModal] = useState(false);
-    const toggleModal = () => {
-        setModal(!modal);
-
-    };
-
     return (
-        <div className="landing-page auth" >
+        <div className="landing-page auth" style={{ paddingBottom: "20px" }} >
             <div className='first'  >
                 <div className='top'>
                     <div className='logo'>
@@ -83,11 +88,11 @@ function Signin() {
                     <div className='text'>How it works?</div>
                 </div>
 
-                <div className='middle'  >
-                    <div className='auth-title'>Welcome Back!</div>
-                    <div className='text'>Glad to see you again! Kindly fill the details below</div>
-                    <form className="form-inline" onSubmit={handleSubmit}>
-                        <div className='form-input form-div' style={{ padding: "10px 0px" }}>
+                <div className='middle' >
+                    <div className='auth-title'>Welcome To Trustee!</div>
+                    <div className='text'>Kindly create an account with us</div>
+                    <form class="form-inline" onSubmit={handleSubmit}>
+                        <div className='form-input form-div'>
                             <label>Email Address</label>
                             <div class="inner-addon left-addon">
                                 <i class="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
@@ -104,60 +109,23 @@ function Signin() {
                                 <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
                             </div>
                             {errors ? <p className='error'> {errors.password}</p> : ""}
+
+                            <div className='password-note'>A password with a minimum of 8 characters and must be Alphanumeric</div>
                         </div>
 
-                        <div className='forgot-session'>
-                            <div className=''>
-                                <input type="checkbox" id="login" className="headerinput" onClick={toggleModal} />
-
-                                <label for="login" className="headerlabel" >
-                                    Remember me
-                                </label>
-                                {
-                                    modal && (
-                                        <div className='remember_content'>
-                                            <div onClick={toggleModal} className="close"><h6>X</h6></div>
-                                            <div className="">
-                                                <label>Email Address</label>
-                                                <div class="inner-addon left-addon">
-                                                    <i class="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
-                                                    <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
-                                                </div>
-                                                {errors ? <p className='error'> {errors.email}</p> : ""}
-                                            </div>
-
-                                            <div className=''>
-                                                <label>Password</label>
-                                                <div class="inner-addon left-addon">
-                                                    <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
-                                                    <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
-                                                    <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
-                                                </div>
-                                                {errors ? <p className='error'> {errors.password}</p> : ""}
-                                            </div>
-
-                                            <div className='' style={{ padding: "20px 0px", cursor: "pointer" }}>
-                                                <button type="submit" onSubmit={handleSubmit} className="nav-link" style={{ border: "0" }}>save and proceed</button>
-                                            </div>
-                                            <div className='text' onClick={toggleModal}>Never <BsArrowUpRight className="icon" /> </div>
-
-                                        </div>
-
-                                    )
-                                }
+                        <div className='form-input form-div'>
+                            <label>Confirm Password</label>
+                            <div class="inner-addon left-addon">
+                                <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
+                                <input type={ConfirmpasswordShown ? "text" : "password"} placeholder="Enter Confirm Password" name="confirmpassword" onChange={handleChange} />
+                                <AiFillEyeInvisible onClick={toggleconfirmPassword} className="show-icon" />
                             </div>
-                            <NavLink to="/forgot_password" className="nav">Forgot Password?</NavLink>
+                            {errors ? <p className='error'> {errors.confirmpassword}</p> : ""}
                         </div>
 
-
-
-
-                        <div className='button' style={{ padding: "20px 0px", cursor: "pointer" }}>
-                            <button type="submit" className="nav-link" style={{ border: "0" }}>Get started</button>
+                        <div className='button' style={{ paddingTop: "10px", cursor: "pointer" }}>
+                            <button type="submit" className="nav-link" style={{ border: "0" }}>Next</button>
                         </div>
-
-
-
 
                         <div className='line'>
                             <div className="or-line">OR </div>
@@ -167,14 +135,13 @@ function Signin() {
                     </form>
                 </div>
 
-                <div className='last' style={{ bottom: "5px" }} >
+                <div className='last' style={{ bottom: "0px" }} >
                     <div className='no-acc' >
-                        Don't have an account? <NavLink to="/register" className="signup"><div>Register Here</div>
+                        Already have an account? <NavLink to="/login" className="signup"><div>Login Here</div>
                             <span><img src={brush} alt="" /></span></NavLink>
                     </div>
                 </div>
             </div>
-
 
             <div className='second'>
                 <div className='content'>
@@ -184,12 +151,9 @@ function Signin() {
                         <p>sustaining Value from Generation to Generation</p>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     )
 }
 
-export default Signin
+export default Register1
