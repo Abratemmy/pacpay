@@ -36,8 +36,8 @@ function Compactwillcontainer() {
                                 </div>
                             </div>
 
-                            <div className='will-button'>
-                                <NavLink to="/compact_personal_landing" className="will-container-nav">
+                            <div className='general-btn'>
+                                <NavLink to="/compact_personal_landing" className="genaral-navlink">
                                     proceed
                                 </NavLink>
                             </div>

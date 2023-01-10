@@ -1,0 +1,100 @@
+.booking {
+    padding: 30px 60px 20px 30px;
+    font-family: var(--textFamily);
+}
+
+.booking .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking .top .booking-nav {
+    color: var(--blueColor);
+    margin-bottom: 20px;
+}
+
+.booking .top .icon2 {
+    position: relative;
+    left: -7px;
+}
+
+.booking .top .name {
+    font-size: 22px;
+    color: var(--blackColor)
+}
+
+.booking-session .first {
+    background: var(--blueColor2);
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.booking .card-content {
+    display: flex;
+    gap: 2rem;
+}
+
+.booking-session .card-content .name {
+    font-size: 16px;
+    padding-bottom: 15px;
+}
+
+.booking-session .card-content .name span {
+    display: block;
+    font-size: 12px;
+}
+
+.booking-session .card-content .location {
+    color: rgba(255, 255, 255, 0.596);
+    padding: 10px 0px
+}
+
+.booking-session .card-content .location span .icon {
+    color: var(--orangeColor);
+}
+
+.booking-session .card-content .star1 {
+    background: #fff;
+    padding: 3px 5px;
+    color: var(--blueColor2);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.booking-session .card-content .star1 .icon {
+    color: var(--orangeColor)
+}
+
+.booking-session .last {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.booking-session .last span {
+    color: rgba(255, 255, 255, 0.596);
+    font-size: 13px;
+    display: block;
+}
+
+.booking-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+
+.booking-btn .booking-nav {
+    width: 200px;
+    background: var(--blueColor);
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    text-decoration: none;
+}

@@ -101,18 +101,8 @@
 .review-container .nav-button {
     display: flex;
     justify-content: flex-end;
-
-}
-
-.review-container .nav-button button {
     position: fixed;
     bottom: 20px;
-    right: 60px;
-    border: none;
-    background: var(--blueColor);
-    width: 220px;
-    color: #fff;
-    padding: 5px;
-    border-radius: 10px;
-    text-decoration: none;
+    right: 70px;
+
 }

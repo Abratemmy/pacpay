@@ -105,7 +105,7 @@
 
 .willproduct-page .content-container {
     display: flex;
-    gap: 10rem;
+    justify-content: space-between;
     align-items: flex-end;
 }
 
@@ -142,11 +142,10 @@
     color: var(--orangeColor)
 }
 
-.willproduct-page .will-container-nav {
-    background-color: var(--blueColor);
-    color: #fff;
-    padding: 8px 80px;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 15px;
+@media screen and (max-width: 768px) {
+    .willproduct-page .content-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
 }

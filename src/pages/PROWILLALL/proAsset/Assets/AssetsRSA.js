@@ -31,7 +31,8 @@ function AssetsRSA() {
                                 <div className={toggleState === 3 ? "tabs active-tabs disable" : "tabs disable"} onClick={() => toggleTab(3)}><span><img src={asset3} alt="" /></span> Real Estate</div>
                                 <div className={toggleState === 4 ? "tabs active-tabs disable" : "tabs disable"} onClick={() => toggleTab(4)}><span><img src={asset4} alt="" /></span> Shares</div>
                                 <div className={toggleState === 5 ? "tabs active-tabs disable" : "tabs disable"} onClick={() => toggleTab(5)}><span><img src={asset5} alt="" /></span> Life Insurance</div>
-                                <div className={toggleState === 6 ? "tabs active-tabs disable" : "tabs disable"} onClick={() => toggleTab(6)}><span><img src={asset6} alt="" /></span> Investment&Personal</div>
+                                <div className={toggleState === 6 ? "tabs active-tabs disable" : "tabs disable"} onClick={() => toggleTab(6)}><span><img src={asset6} alt="" /></span> Investment</div>
+                                <div className={toggleState === 6 ? "tabs active-tabs disable" : "tabs disable"} onClick={() => toggleTab(7)}><span><img src={asset3} alt="" /></span> Other Assets</div>
                             </div>
                         </div>
                         <div className='distributeAssets'>
@@ -57,7 +58,7 @@ function AssetsRSA() {
                                     </div>
 
                                     <div className='button' style={{ textAlign: "right", paddingTop: "60px", marginTop: "30px" }}>
-                                        <NavLink to="/pro_cash_form" className="asset-nav1" style={{ border: "none" }}>
+                                        <NavLink to="/pro_cash_landing" className="asset-nav1" style={{ border: "none" }}>
                                             Add Cash in Bank
                                         </NavLink>
                                     </div>

@@ -34,8 +34,8 @@ function Testamentarycontainer() {
                                 </div> */}
                             </div>
 
-                            <div className='will-button'>
-                                <NavLink to="/trust_personal_landing" className="will-container-nav">
+                            <div className='general-btn'>
+                                <NavLink to="/trust_personal_landing" className="genaral-navlink">
                                     proceed
                                 </NavLink>
                             </div>

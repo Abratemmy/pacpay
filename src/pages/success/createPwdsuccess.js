@@ -24,7 +24,9 @@ function CreatePwdsuccess() {
                         <p>You have successfully reset your password</p>
 
                         <div className='text'>Kindly continue with the button below</div>
-                        <NavLink to="/login" className="nav-link">Login</NavLink>
+                        <div className='general-btn'>
+                            <NavLink to="/login" className="general-navlink">Login</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

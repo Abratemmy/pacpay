@@ -4,8 +4,6 @@ import Topasset from '../interfaceasset/topasset';
 import assetrsa from "../../../../assets/assetrsa.png";
 import assetcash from "../../../../assets/assetcash.png";
 import { NavLink } from 'react-router-dom';
-import MainModal from '../../../../components/mainModal/MainModal';
-import happy from "../../../../assets/happy.png"
 
 function Distributeassetmain() {
     const [toggleState, setToggleState] = useState(2);
@@ -13,11 +11,10 @@ function Distributeassetmain() {
         setToggleState(index);
     }
 
-    const [buttonModal, setbuttonModal] = useState(false)
     return (
         <div className=''>
             <Interface>
-                <Topasset name="Distribute Assets" link="asset_cashin_bank_flex_will" />
+                <Topasset name="Distribute Assets" link="flex_will_distribute_cash_assets1" />
                 <div className='distribute-2' style={{ position: "relative" }}>
                     <div className='text'>Below are the available asset you have</div>
 
@@ -46,9 +43,9 @@ function Distributeassetmain() {
                                 </div>
 
                                 <div className='button' style={{ textAlign: "right", paddingTop: "60px", marginTop: "30px" }}>
-                                    <button onClick={() => toggleTab(2)} className="asset-nav1" style={{ border: "none" }}>
+                                    <NavLink to="/flex_assets_success" className="asset-nav1" style={{ border: "none" }}>
                                         Complete
-                                    </button>
+                                    </NavLink>
                                 </div>
                             </div>
 
@@ -70,29 +67,14 @@ function Distributeassetmain() {
                                 </div>
 
                                 <div className='button' style={{ textAlign: "right", paddingTop: "60px", marginTop: "30px" }}>
-                                    <button className="asset-nav1" style={{ border: "none" }} onClick={() => setbuttonModal(!buttonModal)}>
+                                    <NavLink to="/flex_assets_success" className="asset-nav1" style={{ border: "none" }}>
                                         Complete
-                                    </button>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <MainModal trigger={buttonModal} setTrigger={setbuttonModal} >
-                        <div className='modalContent'>
-                            <div className='modalimage' style={{ marginBottom: "10px" }}><img src={happy} alt="" style={{ width: "25%" }} /> </div>
-                            <div className='title'>WAIT!</div>
-                            <div className='subtitle'>Do you want to upload another bank details?</div>
-                            <div className='navButtton'>
-                                <NavLink to="/asset_cashin_bank_flex_will" className="modal-nav" >Yes</NavLink>
-                            </div>
-
-                            <div className='navButtton' style={{ marginTop: "30px" }}>
-                                <NavLink to="/flex_assets_success" className="modal-nav" >No</NavLink>
-                            </div>
-
-                        </div>
-                    </MainModal>
                 </div>
             </Interface>
         </div>

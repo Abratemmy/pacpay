@@ -9,7 +9,7 @@ function TrustPersonalLanding() {
     return (
         <div>
             <WillLanding >
-                <div className='row'>
+                <div className='will-landingpage'>
                     <div className='col-lg-5 col-md-4 col-sm-12'>
                         <NavLink to="/trust_personalinfo/1" className="navlink ">
                             <div className="card active">

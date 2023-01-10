@@ -24,7 +24,9 @@ function Compactexecutorsuccess() {
                     <p>You have completed the all stages of EXECUTORS!</p>
 
                     <div className='text'>Kindly continue with the button below</div>
-                    <NavLink to="/compact_assets_landing" className="nav-link">proceed</NavLink>
+                    <div className='general-btn'>
+                        <NavLink to="/compact_assets_landing" className="general-navlink">proceed</NavLink>
+                    </div>
                 </div>
             </div>
         </div>

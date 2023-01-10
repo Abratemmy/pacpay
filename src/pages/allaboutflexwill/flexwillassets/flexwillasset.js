@@ -11,7 +11,7 @@ function Flexwillasset() {
     return (
         <div>
             <Interface>
-                <Topasset name="Assets" link="pac_flex-will_product_main" />
+                <Topasset name="Assets" link="flex_will_assets_landing" />
                 <div className='flexwillasset'>
 
                     <div className='text'>According to the Will Product you picked, kindly fill up the neccessary information below</div>
@@ -23,7 +23,7 @@ function Flexwillasset() {
                             <NavLink to="/asset_rsa_flex_will" className="asset-nav">
                                 <div className='content'>
                                     <span><img src={asset1} alt="" /> </span>
-                                    <p>RSA(Retirement Savings <br /> Account)</p>
+                                    <p>RSA (Retirement Savings <br /> Account)</p>
                                     <MdOutlineKeyboardArrowRight className="icon" />
                                 </div>
                             </NavLink>

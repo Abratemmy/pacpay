@@ -119,7 +119,7 @@ function ProReviewDetails() {
                         </div>
 
                         <div className='nav-button'>
-                            <button onClick={() => setbuttonpopup(true)}>Proceed</button>
+                            <button onClick={() => setbuttonpopup(true)} className="general-btn">Proceed</button>
                         </div>
 
                         <MainModal trigger={buttonpopup} setTrigger={setbuttonpopup}>

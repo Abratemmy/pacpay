@@ -10,6 +10,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import line from "../../../assets/line.png"
 import happy from "../../../assets/happy.png"
 import { BsArrowUpRight } from "react-icons/bs";
+import validation from "../../../components/PersonalForm/personalValidation";
 
 
 function Propersonalinfo() {
@@ -81,12 +82,13 @@ function Propersonalinfo() {
         setFormData(initialState)
 
     }
+    const [errors, setErrors] = useState({})
 
     const FormTitles = ["Personal Info", "Your Spouse", "Your Children", "Children's Guardian", "Burial wishes"];
     const topicTitles = ["Personal Information", "Your Spouse Details", "Your Child Details", "Financial Guardian", "Burial Details"];
     const PageDisplay = () => {
         if (page === 0) {
-            return <Personal formData={formData} setFormData={setFormData} />;
+            return <Personal formData={formData} setFormData={setFormData} errors={errors} />;
         } else if (page === 1) {
             return <Spouse formData={formData} setFormData={setFormData} />;
         } else if (page === 2) {
@@ -113,10 +115,23 @@ function Propersonalinfo() {
             <Interface>
                 <div className="Personal-container">
                     <div className="top">
-                        <span><NavLink to="/pro_personal_landing" className="personal-nav">
-                            <MdArrowBackIosNew className='icon' />
-                            <MdArrowBackIosNew className='icon icon2' /></NavLink>
-                        </span>
+                        {page == 0 ? (
+                            <span><NavLink to="/flex_will_personal_landing" className="personal-nav">
+                                <MdArrowBackIosNew className='icon' />
+                                <MdArrowBackIosNew className='icon icon2' /></NavLink>
+                            </span>
+                        ) : (
+                            <button
+                                disabled={page == 0}
+                                onClick={() => {
+                                    setPage((currPage) => currPage - 1);
+                                }}
+                                style={{ color: "var(--blueColor)", border: "none", background: "none" }}
+                            >
+                                <MdArrowBackIosNew className='icon' />
+                                <MdArrowBackIosNew className='icon icon2' />
+                            </button>
+                        )}
 
                         <div className='text'>{topicTitles[page]}</div>
                     </div>
@@ -197,11 +212,11 @@ function Propersonalinfo() {
 
                                 {page === 1 ? (
                                     <div className="">
-                                        <button onClick={spousepopup} className="proceed-btn">Save and Proceed</button>
+                                        <button onClick={spousepopup} className="general-btn">Save and Proceed</button>
                                     </div>
                                 ) : page === 2 ? (
                                     <div className="">
-                                        <button onClick={childpopup} className="proceed-btn">Save and Proceed</button>
+                                        <button onClick={childpopup} className="general-btn">Save and Proceed</button>
                                     </div>
                                 ) :
                                     page === 3 ? (
@@ -215,30 +230,56 @@ function Propersonalinfo() {
                                                     setspousebuttonpopup(false)
                                                     setPage((currPage) => currPage + 1);
                                                 }
-                                            }} className="proceed-btn">Save And Proceed</button> :
+                                            }} className="general-btn">Save And Proceed</button> :
 
-                                                <button onClick={guardianSecondDisplay} className="proceed-btn">Save And Proceed</button>
+                                                <button onClick={guardianSecondDisplay} className="general-btn">Save And Proceed</button>
                                             }
                                         </div>
                                     )
                                         :
-                                        (
+
+                                        page === 4 ? (
                                             <button
                                                 onClick={() => {
                                                     if (page === FormTitles.length - 1) {
                                                         console.log(formData);
                                                         navigate("/pro_personal_success");
-
                                                     }
                                                     else {
+
                                                         setPage((currPage) => currPage + 1);
                                                     }
                                                 }}
-                                                className="proceed-btn"
+                                                className="general-btn"
                                             >
                                                 {page === FormTitles.length - 1 ? "Save And Proceed" : "Save And Proceed"}
                                             </button>
-                                        )}
+                                        ) :
+
+                                            (
+                                                <button
+                                                    onClick={() => {
+                                                        const formError = validation(formData);
+                                                        setErrors(formError);
+
+                                                        if (Object.keys(formError).length > 0) {
+                                                            console.log("error")
+                                                        } else {
+                                                            if (page === FormTitles.length - 1) {
+                                                                console.log(formData);
+                                                                navigate("/pro_personal_success");
+                                                            }
+                                                            else {
+
+                                                                setPage((currPage) => currPage + 1);
+                                                            }
+                                                        }
+                                                    }}
+                                                    className="general-btn"
+                                                >
+                                                    {page === FormTitles.length - 1 ? "Save And Proceed" : "Save And Proceed"}
+                                                </button>
+                                            )}
                             </div>
 
                             {spousebuttonpopup && (

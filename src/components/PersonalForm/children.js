@@ -11,7 +11,7 @@ function Children({ formData, setFormData }) {
             <div className='row'>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
-                        <label>Title(Mr,  Mrs e.t.c)</label>
+                        <label>Title (Mr,  Mrs e.t.c)</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BiMessageAltDetail className='icon' /></i>
                             <select name="title" placeholder='Select an option'
@@ -31,7 +31,7 @@ function Children({ formData, setFormData }) {
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
-                        <label>Full Name(Child)</label>
+                        <label>Full Name (Child)</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="text" placeholder="Enter First Name"
@@ -49,7 +49,7 @@ function Children({ formData, setFormData }) {
                         <label>Date Of Birth</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                            <input type="text" placeholder="Enter Date of Birth"
+                            <input type="date" placeholder="Enter Date of Birth"
                                 value={formData.childbirth}
                                 onChange={(e) => {
                                     setFormData({ ...formData, childbirth: e.target.value });
@@ -80,7 +80,7 @@ function Children({ formData, setFormData }) {
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
-                        <label>Phone Number(Optional)</label>
+                        <label>Phone Number (Optional)</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="text" placeholder="Enter Phone Number"

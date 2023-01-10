@@ -45,7 +45,7 @@ function Distributeasset2() {
                                 </div>
 
                                 <div className='button' style={{ textAlign: "right", paddingTop: "60px", marginTop: "30px" }}>
-                                    <NavLink to="/asset_cashin_bank_flex_will" className="asset-nav1" style={{ border: "none" }}>
+                                    <NavLink to="/flex_cashinbank_landing" className="asset-nav1" style={{ border: "none" }}>
                                         Add Cash in Bank
                                     </NavLink>
                                 </div>

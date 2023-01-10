@@ -5,6 +5,8 @@ import { BsPersonSquare } from "react-icons/bs";
 import { MdOutlinePersonPin } from "react-icons/md";
 import "./Assets.css";
 import { useNavigate } from 'react-router-dom';
+import MainModal from '../../../../components/mainModal/MainModal';
+import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
 function ProRsa() {
     const [values, setValues] = useState({
@@ -34,7 +36,7 @@ function ProRsa() {
 
     };
 
-    const navigate = useNavigate()
+    const [beneficiary, setbeneficiary] = useState(false);
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -45,7 +47,7 @@ function ProRsa() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/pro_distribute_assets1")
+            setbeneficiary(true)
         }
     }
     return (
@@ -102,6 +104,13 @@ function ProRsa() {
                         </div>
                     </form>
                 </div>
+
+                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
+                    <div className='modalContent'>
+                        <Beneficiary submitFormLink="pro_distribute_assets1" />
+                    </div>
+                </MainModal>
+
             </Interface>
         </div>
     )

@@ -24,7 +24,9 @@ function Registersuccess() {
                     <p>You have successfully created an account</p>
 
                     <div className='text'>Kindly continue with the button below</div>
-                    <NavLink to="/product_landing" className="nav-link">proceed</NavLink>
+                    <div className='general-btn'>
+                        <NavLink to="/product_landing" className="genaral-navlink">proceed</NavLink>
+                    </div>
                 </div>
             </div>
         </div>

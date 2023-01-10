@@ -4,8 +4,9 @@ import Interface from '../../../../components/flexwillinterface/interface'
 import { BsPersonSquare } from "react-icons/bs";
 import { MdOutlinePersonPin } from "react-icons/md";
 import "./Assets.css";
-import { useNavigate } from 'react-router-dom';
 import { FaRegListAlt } from "react-icons/fa"
+import MainModal from '../../../../components/mainModal/MainModal';
+import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
 
 function ProInvestmentForm() {
@@ -40,7 +41,9 @@ function ProInvestmentForm() {
 
     };
 
-    const navigate = useNavigate()
+
+    const [beneficiary, setbeneficiary] = useState(false);
+
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -51,7 +54,7 @@ function ProInvestmentForm() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/pro_distribute_asset6")
+            setbeneficiary(true)
         }
     }
     return (
@@ -128,13 +131,9 @@ function ProInvestmentForm() {
                                     <label>Ownership Status</label>
                                     <div class="inner-addon left-addon">
                                         <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                                        <select placeholder='Select an option' name="ownership" onChange={handleChange}
-                                        >
-                                            <option >Select Option </option>
-                                            <option value="savings"><i class="fa fa-email"></i>Savings</option>
-                                            <option value="current"><i class="fa fa-email"></i>Current</option>
-                                            <option value="corporate"><i class="fa fa-home"></i>Corporate</option>
-                                        </select>
+                                        <input type="text" placeholder="Enter ownership status" name="ownership" onChange={handleChange}
+                                        />
+
                                     </div>
                                     {errors ? <p className='error'> {errors.ownership}</p> : ""}
                                 </div>
@@ -146,6 +145,12 @@ function ProInvestmentForm() {
                         </div>
                     </form>
                 </div>
+
+                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
+                    <div className='modalContent'>
+                        <Beneficiary submitFormLink="pro_distribute_asset6" />
+                    </div>
+                </MainModal>
             </Interface>
         </div>
     )

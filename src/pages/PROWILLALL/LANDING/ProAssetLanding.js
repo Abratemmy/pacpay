@@ -15,7 +15,7 @@ function ProAssetLanding() {
     return (
         <div>
             <WillLanding >
-                <div className='row'>
+                <div className='will-landingpage'>
                     <div className='col-lg-5 col-md-4 col-sm-12'>
                         <NavLink to="/pro_personalinfo/1" className="navlink disable">
                             <div className="card done">
@@ -38,7 +38,9 @@ function ProAssetLanding() {
                             </div>
                         </NavLink>
                     </div>
-                    <div className='col-lg-10 col-md-10 col-sm-12'></div>
+                </div>
+
+                <div className='will-landingpage-2'>
                     <div className='col-lg-2 col-md-2 col-sm-12'>
                         <div className="arrow">
                             <BsArrowDown className="icon icon2" />
@@ -53,26 +55,6 @@ function ProAssetLanding() {
                                 <p>Assets</p>
                             </div>
                         </button>
-                        {/* 
-                        <NavLink to="/pro_assets" className="navlink ">
-                            <div className="card active">
-                                <span><img src={asset} alt="" /></span>
-                                <p>Assets</p>
-                            </div>
-                        </NavLink> */}
-                    </div>
-
-                    <div className='col-lg-2 col-md-2 col-sm-12 order-lg-2 order-md-2'>
-                        <div className="arrow">
-                            <BsArrowLeft className="icon icon3" />
-                        </div>
-                    </div>
-
-                    <div className='col-lg-5 col-md-4 col-sm-12 order-lg-1 order-md-1'>
-                        <div className="card disable">
-                            <span><img src={info} alt="" /></span>
-                            <p>Additional</p>
-                        </div>
                     </div>
                 </div>
             </WillLanding>

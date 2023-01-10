@@ -10,7 +10,7 @@ import asset5 from "../../../../assets/asset5.png";
 import asset6 from "../../../../assets/asset6.png";
 
 function ProMainAsset() {
-    const [toggleState, setToggleState] = useState(6);
+    const [toggleState, setToggleState] = useState(7);
     const toggleTab = (index) => {
         setToggleState(index);
     }
@@ -18,7 +18,7 @@ function ProMainAsset() {
     return (
         <div>
             <Interface>
-                <AssetInterface name="Assets" link="pro_asset_personal" />
+                <AssetInterface name="Assets" link="pro_distribute_assets7" />
 
                 <div className='listofasset'>
                     <div className=''>
@@ -32,7 +32,8 @@ function ProMainAsset() {
                                 <div className={toggleState === 3 ? "tabs active-tabs " : "tabs  done"} onClick={() => toggleTab(3)}><span><img src={asset3} alt="" /></span> Real Estate</div>
                                 <div className={toggleState === 4 ? "tabs active-tabs " : "tabs  done"} onClick={() => toggleTab(4)}><span><img src={asset4} alt="" /></span> Shares</div>
                                 <div className={toggleState === 5 ? "tabs active-tabs" : "tabs done"} onClick={() => toggleTab(5)}><span><img src={asset5} alt="" /></span> Life Insurance</div>
-                                <div className={toggleState === 6 ? "tabs active-tabs " : "tabs done"} onClick={() => toggleTab(6)}><span><img src={asset6} alt="" /></span> Investment&Personal</div>
+                                <div className={toggleState === 6 ? "tabs active-tabs " : "tabs done"} onClick={() => toggleTab(6)}><span><img src={asset6} alt="" /></span> Investment</div>
+                                <div className={toggleState === 7 ? "tabs active-tabs " : "tabs done"} onClick={() => toggleTab(7)}><span><img src={asset3} alt="" /></span> Other Assets</div>
                             </div>
                         </div>
                         <div className='distributeAssets'>
@@ -191,9 +192,9 @@ function ProMainAsset() {
 
 
                                     <div className='button' style={{ textAlign: "right", paddingTop: "60px", marginTop: "30px" }}>
-                                        <NavLink to="/pro_asset_other_form" className="asset-nav1" style={{ border: "none" }}>
+                                        {/* <NavLink to="/pro_asset_other_form" className="asset-nav1" style={{ border: "none" }}>
                                             Add Other Assets
-                                        </NavLink>
+                                        </NavLink> */}
 
                                         <NavLink to="/pro_assets_success" className="asset-nav1" style={{ border: "none" }}>
                                             Complete
@@ -203,6 +204,29 @@ function ProMainAsset() {
 
                                 </div>
 
+                                <div className={toggleState === 7 ? "content active-content" : "content"}>
+                                    <div className='distributeasset-content'>
+
+                                        <div className='text'>
+                                            <span><img src={asset3} alt="" /></span>
+                                            <div>
+                                                <div className='title'>Other Assets</div>
+                                                <p>You have completed the first stage of assets You have completed the first stage of assets</p>
+                                            </div>
+                                        </div>
+
+                                        <div className='action'>
+                                            <button>Edit</button>
+                                            <button>Delete</button>
+                                        </div>
+                                    </div>
+
+                                    <div className='button' style={{ textAlign: "right", paddingTop: "60px", marginTop: "30px" }}>
+                                        <NavLink to="/pro_assets_success" className="asset-nav1" style={{ border: "none" }}>
+                                            Complete
+                                        </NavLink>
+                                    </div>
+                                </div>
 
 
                             </div>

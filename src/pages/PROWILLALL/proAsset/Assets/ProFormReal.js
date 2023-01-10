@@ -6,6 +6,8 @@ import { MdOutlinePersonPin } from "react-icons/md";
 import "./Assets.css";
 import { useNavigate } from 'react-router-dom';
 import { FaRegListAlt } from "react-icons/fa"
+import MainModal from '../../../../components/mainModal/MainModal';
+import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
 
 function ProFormRealEstate() {
@@ -28,7 +30,7 @@ function ProFormRealEstate() {
     const handleError = (targets) => {
         let errorsValue = {};
         if (!targets.name) errorsValue.name = "Title owner  is required";
-        if (!targets.description) errorsValue.description = "Asset  is required";
+        if (!targets.description) errorsValue.description = "Asset description is required";
         if (!targets.titletype) errorsValue.titletype = "This is required";
         if (!targets.address) errorsValue.address = "Address  is required";
         if (!targets.checked) errorsValue.checked = "Checked the box";
@@ -40,7 +42,7 @@ function ProFormRealEstate() {
 
     };
 
-    const navigate = useNavigate()
+    const [beneficiary, setbeneficiary] = useState(false);
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -51,7 +53,7 @@ function ProFormRealEstate() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/pro_distribute_assets3")
+            setbeneficiary(true)
         }
     }
     return (
@@ -139,6 +141,12 @@ function ProFormRealEstate() {
                         </div>
                     </form>
                 </div>
+
+                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
+                    <div className='modalContent'>
+                        <Beneficiary submitFormLink="pro_distribute_assets3" />
+                    </div>
+                </MainModal>
             </Interface>
         </div>
     )

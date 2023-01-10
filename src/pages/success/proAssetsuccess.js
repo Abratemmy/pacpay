@@ -25,7 +25,9 @@ function ProAssetsSuccess() {
                         <p>You have completed the all stages of ASSET!</p>
 
                         <div className='text'>Kindly continue with the button below to proceed </div>
-                        <NavLink to="/pro_review_details" className="nav-link">Continue</NavLink>
+                        <div className='general-btn'>
+                            <NavLink to="/pro_review_details" className="general-navlink">Continue</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

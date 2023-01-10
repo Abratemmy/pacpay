@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Interface from '../../components/flexwillinterface/interface';
 import hiIcon from "../../assets/hiIcon.png";
 import flexwillicon1 from "../../assets/flexwillicon1.png";
 import flexwillicon2 from "../../assets/flexwillixon2.png";
 import { NavLink } from "react-router-dom";
 import "./willproduct.css";
+import { useLocation } from 'react-router-dom';
 
 function Productsmain() {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    console.log(user)
+    // {user.result.name.charAt(0)}
+    const location = useLocation()
+    useEffect(() => {
+        const token = user?.token;
 
+        //jwt
+        setUser(JSON.parse(localStorage.getItem('profile')))
+    }, [location])
     return (
         <div>
             <Interface>
@@ -15,7 +25,9 @@ function Productsmain() {
                 <div className='will-products'>
                     <div className='contaiiner'>
                         <div className='top'>
-                            <div className='name'>Hi name <img src={hiIcon} alt="" /> </div>
+                            {user ? (
+                                <div className='name'>Hi {user.result.name} <img src={hiIcon} alt="" /> </div>
+                            ) : null}
                             <div className='subtitle'>Will Products</div>
                         </div>
 

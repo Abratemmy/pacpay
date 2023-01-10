@@ -118,7 +118,7 @@ function Navbar({ name, navlink }) {
                             <img src={dropdown} alt="" />
                         </span>
 
-                        {setShowProfile && <div className='nav-dropdown nav-dropdown1' style={{ width: "320px" }}>
+                        {showProfile && <div className='nav-dropdown nav-dropdown1' style={{ width: "320px" }}>
                             <div className='top'><span><BsArrowLeft className='icon' onClick={profileToggle} /></span><span className='logout' ><FaSignOutAlt className="icons" /> Logout</span></div>
                             <div className='image-session'>
                                 <IoMdPerson className='icon' />

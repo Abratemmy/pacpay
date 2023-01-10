@@ -1,0 +1,12 @@
+.register-bloc-tabs {
+    display: none;
+}
+
+.Registercontent {
+    width: 100%;
+    display: none;
+}
+
+.active-Registercontent {
+    display: block;
+}

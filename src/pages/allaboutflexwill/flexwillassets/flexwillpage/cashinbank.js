@@ -5,6 +5,8 @@ import { MdOutlinePersonPin } from "react-icons/md";
 import { FaRegListAlt } from "react-icons/fa"
 import { useNavigate } from "react-router-dom";
 import { BsPersonSquare } from 'react-icons/bs';
+import MainModal from '../../../../components/mainModal/MainModal';
+import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
 function Cashinbank() {
     const [values, setValues] = useState({
@@ -32,7 +34,7 @@ function Cashinbank() {
         if (!targets.accountType) errorsValue.accountType = "Account type  is required";
         if (!targets.branch) errorsValue.branch = "Branch  is required";
         if (!targets.accNo) errorsValue.accNo = "Account number is required";
-        if (!targets.ownership) errorsValue.ownership = "BVN  is required";
+        if (!targets.ownership) errorsValue.ownership = "Onership status  is required";
         if (!targets.checked) errorsValue.checked = "Checked the box";
 
         if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
@@ -42,7 +44,8 @@ function Cashinbank() {
 
     };
 
-    const navigate = useNavigate()
+    const [beneficiary, setbeneficiary] = useState(false);
+
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -53,13 +56,13 @@ function Cashinbank() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/flex_will_distribute_cash_assets1")
+            setbeneficiary(true)
         }
     }
     return (
         <div>
             <Interface>
-                <Topasset name="Cash In Bank" link="flex_will_distribute_asset2" />
+                <Topasset name="Cash In Bank" link="flex_cashinbank_landing" />
 
                 <div className='flexwillpage Assets-container' >
                     <div className='container'>
@@ -70,7 +73,7 @@ function Cashinbank() {
                                         <label style={{ color: "#7c848a " }}>Type of Asset</label>
                                         <div class="inner-addon left-addon assetType disable">
                                             <i class="glyphicon glyphicon-user"><MdOutlinePersonPin className='icon' /></i>
-                                            <span >CASH IN BANK</span>
+                                            <span >CASH IN BANK (NIGERIA)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -145,14 +148,9 @@ function Cashinbank() {
                                         <label>Ownership Status</label>
                                         <div class="inner-addon left-addon">
                                             <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
-                                            <select placeholder='Select an option' name="ownership" onChange={handleChange}
+                                            <input type="text" placeholder="Enter Ownership status" name="ownership" onChange={handleChange}
+                                            />
 
-                                            >
-                                                <option >Select Option </option>
-                                                <option value="mrs"><i class="fa fa-email"></i> Mrs</option>
-                                                <option value="miss"><i class="fa fa-home"></i>Miss</option>
-                                                <option value="master"><i class="fa fa-home"></i>Master</option>
-                                            </select>
                                         </div>
                                         {errors ? <p className='error'> {errors.ownership}</p> : ""}
                                     </div>
@@ -173,6 +171,12 @@ function Cashinbank() {
                         </form>
                     </div>
                 </div>
+
+                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
+                    <div className='modalContent'>
+                        <Beneficiary submitFormLink="flex_will_distribute_cash_assets1" />
+                    </div>
+                </MainModal>
             </Interface>
         </div>
     )

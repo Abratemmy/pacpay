@@ -36,7 +36,7 @@ function Landing() {
                     </p>
 
                     <div className='button'>
-                        <NavLink to="/login" className="nav-link">Signin</NavLink>
+                        <NavLink to="/login" className="nav-link">Sign in</NavLink>
                     </div>
 
                     <div className='last' style={{ padding: "30px 0px 40px" }}>

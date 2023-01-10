@@ -15,7 +15,7 @@ function Flexwillcontainer({ ispayment, setispayment }) {
                         )}
 
                         <div className='subtitle'>Nature: </div>
-                        <p>It consists of Bank Account, employmentBenefits and RSA Pension only, and the
+                        <p>It consists of Bank Account, employment, Benefits and RSA Pension only, and the
                             target audience are Persons with just Bank Accounts and RSA as their main assets.
                         </p>
 
@@ -41,8 +41,8 @@ function Flexwillcontainer({ ispayment, setispayment }) {
                                 <h1 className=''>Payment methios</h1>
                             )}
 
-                            <div className='will-button'>
-                                <NavLink to="/pac_flex-will_product_main" className="will-container-nav">
+                            <div className='general-btn'>
+                                <NavLink to="/flex_will_personal_landing" className="genaral-navlink">
                                     proceed
                                 </NavLink>
                             </div>

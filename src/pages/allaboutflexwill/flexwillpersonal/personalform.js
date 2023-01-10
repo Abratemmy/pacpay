@@ -12,8 +12,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import line from "../../../assets/line.png"
 import happy from "../../../assets/happy.png"
 import { BsArrowUpRight } from "react-icons/bs";
-import { AiOutlineMinus } from "react-icons/ai"
-
+import validation from "../../../components/PersonalForm/personalValidation";
 
 function Personalform() {
 
@@ -44,22 +43,9 @@ function Personalform() {
         resCity: "",
         resAddress: "",
 
-        spousetitle: "",
-        spouseName: "",
-        spousebirth: "",
-        spousephone: "",
-        spouseresState: "",
-        spouseresCity: "",
-        spouseresAddress: "",
+        spouse: [],
 
-        childtitle: "",
-        childName: "",
-        childbirth: "",
-        childphone: "",
-        childGender: "",
-        childresCity: "",
-        childresAddress: "",
-
+        children: [],
         guardianName: "",
         guardianEmail: "",
         guardianPhone: "",
@@ -74,24 +60,48 @@ function Personalform() {
         refreshment: "",
         amount: "",
     }
+
+    const [spouse, setSpouse] = useState({
+        spousetitle: "",
+        spouseName: "",
+        spousebirth: "",
+        spousephone: "",
+        spouseresState: "",
+        spouseresCity: "",
+        spouseresAddress: "",
+    })
+
+    const clearSpouse = () => setSpouse({
+        spousetitle: "",
+        spouseName: "",
+        spousebirth: "",
+        spousephone: "",
+        spouseresState: "",
+        spouseresCity: "",
+        spouseresAddress: "",
+    })
+
+    const [children, setChildren] = useState({
+        childtitle: " ",
+        childName: " ",
+        childbirth: " ",
+        childphone: " ",
+        childGender: " ",
+        childresCity: " ",
+        childresAddress: " ",
+    })
     const navigate = useNavigate()
     const [page, setPage] = useState(0);
     const [formData, setFormData] = useState(initialState);
 
 
-
-    const clear = () => {
-        setFormData(initialState)
-
-    }
-
     const FormTitles = ["Personal Info", "Your Spouse", "Your Children", "Children's Guardian", "Burial wishes"];
     const topicTitles = ["Personal Information", "Your Spouse Details", "Your Child Details", "Financial Guardian", "Burial Details"];
     const PageDisplay = () => {
         if (page === 0) {
-            return <Personal formData={formData} setFormData={setFormData} />;
+            return <Personal formData={formData} setFormData={setFormData} errors={errors} />;
         } else if (page === 1) {
-            return <Spouse formData={formData} setFormData={setFormData} />;
+            return <Spouse spouse={spouse} setSpouse={setSpouse} />;
         } else if (page === 2) {
             return <Children formData={formData} setFormData={setFormData} />;
         } else if (page === 3) {
@@ -110,25 +120,44 @@ function Personalform() {
         setPage(page_id - 1)
     }, [page_id])
 
+    const [errors, setErrors] = useState({})
+
+
 
     return (
         <div className="Personal">
             <Interface>
                 <div className="Personal-container">
                     <div className="top">
-                        <span><NavLink to="/pac_flex-will_product_main" className="personal-nav">
-                            <MdArrowBackIosNew className='icon' />
-                            <MdArrowBackIosNew className='icon icon2' /></NavLink>
-                        </span>
+                        {page === 0 ? (
+                            <span><NavLink to="/flex_will_personal_landing" className="personal-nav">
+                                <MdArrowBackIosNew className='icon' />
+                                <MdArrowBackIosNew className='icon icon2' /></NavLink>
+                            </span>
+                        ) : (
+                            <button
+                                disabled={page === 0}
+                                onClick={() => {
+                                    setPage((currPage) => currPage - 1);
+                                }}
+                                style={{ color: "var(--blueColor)", border: "none", background: "none" }}
+                            >
+                                <MdArrowBackIosNew className='icon' />
+                                <MdArrowBackIosNew className='icon icon2' />
+                            </button>
+                        )}
 
                         <div className='text'>{topicTitles[page]}</div>
+
+                        <button onClick={() => console.log("formdata", formData)}>checkupdate</button>
                     </div>
                     <div className="form" style={{ paddingTop: "40px" }}>
                         <div className="flex justify-between stepperss">
                             {FormTitles?.map((step, i) => (
-                                <div className=""
+                                <div className="stepping"
                                     key={i}
                                 >
+                                    <div className="progressbar"></div>
                                     <div className="step">
                                         {i - 1 < page ? (<div className="personal-iteration active"> {i + 1}</div>) : <div className="personal-iteration"> {i + 1} </div>}
 
@@ -141,6 +170,7 @@ function Personalform() {
                         <div className="form-container">
                             <div className="body">{PageDisplay()}</div>
                             <div className="footer">
+
                                 <div className="skip">
                                     {
                                         (page === 1) ? (
@@ -201,11 +231,11 @@ function Personalform() {
 
                                 {page === 1 ? (
                                     <div className="">
-                                        <button onClick={spousepopup} className="proceed-btn">Save and Proceed</button>
+                                        <button onClick={spousepopup} className="general-btn">Save and Proceed</button>
                                     </div>
                                 ) : page === 2 ? (
                                     <div className="">
-                                        <button onClick={childpopup} className="proceed-btn">Save and Proceed</button>
+                                        <button onClick={childpopup} className="general-btn">Save and Proceed</button>
                                     </div>
                                 ) :
                                     page === 3 ? (
@@ -219,30 +249,54 @@ function Personalform() {
                                                     setspousebuttonpopup(false)
                                                     setPage((currPage) => currPage + 1);
                                                 }
-                                            }} className="proceed-btn">Save And Proceed</button> :
+                                            }} className="general-btn">Save And Proceed</button> :
 
                                                 <button onClick={guardianSecondDisplay} className="proceed-btn">Save And Proceed</button>
                                             }
                                         </div>
-                                    )
-                                        :
-                                        (
+                                    ) :
+                                        page === 4 ? (
                                             <button
                                                 onClick={() => {
                                                     if (page === FormTitles.length - 1) {
                                                         console.log(formData);
                                                         navigate("/flex_personal_success");
-
                                                     }
                                                     else {
+
                                                         setPage((currPage) => currPage + 1);
                                                     }
                                                 }}
-                                                className="proceed-btn"
+                                                className="general-btn"
                                             >
                                                 {page === FormTitles.length - 1 ? "Save And Proceed" : "Save And Proceed"}
                                             </button>
-                                        )}
+                                        )
+                                            :
+                                            (
+                                                <button
+                                                    onClick={() => {
+                                                        const formError = validation(formData);
+                                                        setErrors(formError);
+
+                                                        if (Object.keys(formError).length > 0) {
+                                                            console.log("error")
+                                                        } else {
+                                                            if (page === FormTitles.length - 1) {
+                                                                console.log(formData);
+                                                                navigate("/flex_personal_success");
+                                                            }
+                                                            else {
+
+                                                                setPage((currPage) => currPage + 1);
+                                                            }
+                                                        }
+                                                    }}
+                                                    className="general-btn"
+                                                >
+                                                    {page === FormTitles.length - 1 ? "Save And Proceed" : "Save And Proceed"}
+                                                </button>
+                                            )}
                             </div>
 
                             {spousebuttonpopup && (
@@ -261,18 +315,34 @@ function Personalform() {
                                             <button className="first"
                                                 onClick={() => {
                                                     setspousebuttonpopup(false);
-                                                    // clear();
-                                                    console.log("formdata", formData);
+                                                    let formDataCopy = JSON.parse(JSON.stringify(formData))
+                                                    formDataCopy.spouse[formDataCopy.spouse.length] = spouse
+
+                                                    setFormData(formDataCopy)
+                                                    console.log("formDataCopy", formDataCopy)
+                                                    clearSpouse();
+                                                    console.log("formdatadata123456", formData);
                                                 }}
                                             >Yes</button>
                                             <button className="second"
                                                 onClick={() => {
+
+                                                    setspousebuttonpopup(false);
+                                                    let formDataCopy = JSON.parse(JSON.stringify(formData))
+                                                    formDataCopy.spouse[formDataCopy.spouse.length] = spouse
+
+                                                    setFormData(formDataCopy)
+                                                    console.log("formDataCopy", formDataCopy)
+                                                    clearSpouse();
+                                                    console.log("formdatadata123456", formData);
+
                                                     if (page === FormTitles.length - 1) {
                                                         console.log(formData);
                                                         navigate("/flex_personal_success")
                                                     }
                                                     else {
-                                                        setspousebuttonpopup(false)
+                                                        setspousebuttonpopup(false);
+
                                                         navigate("/spouse_review")
                                                     }
                                                 }}

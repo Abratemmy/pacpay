@@ -5,6 +5,8 @@ import { MdOutlinePersonPin } from "react-icons/md";
 import { BsPersonSquare } from 'react-icons/bs';
 import "./flexwillpage.css";
 import { useNavigate } from "react-router-dom"
+import MainModal from '../../../../components/mainModal/MainModal';
+import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
 function Flexwillpage() {
     const [values, setValues] = useState({
@@ -33,8 +35,8 @@ function Flexwillpage() {
         return Object.keys(errorsValue).length;
 
     };
+    const [beneficiary, setbeneficiary] = useState(false);
 
-    const navigate = useNavigate()
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -45,7 +47,7 @@ function Flexwillpage() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/flex_will_distribute_assets1")
+            setbeneficiary(true)
         }
     }
 
@@ -109,6 +111,12 @@ function Flexwillpage() {
 
                     </div>
                 </div>
+
+                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
+                    <div className='modalContent'>
+                        <Beneficiary submitFormLink="flex_will_distribute_assets1" />
+                    </div>
+                </MainModal>
 
             </Interface>
         </div>

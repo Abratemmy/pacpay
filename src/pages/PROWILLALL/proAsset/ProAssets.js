@@ -29,7 +29,7 @@ function ProAssets() {
                                         <div className='asset-content'>
                                             <div className="first">
                                                 <span><img src={asset1} alt="" width="50%" /></span>
-                                                <p>RSA(Retirement Savings <br /> Account)</p>
+                                                <p>RSA (Retirement Savings <br /> Account)</p>
                                             </div>
                                             <MdOutlineKeyboardArrowRight className="icon" />
                                         </div>
@@ -89,7 +89,19 @@ function ProAssets() {
                                         <div className='asset-content'>
                                             <div className="first">
                                                 <span><img src={asset6} alt="" /></span>
-                                                <p>Investment & Personal</p>
+                                                <p>Investment</p>
+                                            </div>
+                                            <MdOutlineKeyboardArrowRight className="icon" />
+                                        </div>
+                                    </NavLink>
+                                </div>
+
+                                <div className='col-lg-6 col-md-6 col-sm-12'>
+                                    <NavLink to="" className="asset-nav disable">
+                                        <div className='asset-content'>
+                                            <div className="first">
+                                                <span><img src={asset3} alt="" /></span>
+                                                <p>Other Asset </p>
                                             </div>
                                             <MdOutlineKeyboardArrowRight className="icon" />
                                         </div>

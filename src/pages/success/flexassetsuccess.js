@@ -25,7 +25,9 @@ function FlexAssetsuccess() {
                         <p>You have completed the all stages of ASSETS!</p>
 
                         <div className='text'>Kindly continue with the button below</div>
-                        <NavLink to="/flex_review_details" className="nav-link">proceed</NavLink>
+                        <div className='general-btn'>
+                            <NavLink to="/flex_review_details" className="general-navlink">proceed</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

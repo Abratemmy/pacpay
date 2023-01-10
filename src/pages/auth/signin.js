@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import blacklogo from "../../assets/blacklogo.png";
 import handshake from "../../assets/handshake.png";
 import logo from "../../assets/logo.png";
@@ -8,6 +8,10 @@ import { AiOutlineLock, AiFillEyeInvisible } from "react-icons/ai";
 import Google from "../../assets/Google.png";
 import { useNavigate, NavLink } from 'react-router-dom';
 import brush from "../../assets/brush.png";
+import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
+import { useDispatch } from "react-redux";
+import { signin } from "../actions/auth"
 
 
 function Signin() {
@@ -38,7 +42,7 @@ function Signin() {
         if (!targets.password) {
             errorsValue.password = "Password is required"
         } else if (targets.password.length < 8) {
-            errorsValue.password = "Password must be more than 8 character"
+            errorsValue.password = "Password is not correct"
         }
         if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
         else setErrors({});
@@ -47,7 +51,8 @@ function Signin() {
 
     };
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -57,7 +62,7 @@ function Signin() {
         }
         //submit form here if no error availble
         else {
-            console.log("submitted");
+            dispatch(signin(values, navigate))
             navigate("/dashboard")
         }
     }
@@ -67,6 +72,31 @@ function Signin() {
         setModal(!modal);
 
     };
+
+    //the useEffect is used to solve the error google-sso-login-error-popup-closed-by-user
+    const clientId = "103152588131-2ojr8nvsacecdqei2nucn9abaruhtceb.apps.googleusercontent.com"
+    useEffect(() => {
+        gapi.load("client:auth2", () => {
+            gapi.auth2.init({ clientId: clientId })
+        })
+    }, [])
+    const googleSucess = async (res) => {
+        console.log(res)
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        try {
+            dispatch({ type: 'AUTH', data: { result, token } });
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const googleFailure = (error) => {
+        console.log(error)
+        console.log("Google Sign in was unsuccessful. Try again later")
+    }
+
 
     return (
         <div className="landing-page auth" >
@@ -89,8 +119,8 @@ function Signin() {
                     <form className="form-inline" onSubmit={handleSubmit}>
                         <div className='form-input form-div' style={{ padding: "10px 0px" }}>
                             <label>Email Address</label>
-                            <div class="inner-addon left-addon">
-                                <i class="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
+                            <div className="inner-addon left-addon">
+                                <i className="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
                                 <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
                             </div>
                             {errors ? <p className='error'> {errors.email}</p> : ""}
@@ -98,8 +128,8 @@ function Signin() {
 
                         <div className='form-input form-div'>
                             <label>Password</label>
-                            <div class="inner-addon left-addon">
-                                <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
+                            <div className="inner-addon left-addon">
+                                <i className="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
                                 <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
                                 <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
                             </div>
@@ -110,7 +140,7 @@ function Signin() {
                             <div className=''>
                                 <input type="checkbox" id="login" className="headerinput" onClick={toggleModal} />
 
-                                <label for="login" className="headerlabel" >
+                                <label htmlFor="login" className="headerlabel" >
                                     Remember me
                                 </label>
                                 {
@@ -119,8 +149,8 @@ function Signin() {
                                             <div onClick={toggleModal} className="close"><h6>X</h6></div>
                                             <div className="">
                                                 <label>Email Address</label>
-                                                <div class="inner-addon left-addon">
-                                                    <i class="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
+                                                <div className="inner-addon left-addon">
+                                                    <i className="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
                                                     <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
                                                 </div>
                                                 {errors ? <p className='error'> {errors.email}</p> : ""}
@@ -128,8 +158,8 @@ function Signin() {
 
                                             <div className=''>
                                                 <label>Password</label>
-                                                <div class="inner-addon left-addon">
-                                                    <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
+                                                <div className="inner-addon left-addon">
+                                                    <i className="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
                                                     <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
                                                     <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
                                                 </div>
@@ -153,7 +183,7 @@ function Signin() {
 
 
                         <div className='button' style={{ padding: "20px 0px", cursor: "pointer" }}>
-                            <button type="submit" className="nav-link" style={{ border: "0" }}>Get started</button>
+                            <button type="submit" className="nav-link" style={{ border: "0" }}>Sign in</button>
                         </div>
 
 
@@ -161,9 +191,25 @@ function Signin() {
 
                         <div className='line'>
                             <div className="or-line">OR </div>
-                            <span> <img src={Google} alt="" className='google-img' /> </span>
+                            <span>
+                                <GoogleLogin
+                                    clientId={clientId}
+                                    render={renderProps => (
+                                        <button onClick={renderProps.onClick} disabled={renderProps.disabled}
+                                            style={{ border: "none", background: "none" }}>
+                                            <img src={Google} alt="" className='google-img' />
+                                        </button>
+                                    )}
+                                    onSuccess={googleSucess}
+                                    onFailure={googleFailure}
+                                    buttonText="Login"
+                                    cookiePolicy='single_host_origin'
+                                />
+                            </span>
 
                         </div>
+
+
                     </form>
                 </div>
 

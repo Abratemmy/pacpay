@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Createpassword from '../pages/auth/password/createpassword';
 import Fpassword from '../pages/auth/password/fpassword';
-import Register from '../pages/auth/register';
 import Signin from '../pages/auth/signin';
 import CreatePwdsuccess from '../pages/success/createPwdsuccess';
 import Registersuccess from '../pages/success/Registersuccess';
@@ -92,12 +91,52 @@ import Dashboard from '../pages/DASHBOARDALL/dashboard/dashboard';
 import Will from '../pages/DASHBOARDALL/Will/Will';
 import Settings from '../pages/DASHBOARDALL/Settings/Settings';
 import DashboardFaqs from '../pages/DASHBOARDALL/FAQs/Faqs';
-import Register1 from '../pages/auth/register1';
-import Register2 from '../pages/auth/register2';
 import RESETPassword from '../pages/auth/password/RESETpassword/resetpassword';
 import ResetCreatepassword from '../pages/auth/password/RESETpassword/resetCreatepss';
 import ResetCreatePwdsuccess from '../pages/success/resetCreatepsSuccess';
 import RegFaq from '../pages/RegFAQs/RegFaq';
+import Booking from '../pages/Booking/Booking';
+import CompactAsset from '../pages/COMPACTALL/CompactAsset/CompactAsset';
+import CompactRSAForm from '../pages/COMPACTALL/CompactAsset/compact1RSA/compactRSAform';
+import CompactRsaDistribute from '../pages/COMPACTALL/CompactAsset/compact1RSA/compactRsadist';
+import CompactAssetRsa from '../pages/COMPACTALL/CompactAsset/compact1RSA/compactRsa';
+import Compactcashlanding from '../pages/COMPACTALL/CompactAsset/CompactCash/compactcashlanding';
+import CompactCashForm from '../pages/COMPACTALL/CompactAsset/CompactCash/compactcashform';
+import FlexwillPersonalLanding from '../pages/allaboutflexwill/Landing/flexwillpersonal';
+import FlexwillExecutorLanding from '../pages/allaboutflexwill/Landing/flexwillexecutor';
+import FlexwillAssetLanding from '../pages/allaboutflexwill/Landing/flexwillassets';
+import CompactCashDistribute from '../pages/COMPACTALL/CompactAsset/CompactCash/compactdistribute';
+import BookingSuccess from '../pages/success/bookingsuccess';
+import CompactCashAsset from '../pages/COMPACTALL/CompactAsset/CompactCash/compactcashasset';
+import CompactRealEstateForm from '../pages/COMPACTALL/CompactAsset/CompactEstate/comEstateForm';
+import CompactRealEstate from '../pages/COMPACTALL/CompactAsset/CompactEstate/CompactestateAsset';
+import ComrealEState from '../pages/COMPACTALL/CompactAsset/CompactEstate/ComrealEState';
+import CompactsharesForm from '../pages/COMPACTALL/CompactAsset/CompactShares/comsharesForm';
+import CompactSharesDistribute from '../pages/COMPACTALL/CompactAsset/CompactShares/comsharedistribute';
+import CompactShareAsset from '../pages/COMPACTALL/CompactAsset/CompactShares/compactShareAsset';
+import CompactLifeInsuranceForm from '../pages/COMPACTALL/CompactAsset/CompactLIFE/compactlifeForm';
+import CompactLifeDistribute from '../pages/COMPACTALL/CompactAsset/CompactLIFE/compactlifedistribute';
+import CompactAssetsInsurance from '../pages/COMPACTALL/CompactAsset/CompactLIFE/CompactLifeAsset';
+import CompactInvestmentForm from '../pages/COMPACTALL/CompactAsset/comInvestment/comInvestmentForm';
+import CompactInvestmentDistribute from '../pages/COMPACTALL/CompactAsset/comInvestment/cominvestmentdistribute';
+import CompactAssetsInvestment from '../pages/COMPACTALL/CompactAsset/comInvestment/comInvestmentAsset';
+import CompactStockForm from '../pages/COMPACTALL/CompactAsset/CompactStock/ComStocksform';
+import CompactStockDistribute from '../pages/COMPACTALL/CompactAsset/CompactStock/comStockdistribute';
+import CompactAssetsStock from '../pages/COMPACTALL/CompactAsset/CompactStock/compactstockasset';
+import CompactFormOthers from '../pages/COMPACTALL/CompactAsset/compactOthers/comPersonalForm';
+import ComOtherAssets from '../pages/COMPACTALL/CompactAsset/compactOthers/comOtherdis';
+import CompactShowAllAsset from '../pages/COMPACTALL/CompactAsset/ComShowAllAsset';
+import CompactAssetSuccess from '../pages/success/compactassetsuc';
+import CompactReviewDetails from '../pages/ReviewDetails/compactReviewdetails';
+import CompactPayment from '../pages/WillPAYMENT/compactPayment';
+import CompactReviewSuccess from '../pages/success/compactreviewsuc';
+import CompactForeignCashForm from '../pages/COMPACTALL/CompactAsset/CompactCash/comForeigncash';
+import Procashlanding from '../pages/PROWILLALL/proAsset/Assets/assetcashlanding/procashlanding';
+import Flexcashlanding from '../pages/allaboutflexwill/flexwillassets/flexwillpage/cashinnabkLanding';
+import FlexForeignCashForm from '../pages/allaboutflexwill/flexwillassets/flexwillpage/flexForeigncash';
+import ProForeignCashForm from '../pages/PROWILLALL/proAsset/Assets/proForeignCashform';
+import CompactAssetNew from '../pages/COMPACTALL/CompactAsset/CompactAssetNew';
+import MainREGISTER from '../pages/auth/mainREGISTER';
 
 
 const Router = () => {
@@ -107,23 +146,22 @@ const Router = () => {
     return (
         <Routes>
             <Route exact path="/" caseSensitive={false} element={<Landing />} />
-            <Route exact path="/register1" caseSensitive={false} element={<Register />} />
-            <Route exact path="/register" caseSensitive={false} element={<Register1 />} />
-            <Route exact path="/register2" caseSensitive={false} element={<Register2 />} />
+            <Route exact path="/register" caseSensitive={false} element={<MainREGISTER />} />
             <Route exact path="/login" caseSensitive={false} element={<Signin />} />
-            <Route exact path="/register_pop" caseSensitive={false} element={<Registerpop />} />
+            <Route exact path="/register_pop/:userEmail" caseSensitive={false} element={<Registerpop />} />
             <Route exact path="/register_success" caseSensitive={false} element={<Registersuccess />} />
             <Route exact path="/forgot_password" caseSensitive={false} element={<Fpassword />} />
             <Route exact path="/forgot_otp_password" caseSensitive={false} element={<ForgotOtp />} />
             <Route exact path="/create_new_password" caseSensitive={false} element={<Createpassword />} />
             <Route exact path="/createpassword_success" caseSensitive={false} element={<CreatePwdsuccess />} />
             <Route exact path="/product_landing" caseSensitive={false} element={<Productlanding />} />
-            <Route exact path="/executor_success" caseSensitive={false} element={<Executorsuccess />} />
+            <Route exact path="/flex_executor_success" caseSensitive={false} element={<Executorsuccess />} />
 
             <Route exact path="/reset_password" caseSensitive={false} element={<RESETPassword />} />
             <Route exact path="/reset_create_password" caseSensitive={false} element={<ResetCreatepassword />} />
 
             <Route exact path="/faqs" caseSensitive={false} element={<RegFaq />} />
+            <Route exact path="/booking" caseSensitive={false} element={<Booking />} />
 
             {/* will products */}
             <Route exact path="/will_products" caseSensitive={false} element={<Productsmain />} />
@@ -141,6 +179,12 @@ const Router = () => {
             <Route exact path="/asset_cashin_bank_flex_will" caseSensitive={false} element={<Cashinbank />} />
             <Route eact path="/flex_will_distribute_cash_assets1" caseSensitive={false} element={<Distributeassetcash />} />
             <Route exact path="/flex_will_distribute_main_asset" caseSensitive={false} element={<Distributeassetmain />} />
+            <Route exact path="/flex_will_personal_landing" caseSensitive={false} element={<FlexwillPersonalLanding />} />
+            <Route exact path="/flex_will_executor_landing" caseSensitive={false} element={<FlexwillExecutorLanding />} />
+            <Route exact path="/flex_will_assets_landing" caseSensitive={false} element={<FlexwillAssetLanding />} />
+            <Route exact path="/flex_cashinbank_landing" caseSensitive={false} element={<Flexcashlanding />} />
+            <Route exact path="/flex_foreign_cashform" caseSensitive={false} element={<FlexForeignCashForm />} />
+
 
             <Route path="/flex_will_personal_info/:page" key={"/flex_will_personal_info"} caseSensitive={false} element={<Personalform />} />
             <Route exact path="/spouse_review" caseSensitive={false} element={<SpouseReview />} />
@@ -159,7 +203,9 @@ const Router = () => {
             <Route exact path="/pro_rsa_form" caseSensitive={false} element={<ProRsa />} />
             <Route exact path="/pro_distribute_assets1" caseSensitive={false} element={<Prodistribute1 />} />
             <Route exact path="/pro_assetrsa" caseSensitive={false} element={<AssetsRSA />} />
+            <Route exact path="/pro_cash_landing" caseSensitive={false} element={<Procashlanding />} />
             <Route exact path="/pro_cash_form" caseSensitive={false} element={<ProCash />} />
+            <Route exact path="/pro_foreign_cash_form" caseSensitive={false} element={<ProForeignCashForm />} />
             <Route exact path="/pro_distribute_assets2" caseSensitive={false} element={<Prodistribute2 />} />
             <Route exact path="/pro_assetcash" caseSensitive={false} element={<AssetsCash />} />
             <Route exact path="/pro_real_estate_form" caseSensitive={false} element={<ProFormRealEstate />} />
@@ -200,6 +246,34 @@ const Router = () => {
             <Route exact path="/compact_spouse_review" caseSensitive={false} element={<CompactSpouseReview />} />
             <Route exact path="/compact_executor_landing" caseSensitive={false} element={<CompactExecutorLanding />} />
             <Route exact path="/compact_assets_landing" caseSensitive={false} element={<CompactAssetLanding />} />
+            <Route exact path="/compact_assets" caseSensitive={false} element={<CompactAsset />} />
+            <Route exact path="/compact_rsa_form" caseSensitive={false} element={<CompactRSAForm />} />
+            <Route exact path="/compact_rsa_distribute" caseSensitive={false} element={<CompactRsaDistribute />} />
+            <Route exact path="/compact_asset_rsa" caseSensitive={false} element={<CompactAssetRsa />} />
+            <Route exact path="/compact_cash_landing" caseSensitive={false} element={<Compactcashlanding />} />
+            <Route exact path="/compact_cash_form" caseSensitive={false} element={<CompactCashForm />} />
+            <Route exact path="/foreign_compact_cashform" caseSensitive={false} element={<CompactForeignCashForm />} />
+            <Route exact path="/compact_cash_distribute" caseSensitive={false} element={<CompactCashDistribute />} />
+            <Route exact path="/compact_cash_assets" caseSensitive={false} element={<CompactCashAsset />} />
+            <Route exact path="/compact_realestate_form" caseSensitive={false} element={<CompactRealEstateForm />} />
+            <Route exact path="/compact_realestate_assets" caseSensitive={false} element={<CompactRealEstate />} />
+            <Route exact path="/compact_realestate" caseSensitive={false} element={<ComrealEState />} />
+            <Route exact path="/compact_shares_form" caseSensitive={false} element={<CompactsharesForm />} />
+            <Route exact path="/compact_share_distribute" caseSensitive={false} element={<CompactSharesDistribute />} />
+            <Route exact path="/compact_share_assset" caseSensitive={false} element={<CompactShareAsset />} />
+            <Route exact path="/compact_lifeinsurance_form" caseSensitive={false} element={<CompactLifeInsuranceForm />} />
+            <Route exact path="/compact_life_distribute" caseSensitive={false} element={<CompactLifeDistribute />} />
+            <Route exact path="/compact_life_asset" caseSensitive={false} element={<CompactAssetsInsurance />} />
+            <Route exact path="/compact_investment_form" caseSensitive={false} element={<CompactInvestmentForm />} />
+            <Route exact path="/compact_investment_distribute" caseSensitive={false} element={<CompactInvestmentDistribute />} />
+            <Route exact path="/compact_investment_assets" caseSensitive={false} element={<CompactAssetsInvestment />} />
+            <Route exact path="/compact_stock_form" caseSensitive={false} element={<CompactStockForm />} />
+            <Route exact path="/compact_stock_distribute" caseSensitive={false} element={<CompactStockDistribute />} />
+            <Route exact path="/compact_stock_assets" caseSensitive={false} element={<CompactAssetsStock />} />
+            <Route exact path="/compact_other_form" caseSensitive={false} element={<CompactFormOthers />} />
+            <Route exact path="/compact_others_distribute" caseSensitive={false} element={<ComOtherAssets />} />
+            <Route exact path="/compact_showall_assets" caseSensitive={false} element={<CompactShowAllAsset />} />
+            <Route exact path="/compactasset_view" caseSensitive={false} element={<CompactAssetNew />} />
 
 
             {/* success */}
@@ -216,13 +290,20 @@ const Router = () => {
             <Route exact path="/compact_personal_success" caseSensitive={false} element={<CompactPersonalSuccess />} />
             <Route exact path="/compact_executor_success" caseSensitive={false} element={<Compactexecutorsuccess />} />
             <Route exact path="/success_password_reset" caseSensitive={false} element={<ResetCreatePwdsuccess />} />
+            <Route exact path="/booking_success" caseSensitive={false} element={<BookingSuccess />} />
+            <Route exact path="/compact_asset_success" caseSensitive={false} element={<CompactAssetSuccess />} />
+            <Route exact path="/compact_review_success" caseSensitive={false} element={<CompactReviewSuccess />} />
+
+
             {/* review details */}
             <Route exact path="/flex_review_details" caseSensitive={false} element={<Flexwilldetails />} />
             <Route exact path="/pro_review_details" caseSensitive={false} element={<ProReviewDetails />} />
+            <Route exact path="/compact_review_details" caseSensitive={false} element={<CompactReviewDetails />} />
             {/* payment */}
             <Route exact path="/flex_will_payment" caseSensitive={false} element={<Flexwillpayment />} />
             <Route exact path="/pro_payment" caseSensitive={false} element={<ProPayment />} />
             <Route exact path="/flex_payment" caseSensitive={false} element={<FlexPayment />} />
+            <Route exact path="/compact_payment" caseSensitive={false} element={<CompactPayment />} />
 
             <Route exact path="/spouse_review" caseSensitive={false} element={<SpouseReview />} />
 

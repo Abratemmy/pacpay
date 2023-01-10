@@ -25,7 +25,9 @@ function TrustPersonalSuccess() {
                         <p>You have completed the all stages of PERSONAL DETAILS!</p>
 
                         <div className='text'>Kindly continue with the button below</div>
-                        <NavLink to="/trust_executor_landing" className="nav-link">Continue</NavLink>
+                        <div className='general-btn'>
+                            <NavLink to="/trust_executor_landing" className="general-navlink">Continue</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

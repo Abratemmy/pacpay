@@ -25,7 +25,9 @@ function Executorsuccess() {
                         <p>You have completed the all stages of executors!</p>
 
                         <div className='text'>Kindly continue with the button below</div>
-                        <NavLink to="/login" className="nav-link">proceed</NavLink>
+                        <div className='general-btn'>
+                            <NavLink to="/flex_will_assets_landing" className="general-navlink">proceed</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

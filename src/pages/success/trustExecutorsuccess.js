@@ -24,10 +24,12 @@ function Trustexecutorsuccess() {
                     <p>You have completed the all stages of EXECUTORS!</p>
 
                     <div className='text'>Kindly continue with the button below</div>
-                    <NavLink to="/trust_reviewdetails" className="nav-link">proceed</NavLink>
+                    <div className='general-btn'>
+                        <NavLink to="/trust_reviewdetails" className="general-navlink">proceed</NavLink>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

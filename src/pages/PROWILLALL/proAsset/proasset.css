@@ -20,16 +20,22 @@
     align-items: center;
     background: var(--lightblue);
     width: 90%;
-    height: 90px;
+    height: 70px;
     border-radius: 10px;
-    padding: 3px 10px;
+    padding: 5px 10px;
     margin: 13px 0px;
+    transition: 0.4s all ease;
+}
+
+.asset-list .asset-content:hover {
+    background: var(--blueColor);
+    color: #fff;
 }
 
 .asset-list span {
     background: #fff;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -45,4 +51,5 @@
 
 .asset-list .first p {
     font-size: 14px;
+    padding-top: 10px;
 }

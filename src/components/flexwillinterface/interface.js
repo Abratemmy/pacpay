@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./interface.css";
 import { FaSignOutAlt } from "react-icons/fa";
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";
 import icon3 from "../../assets/icon3.png";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import blacklogo from "../../assets/blacklogo.png";
 import logo from "../../assets/logo.png";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md"
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { useDispatch } from 'react-redux';
 
 function Interface({ children }) {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    const logout = () => {
+        dispatch({ type: 'LOGOUT' });
+        navigate("/register")
+        setUser(null)
+    }
     return (
         <div>
             <div>
@@ -58,7 +68,10 @@ function Interface({ children }) {
                         </li>
 
                         <li style={{ marginTop: "100px" }}>
-                            <NavLink to='/admin_login' exact className="sidebar-navlink sidebar-signout"><FaSignOutAlt className="sidebar-icons" /><span className="text">Signout</span></NavLink>
+                            <button onClick={logout} exact className="sidebar-navlink sidebar-signout"
+                                style={{ border: "none", background: "transparent", textAlign: "left" }}
+                            >
+                                <FaSignOutAlt className="sidebar-icons" /><span className="text">Signout</span></button>
                         </li>
                     </ul>
 

@@ -8,11 +8,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 .mainModal-inner {
     position: relative;
-    padding: 13px 20px;
+    padding: 20px 40px;
     max-width: 350px !important;
     background-color: #fff;
     border-radius: 15px;
@@ -83,8 +84,20 @@
     margin-bottom: 20px;
 }
 
+.mainModal .modalContent .beneficiary-nav {
+    width: 180px !important;
+    background: transparent;
+    border: 1px solid var(--blueColor);
+    border-radius: 10px;
+    color: var(--blueColor);
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+
+}
+
 .mainModal .modalContent .modal-nav {
-    width: 200px !important;
+    width: 230px !important;
     background: var(--blueColor);
     border: none;
     border-radius: 10px;
@@ -133,4 +146,60 @@
     font-size: 15px;
     position: relative;
     top: -5px;
+}
+
+.beneficiary-modal {
+    margin-top: 20px;
+}
+
+.beneficiary-modal .form-group {
+    display: flex;
+    gap: 10px;
+    padding: 5px 20px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.178);
+    margin: 15px 0px;
+}
+
+.beneficiary-modal .form-group .name {
+    text-transform: uppercase;
+    font-size: 12px !important;
+    color: var(--blackColor);
+    font-weight: 600;
+    letter-spacing: 0.7px;
+}
+
+.beneficiary-modal .form-group .identity {
+    display: flex;
+    justify-content: space-between;
+    font-weight: normal;
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+.beneficiary-error {
+    color: crimson;
+    font-size: 11px;
+}
+
+.beneficiary-modal .navButtton button {
+    width: 180px;
+    background: none;
+    border: 1px solid var(--blueColor);
+    border-radius: 7px;
+    color: var(--blueColor);
+}
+
+.booking-pop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--lightblue);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+
+.booking-pop img {
+    width: 20px !important;
 }

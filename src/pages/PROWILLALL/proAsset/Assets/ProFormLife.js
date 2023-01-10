@@ -4,8 +4,9 @@ import Interface from '../../../../components/flexwillinterface/interface'
 import { BsPersonSquare } from "react-icons/bs";
 import { MdOutlinePersonPin } from "react-icons/md";
 import "./Assets.css";
-import { useNavigate } from 'react-router-dom';
 import { FaRegListAlt } from "react-icons/fa"
+import MainModal from '../../../../components/mainModal/MainModal';
+import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
 
 function ProLifeInsuranceForm() {
@@ -40,7 +41,9 @@ function ProLifeInsuranceForm() {
 
     };
 
-    const navigate = useNavigate()
+
+    const [beneficiary, setbeneficiary] = useState(false);
+
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -51,9 +54,10 @@ function ProLifeInsuranceForm() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/pro_distribute_asset5")
+            setbeneficiary(true)
         }
     }
+
     return (
         <div>
             <Interface>
@@ -146,6 +150,13 @@ function ProLifeInsuranceForm() {
                         </div>
                     </form>
                 </div>
+
+                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
+                    <div className='modalContent'>
+                        <Beneficiary submitFormLink="pro_distribute_asset5" />
+                    </div>
+                </MainModal>
+
             </Interface>
         </div>
     )

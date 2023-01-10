@@ -1,12 +1,50 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import line from "../../assets/line.png";
 import email from "../../assets/email.png"
 import MainModal from '../../components/mainModal/MainModal';
-import phone from "../../assets/phone.png"
+import phone from "../../assets/phone.png";
+import { useDispatch } from "react-redux";
+import { verifyEmail } from "../actions/auth"
 
 function Registerpop() {
-    const [buttonpopup, setbuttonpopup] = useState(false)
+    const [buttonpopup, setbuttonpopup] = useState(false);
+    const { userEmail } = useParams()
+
+
+    const [values, setValues] = useState({
+        verificationCode: "",
+    });
+    const [errors, setErrors] = useState({});
+
+    // get input values
+    const handleChange = (ev) => {
+        setValues({
+            ...values,
+            [ev.target.name]: ev.target.value,
+        });
+    };
+    const handleError = (targets) => {
+        let errorsValue = {};
+        if (!targets.verificationCode) errorsValue.verificationCode = "Verfication code  is required";
+        if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
+        else setErrors({});
+        return Object.keys(errorsValue).length;
+    };
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const handleSubmit = (ev) => {
+        ev.preventDefault()
+        let v = handleError(values);
+        // check if there is any eror available and handle here 
+        if (v > 0) {
+            console.log("error");
+        }
+        //submit form here if no error availble
+        else {
+            dispatch(verifyEmail(values, navigate))
+        }
+    }
     return (
 
         <div>
@@ -21,19 +59,22 @@ function Registerpop() {
                         <img src={email} alt="" />
                     </div>
                     <div className='title'>CHECK YOUR EMAIL</div>
-                    <div className='text'>A verification code has been sent to your email, kindly verify with the link sent to you.</div>
+                    <div className='text'>A verification code has been sent to your email,{userEmail} kindly verify with the link sent to you.</div>
                     <div className='subtitle'>NOTE: LINK EXPIRES AFTER FEW HOURS</div>
 
                     <div className='nav-button'>
-                        <button className="nav-link" onClick={() => setbuttonpopup(true)}>Open Email</button>
+                        <button className="general-btn" onClick={() => setbuttonpopup(true)}>Continue</button>
                     </div>
+
+                    {/* <div className='nav-button'>
+                        <button className="general-btn" onClick={() => setbuttonpopup(true)}>Open Email</button>
+                    </div> */}
                 </div>
             </div>
 
             <MainModal trigger={buttonpopup} setTrigger={setbuttonpopup}>
                 <div className='modalContent'>
                     <div className='register-container'>
-                        {/* <div className='image' style={{ marginBottom: "40px" }}><img src={phone} alt="" style={{ width: "40%" }} /> </div> */}
                         <div className="image">
                             <img src={phone} alt="" style={{ width: "20px" }} />
                         </div>
@@ -41,14 +82,21 @@ function Registerpop() {
                         <div className='title'>OTP NOTIFICATION</div>
                         <div className='subtitle'>Please enter the OTP we sent to you for you to  continue</div>
 
-                        <div className='otp-session'>
-                            <div className="otp"> 567874</div>
-                            <div className="otp-resend">I didn’t receive a message <span><button>Resend</button></span></div>
-                        </div>
+                        <form onSubmit={handleSubmit}>
+                            <div className='otp-session'>
 
-                        <div className='navButtton' style={{ marginBottom: "30px" }}>
-                            <NavLink to="/register_success" className="modal-nav" >Submit</NavLink>
-                        </div>
+                                <div className="otp">
+                                    <input type="text" name="verificationCode" onChange={handleChange} />
+                                </div>
+
+
+                                <div className="otp-resend">I didn’t receive a message <span><button>Resend</button></span></div>
+                            </div>
+
+                            <div className='navButtton' style={{ marginBottom: "30px" }}>
+                                <button type="submit" className="general-btn" >Submit</button>
+                            </div>
+                        </form>
 
                     </div>
                 </div>

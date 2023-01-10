@@ -25,7 +25,9 @@ function FlexPersonalSuccess() {
                         <p>You have completed the all stages of PERSONAL DETAILS!</p>
 
                         <div className='text'>Kindly continue with the button below</div>
-                        <NavLink to="/pac_flex-will_product_main" className="nav-link">Continue</NavLink>
+                        <div className='general-btn'>
+                            <NavLink to="/flex_will_executor_landing" className="general-navlink">Continue</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import AssetInterface from '../../../../components/assetsInterface/AssetInterface'
 import Interface from '../../../../components/flexwillinterface/interface'
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { AiFillStar } from "react-icons/ai";
 import { BsArrowUpRight } from "react-icons/bs"
 import MainModal from '../../../../components/mainModal/MainModal';
+import line from "../../../../assets/line.png"
+import happy from "../../../../assets/happy.png"
 
 function Prodistribute5() {
     const [beneficiary, setbeneficiary] = useState(false)
@@ -36,7 +38,9 @@ function Prodistribute5() {
 
     };
 
-    const navigate = useNavigate()
+    const [assetmodal, setassetmodal] = useState(false);
+
+
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -47,7 +51,7 @@ function Prodistribute5() {
         //submit form here if no error availble
         else {
             console.log("submitted", values);
-            navigate("/pro_asset_lifeinsurance")
+            setassetmodal(true)
         }
     }
     return (
@@ -99,7 +103,7 @@ function Prodistribute5() {
 
                             <div className='asset-btn'>
                                 <div className='asset1last'>
-                                    <div className='ps'>PS: You don’t want to share your asset now? you can <NavLink to="/pro_asset_lifeinsurance" style={{ background: "transparent", textDecoration: "none" }}><span>Skip <BsArrowUpRight className="icon" /> </span></NavLink> </div>
+                                    <div className='ps'>PS: You don’t want to share your asset now? you can  <button onClick={() => setassetmodal(true)} style={{ background: "transparent", textDecoration: "none", border: "none" }}><span>Skip <BsArrowUpRight className="icon" /> </span></button> </div>
                                     <div className='asset-button'><button type="submit" className="asset-nav">Submit</button></div>
                                 </div>
                             </div>
@@ -148,6 +152,32 @@ function Prodistribute5() {
                         </form>
                     </div>
                 </MainModal>
+
+
+                {assetmodal && (
+                    <div className='new-assetmodal'>
+                        <div className="personal-modal">
+                            <div className="personal-modalContainer">
+                                <div className="line"><img src={line} alt="" /></div>
+
+                                <div className="close"><button onClick={() => setassetmodal(false)}>X</button></div>
+
+                                <div className="emoji"><img src={happy} alt="" /></div>
+
+                                <div className="title">WAIT!</div>
+                                <div className="text">Do you want to upload another life insurance details? </div>
+
+                                <div className="personalmodal-btn">
+                                    <NavLink to="/pro_lifeinsurance_form" className="first assetModal-nav"
+                                    >Yes</NavLink>
+                                    <NavLink to="/pro_asset_lifeinsurance" className="second assetModal-nav"
+
+                                    >No</NavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </Interface>
         </div>
     )
