@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./landing.css";
 import blacklogo from "../../assets/blacklogo.png";
 import handshake from "../../assets/handshake.png";
@@ -9,6 +9,7 @@ import brush from "../../assets/brush.png";
 import { NavLink } from 'react-router-dom';
 
 function Landing() {
+
     return (
         <div className="landing-page">
             <div className='first'>
@@ -53,12 +54,25 @@ function Landing() {
             </div>
 
             <div className='second'>
+                <div className="mobile">
+                    <div className='logo'>
+                        <div className='img1'>
+                            <img src={blacklogo} alt="" />
+                            <div className='black-text'>p</div>
+                        </div>
+                        <div className='img2'><img src={logo} alt="" /></div>
+                    </div>
+                </div>
                 <div className='content'>
                     <div className='image'><img src={handshake} alt="" /></div>
                     <div className=''>
                         <div className='title'>Trustees <span>Management</span></div>
                         <p>sustaining Value from Generation to Generation</p>
                     </div>
+                </div>
+
+                <div className='mobile'>
+                    <div className='text'>How it works?</div>
                 </div>
             </div>
         </div>

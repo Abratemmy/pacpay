@@ -3,11 +3,10 @@ import "./form.css";
 import { BiMessageAltDetail, BiMessageDots } from "react-icons/bi";
 import { BsPersonSquare } from "react-icons/bs";
 
-function Children({ formData, setFormData }) {
+function Children({ children, setChildren, errors }) {
+
     return (
         <div className="personal-info-container container">
-            {/* <div className='row'>
-                <div className='col-lg-10 col-md-10 col-sm-12'> */}
             <div className='row'>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
@@ -15,9 +14,9 @@ function Children({ formData, setFormData }) {
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BiMessageAltDetail className='icon' /></i>
                             <select name="title" placeholder='Select an option'
-                                value={formData.childtitle}
+                                value={children.title}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childtitle: e.target.value });
+                                    setChildren({ ...children, title: e.target.value });
                                 }}
                             >
                                 <option >Select Option </option>
@@ -27,6 +26,7 @@ function Children({ formData, setFormData }) {
                                 <option value="master"><i class="fa fa-home"></i>Master</option>
                             </select>
                         </div>
+                        {errors.title && <p className='error'> {errors.title}</p>}
                     </div>
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -35,12 +35,13 @@ function Children({ formData, setFormData }) {
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="text" placeholder="Enter First Name"
-                                value={formData.childName}
+                                value={children.fullName}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childName: e.target.value });
+                                    setChildren({ ...children, fullName: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.fullName && <p className='error'> {errors.fullName}</p>}
                     </div>
                 </div>
 
@@ -50,12 +51,13 @@ function Children({ formData, setFormData }) {
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="date" placeholder="Enter Date of Birth"
-                                value={formData.childbirth}
+                                value={children.dateOfBirth}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childbirth: e.target.value });
+                                    setChildren({ ...children, dateOfBirth: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.dateOfBirth && <p className='error'> {errors.dateOfBirth}</p>}
                     </div>
                 </div>
 
@@ -65,17 +67,18 @@ function Children({ formData, setFormData }) {
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BiMessageAltDetail className='icon' /></i>
                             <select name="title" placeholder='Select an option'
-                                value={formData.childGender}
+                                value={children.gender}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childGender: e.target.value });
+                                    setChildren({ ...children, gender: e.target.value });
                                 }}
                             >
                                 <option >Select Option </option>
-                                <option value="male"><i class="fa fa-email"></i> Male</option>
-                                <option value="female"><i class="fa fa-home"></i>Female</option>
+                                <option value="m"><i class="fa fa-email"></i>Male</option>
+                                <option value="f"><i class="fa fa-home"></i>Female</option>
 
                             </select>
                         </div>
+                        {errors.gender && <p className='error'> {errors.gender}</p>}
                     </div>
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -84,27 +87,34 @@ function Children({ formData, setFormData }) {
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="text" placeholder="Enter Phone Number"
-                                value={formData.childphone}
+                                value={children.mobile}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childphone: e.target.value });
+                                    setChildren({ ...children, mobile: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.mobile && <p className='error'> {errors.mobile}</p>}
                     </div>
                 </div>
 
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
-                        <label>City Of Residence</label>
+                        <label>Disability</label>
                         <div class="inner-addon left-addon">
-                            <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                            <input type="text" placeholder="Enter City where you live"
-                                value={formData.childCity}
+                            <i class="glyphicon glyphicon-user"><BiMessageAltDetail className='icon' /></i>
+                            <select name="title" placeholder='Select an option'
+                                value={children.isDisabled}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childCity: e.target.value });
+                                    setChildren({ ...children, isDisabled: e.target.value });
                                 }}
-                            />
+                            >
+                                <option >Select Option </option>
+                                <option value="false">false</option>
+                                <option value="true"><i class="fa fa-email"></i>true</option>
+
+                            </select>
                         </div>
+                        {errors.isDisabled && <p className='error'> {errors.isDisabled}</p>}
                     </div>
                 </div>
 
@@ -114,19 +124,16 @@ function Children({ formData, setFormData }) {
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BiMessageDots className='icon' /></i>
                             <textarea rows="5" placeholder="Describe" className="textarea"
-                                value={formData.childAddress}
+                                value={children.contactAddress}
                                 onChange={(e) => {
-                                    setFormData({ ...formData, childAddress: e.target.value });
+                                    setChildren({ ...children, contactAddress: e.target.value });
                                 }}
                             ></textarea>
                         </div>
+                        {errors.contactAddress && <p className='error'> {errors.contactAddress}</p>}
                     </div>
                 </div>
             </div>
-            {/* </div>
-
-                <div className='col-lg-4 col-md-2 col-sm-12'></div>
-            </div> */}
 
         </div >
     );

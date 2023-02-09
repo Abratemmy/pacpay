@@ -1,0 +1,29 @@
+{
+	"id": "f4ded0b4-1a4b-45b8-9bb1-46ce3d298a82",
+	"name": "PAC MEDIA",
+	"values": [
+		{
+			"key": "API_KEY",
+			"value": "PAC-MEDIA",
+			"enabled": true
+		},
+		{
+			"key": "AUTH_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiYXV0aElkIjoiNjA4ZDMwMzg2N2E4ZWI1M2I4YzM0NmU1Iiwicm9sZSI6Im1lbWJlciIsImFjY291bnRWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNjE5ODY4NDgwLCJleHAiOjE2NjQ1MDg0ODB9.DNY8mPSMUQ0CSj-iXFTN5PNV9ZFB6OMsc1ecJh9ObTw",
+			"enabled": false
+		},
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3020/api/v1",
+			"enabled": true
+		},
+		{
+			"key": "",
+			"value": "",
+			"enabled": false
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2022-09-24T21:28:52.594Z",
+	"_postman_exported_using": "Postman/7.36.5"
+}

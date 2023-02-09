@@ -1,5 +1,5 @@
 .flexwillpage {
-    padding: 10px 60px 30px 30px;
+    padding: 10px 0px 30px 0px;
     font-family: var(--textFamily);
     color: var(--blackColor)
 }
@@ -37,7 +37,7 @@
 
 .flexwillpage label {
     color: var(--blackColor);
-    font-size: 17px;
+    font-size: 14px;
     padding-bottom: 10px;
     font-weight: 600
 }
@@ -57,6 +57,7 @@
     color: #fff;
     border-radius: 10px;
     transition: 0.4s all ease;
+    text-align: center;
 }
 
 .flexwillpage .asset-nav:hover {
@@ -104,22 +105,7 @@
     padding-top: 30px;
 }
 
-.flexwillpage .asset-middle .title {
-    display: flex;
-    justify-content: space-between;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 15px;
-    padding-bottom: 10px;
-}
-
-.flexwillpage .asset1 .content {
-    display: flex;
-    justify-content: space-between;
-}
-
 .flexwillpage .asset1 .text {
-    border-right: 1px solid rgba(128, 128, 128, 0.342);
     padding: 10px;
     padding-right: 200px;
 }
@@ -147,27 +133,66 @@
 .flexwillpage .asset1 .assetinputfield {
     border: 1px solid var(--blueColor);
 }
-
+/* 
 .flexwillpage .asset1last {
     display: flex;
     justify-content: space-between;
     text-align: center;
     align-items: center;
+} */
+
+.distributeAssets .button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    gap: 5rem;
+    right: 60px;
 }
 
-.flexwillpage .asset1 .ps span,
-.flexwillpage .asset1 .ps span .icon {
+.newAssetBtn{
+    display: flex;
+    justify-content: space-between;
+    width: 100%!important;
+    justify-content: space-between;
+    gap: 10rem;
+}
+.newAssetBtn .ps{
+    width: 350px;
+    margin: 0;
+    font-size: 14px;
+}
+.newAssetBtn .ps span{
     color: var(--orangeColor);
+    padding-left: 30px;
+}
+.mainAsset .personal-nav{
+    color: var(--blueColor);
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
-/* css for distribute assets2 */
-.distribute-2 {
-    padding: 10px 60px 30px 30px;
+.distributeAssets .personal-nav .icon2{
+    position: relative;
+    left:-8px;
 }
-
+.distributeAssets .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.distributeAssets .top .toptext{
+    color: var(--blackColor);
+    font-size: 16px;
+    font-family: var(--textFamily);
+}
 /* css for assets tabs */
 .distributeAssets {
-    margin: 30px 0px;
+    padding: 30px 60px 30px 30px;
     position: relative;
 }
 
@@ -246,6 +271,7 @@
     display: flex;
     padding: 20px;
     border-radius: 10px;
+    margin: 20px 0px;
 }
 
 .distributeAssets .distributeasset-content .text {
@@ -283,12 +309,15 @@
     font-size: 12px;
 }
 
-.distributeasset-content .action button {
+.distributeasset-content .action span{
     border: none;
-    border-radius: 10px;
-    width: 100px;
+    border-radius: 6px;
+    width: 60px;
     text-transform: capitalize;
     color: #fff;
+    text-align: center;
+    cursor: pointer;
+    
 }
 
 .distributeasset-content .action>:nth-child(1) {
@@ -300,14 +329,6 @@
 .distributeasset-content .action>:nth-child(2) {
     background: var(--orangeColor);
 
-}
-
-.distributeAssets .button {
-    position: fixed;
-    bottom: 30px;
-    right: 60px;
-    display: flex;
-    gap: 10rem
 }
 
 .distributeAssets .asset-nav1 {
@@ -323,4 +344,112 @@
 .distributeAssets .disable-nav {
     background: var(--grayColor);
     pointer-events: none;
+}
+
+.flexasset-tabs{
+    margin: 40px 0px;
+}
+
+/* new css */
+.sharing-asset .distributeTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.sharing-asset .distributeTop .left,
+.sharing-asset .distributeTop .right{
+    flex: 1;
+}
+.sharing-asset{
+    font-family: var(--textFamily);
+}
+.sharing-asset .distributeTop .left{
+    font-size: 14px;
+}
+.sharing-asset .distributeTop .right{
+    display: flex;
+    justify-content: flex-end;
+}
+.sharing-asset .distributeTop .right span{
+    background: var(--blueColor2);
+    width: auto;
+    color:#fff;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.sharing-asset .sharePercentage{
+    padding: 0 40px;
+}
+.sharing-asset .sharePercentage .header{
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600!important;
+    margin-bottom: 20px;
+}
+.sharing-asset .sharingPercentagelist .totalPercentage{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 5px 0px
+}
+.sharing-asset .sharingPercentagelist .totalPercentage .icon{
+    color: var(--blueColor)
+}
+.sharing-asset .sharingPercentagelist .totalPercentage .text{
+    padding-left: 10px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 600
+
+}
+.sharing-asset .sharingPercentagelist input{
+   outline: none;
+   border: none;
+   background: var(--lightblue);
+   width: 70px;
+   border-radius: 6px;
+   height: 25px;
+   padding-left: 5px;
+   font-size: 13px;
+   color: rgb(97, 95, 95);
+   font-weight: 600;
+}
+.sharing-asset  .description{
+    padding-top: 40px;
+}
+.sharing-asset  .description label{
+    font-size: 14px;
+    padding: 0px 5px;
+}
+.sharing-asset textarea,
+.sharing-asset textarea:focus{
+    outline: none;
+    border: 1px solid var(--blueColor)
+}
+.sharingPercentagelist .totalValue{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    flex-direction: column;
+}
+.sharingPercentagelist .total,
+.sharingPercentagelist .checkError{
+    display: flex;
+    justify-content: flex-end;
+}
+.sharingPercentagelist .checkError{
+    width: 170px;
+    margin: auto 0 auto auto;
+    text-align: center;
+}
+.mainAsset .errorMessage{
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 80px;
+    right: 70px;
 }

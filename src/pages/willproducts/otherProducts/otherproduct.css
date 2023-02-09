@@ -1,0 +1,25 @@
+.other-willtotal{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+.other-willtotal .text{
+    padding: 10px 25px!important;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.other-willtotal .text .span1{
+    font-size: x-large;
+}
+.otherWill-product .note{
+    font-size: 11px!important;
+    color: var(--blackColor)!important
+}
+.otherWill-product .card{
+    min-height: auto!important;
+}
+.otherWill-product .card .trust span{
+    color: var(--blackColor)!important;
+    font-size: 12px;
+}

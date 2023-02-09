@@ -71,7 +71,9 @@
 }
 
 .review-container .input-content label {
-    font-weight: 600
+    font-weight: 600;
+    color: var(--inputColor);
+    font-size: 13px;
 }
 
 .review-container .input-content .group {
@@ -79,23 +81,30 @@
     gap: 1rem;
     width: 80%;
     border: 1px solid var(--blueColor);
-    padding: 7px;
+    height: 35px;
     border-radius: 5px;
+    color: var(--inputColor);
+    text-transform: capitalize;
+    font-size: 13px;
+    align-items: center;
+    cursor: default;
 
 }
 
 .review-container .input-content .group span {
-    background: rgba(245, 244, 244, 0.685);
+    background: rgba(0, 109, 91, 0.06);
     padding: 5px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-left: 10px;
 }
 
 .review-container .input-content .group .icon {
-    color: var(--lightblue);
+    color: var(--blueColor);
 }
 
 .review-container .nav-button {

@@ -1,30 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import handshake from "../../../assets/handshake.png";
-import { MdOutlineEmail, MdArrowBackIosNew } from "react-icons/md";
+import { MdArrowBackIosNew } from "react-icons/md";
 import { AiOutlineLock, AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate, NavLink } from 'react-router-dom';
 import white from "../../../assets/whitebg.png";
 import lock from "../../../assets/lock.png";
 import question from "../../../assets/question.png"
+import validator from 'validator';
+import { useDispatch, useSelector } from "react-redux";
+import { resetverifyEmail } from "../../actions/auth";
+import md5 from 'md5-hash'
+
 
 function Createpassword() {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePassword = () => {
-        // When the handler is invoked
-        // inverse the boolean state of passwordShown
         setPasswordShown(!passwordShown);
     };
 
     const [ConfirmpasswordShown, setconfirmPasswordShown] = useState(false);
     const toggleconfirmPassword = () => {
-        // When the handler is invoked
-        // inverse the boolean state of passwordShown
         setconfirmPasswordShown(!ConfirmpasswordShown);
     };
 
+
+    const resetpassworduser= JSON.parse(localStorage.getItem('resetpassword'));
+    const resetcode = resetpassworduser.passwordResetCode
+    // const hashedpasswordresetCode = bcrypt.hashSync(resetcode, 10)
+    // const secret="k4WQ,]+.C/dJ6z9a";
+    const hashedpasswordresetCode = md5(resetcode);
+    console.log(hashedpasswordresetCode)
+   
+   
     const [values, setValues] = useState({
+        email:resetpassworduser.email,
+        passwordResetCode: resetpassworduser.passwordResetCode,
         password: "",
-        confirmpassword: ""
+        password_confirm: "",
+        hash: hashedpasswordresetCode
     });
     const [errors, setErrors] = useState({});
 
@@ -39,11 +52,14 @@ function Createpassword() {
         let errorsValue = {};
         if (!targets.password) {
             errorsValue.password = "Password is required"
-        } else if (targets.password.length < 8) {
-            errorsValue.password = "Password must be more than 8 character"
-        }
-        if (!targets.confirmpassword) errorsValue.confirmpassword = "Confirm Your Password"
-        else if (targets.password !== targets.confirmpassword) errorsValue.confirmpassword = "Password do not match"
+        } 
+        // else if (!validator.isStrongPassword(targets.password, {
+        //     minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1
+        // })) errorsValue.password = "Password must contain a minimum of 8 characters and must be Alphanumeric"
+
+
+        if (!targets.password_confirm) errorsValue.password_confirm = "Confirm Your Password"
+        else if (targets.password !== targets.password_confirm) errorsValue.password_confirm = "Password do not match"
 
         if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
         else setErrors({});
@@ -51,19 +67,28 @@ function Createpassword() {
         return Object.keys(errorsValue).length;
 
     };
+    const state = useSelector((state) => state);
+    const [ApiError, setApiError]= useState(null)
+    console.log("Api error", ApiError)
+    
+    useEffect(()=>{  
+        setApiError(ApiError)
+        
+    },[ApiError])
+    const loading= state.authReducer.authData.loading
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
-        // check if there is any eror available and handle here 
         if (v > 0) {
             console.log("error");
         }
-        //submit form here if no error availble
         else {
-            console.log("submitted");
-            navigate("/createpassword_success")
+            console.log("values", values);
+            dispatch(resetverifyEmail(values, navigate))
+            setApiError(state?.authReducer?.authData?.error?.response?.data.meta.error.messages || state?.authReducer?.authData?.error?.response?.data.meta.error.message)
         }
     }
 
@@ -95,16 +120,27 @@ function Createpassword() {
                                 <label>Confirm Password</label>
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
-                                    <input type={ConfirmpasswordShown ? "text" : "password"} placeholder="Enter Confirm Password" name="confirmpassword" onChange={handleChange} />
+                                    <input type={ConfirmpasswordShown ? "text" : "password"} placeholder="Enter Confirm Password" name="password_confirm" onChange={handleChange} />
                                     <AiFillEyeInvisible onClick={toggleconfirmPassword} className="show-icon" />
                                 </div>
-                                {errors ? <p className='error'> {errors.confirmpassword}</p> : ""}
+                                {errors ? <p className='error'> {errors.password_confirm}</p> : ""}
                             </div>
 
 
-                            <div className='button' style={{ padding: "100px 0px 20px 0px", cursor: "pointer" }}>
-                                <button type="submit" className="nav-link" style={{ border: "0" }}>Set Password</button>
-                            </div>
+                            <div className='ApiError' style={{top:"10px"}}>{ApiError}</div>
+
+                          
+                            {loading === true ? (
+                                <div className='button' style={{ margin: "100px 0px 20px 0px", cursor: "pointer"}}>
+                                    <button type="submit" className="nav-link" disabled style={{ border: "0", background:"var(--lightblue)" }}>Setting Password ...</button>
+                                </div>) : (
+                                <div className='button' style={{ margin: "100px 0px 20px 0px", cursor: "pointer" }}>
+                                    <button type="submit" className="nav-link" style={{ border: "0" }}>Set Password</button>
+                                </div>
+                                )
+                            }
+
+                           
 
                         </form>
                     </div>

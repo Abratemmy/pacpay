@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DashboardInterface from '../dashboardInterface';
 import Navbar from '../Navbar/Navbar';
 import "./settings.css"
@@ -7,8 +7,16 @@ import { TiArrowMaximiseOutline } from 'react-icons/ti';
 import axios from 'axios';
 import profile from "../../../assets/profile2.png"
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoggedInUser } from '../../actions/auth';
 
 function Settings() {
+    const dispatch = useDispatch();
+    const loggedinUser = useSelector((state) => state.loggedInUserReducer);
+    const profileData = loggedinUser.data
+    useEffect(() => {
+        dispatch(getLoggedInUser())
+    }, [dispatch])
 
     const [image, setImage] = useState(null);
 
@@ -49,7 +57,7 @@ function Settings() {
                         <div className='card-container'>
                             <div className='title'>Profile Details</div>
                             <div className='top'>
-                                <span><img src={profile} alt="" /></span>
+                                <span><img src={`${"https://pac-trustees.herokuapp.com/api/v1/user/me"}/${profileData.profilePicture}`} alt="User image" width="460" height="345" /></span>
 
                                 <div className='right'>
                                     <div className='content'>
@@ -75,7 +83,7 @@ function Settings() {
                                     <label>Email Address</label>
                                     <div className="inner-addon left-addon inputfield1 disable">
                                         <i className="glyphicon glyphicon-user"><MdOutlinePersonPin className='icon' /></i>
-                                        <span >taofeeqah@gmail.com</span>
+                                        <span >{profileData?.email}</span>
                                     </div>
                                 </div>
 
@@ -83,7 +91,7 @@ function Settings() {
                                     <label >Full Name</label>
                                     <div className="inner-addon left-addon inputfield1 disable">
                                         <i className="glyphicon glyphicon-user"><MdOutlinePersonPin className='icon' /></i>
-                                        <span >Taofeeqah Bello</span>
+                                        <span >{profileData?.firstName} {profileData?.lastName}</span>
                                     </div>
                                 </div>
                             </div>

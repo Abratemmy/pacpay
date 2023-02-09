@@ -31,38 +31,46 @@
 
 .auth label {
     color: var(--blackColor);
-    font-size: 15px;
+    font-size: 13px;
     padding-bottom: 2px;
-}
-
-.auth .form-div {
-    margin: 2px 0px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
 .auth .middle p {
-    padding: 5px 0px;
     font-size: 11px !important;
     color: crimson !Important;
-    /* line-height: 10px !important; */
-    padding-bottom: 5px !important;
+    padding-bottom: 0px !important;
 }
 
 .error {
     padding: 0px;
-    font-size: 12px;
+    font-size: 11px;
     color: crimson
         /* margin: 10px 0px; */
 }
-
+input::placeholder,
+textarea::placeholder{
+    color: #27323888;
+    font-size: 13px;
+}
+/* select:invalid,
+select option[value=""]{
+    color: red!important;
+    font-size: 13px;
+} */
+/*  */
 .auth .left-addon input,
 .auth .left-addon select {
     width: 100%;
-    height: 45px;
-    color: #706e6ed3;
+    height: 42px;
+    color: #273238;
     font-size: 13px;
     /* margin-bottom: -20px; */
 }
-
+/* .selectOption{
+    color:red!important
+} */
 .auth .show-icon {
     position: absolute;
     right: 10px;
@@ -123,9 +131,10 @@
 }
 
 .auth .line img {
-    width: 80px;
+    width: 65px;
     position: relative;
     top: -10px;
+    cursor: pointer;
 }
 
 /* .auth .line .google-img {
@@ -182,23 +191,28 @@
     justify-content: space-between;
     margin: 5px 0px;
 }
-
-input[type=checkbox] {
+.checkbox-div{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+input[type=checkbox], input[type=radio] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
 /* Giving Checkbox & Radio not checked a new appearance */
-[type=checkbox] {
+[type=checkbox], [type=radio] {
     width: 17px;
     height: 17px;
     border: solid 1px var(--blueColor);
-    margin-right: 8px;
+    cursor: pointer;
     position: relative;
+    border-radius: 4px;
 }
 
-[type=checkbox]:checked::before {
+[type=checkbox]:checked::before, [type=radio]:checked::before {
     content: "";
     width: 16px;
     height: 16px;
@@ -220,9 +234,26 @@ input[type=checkbox] {
     font-family: var(--textFamily);
     height: fit-content;
     transition: 0.4s all ease;
-    padding: 20px;
+    padding: 0px 30px 10px;
     z-index: 100;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 320px;
+    animation: rememberContent 0.8s;
 }
+
+@keyframes rememberContent {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
 
 .remember_content .text {
     text-align: center;
@@ -231,15 +262,29 @@ input[type=checkbox] {
 }
 
 .remember_content .close {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    color: var(--blackColor)!important
+}
+.remembernav-link{
+    width: 220px;
+    background: var(--blueColor);
+    color:#fff;
+    text-align: center;
+    padding: 8px;
+    margin: 0 auto;
+    border-radius: 7px;
 }
 
 .remember_content .error {
-    padding: 0Important;
+    padding: 0!important;
     color: crimson !important;
     font-size: 12px
 }
-
+.remember_content .line{
+    width: 200px;
+    margin: auto;
+    padding-bottom: 20px;
+}
 .remember_content .close h6 {
     border: 1px solid var(--blackColor);
     width: fit-content;
@@ -249,7 +294,7 @@ input[type=checkbox] {
     right: 15px;
     padding: 2px 7px;
     border-radius: 5px;
-    color: crimson;
+    color: var(--blackColor);
     cursor: pointer;
 }
 
@@ -378,19 +423,33 @@ input[type=checkbox] {
     font-size: 12px;
 }
 
-.register-container .otp-resend button {
-    background: #EBF3FC !important;
+.register-container .otp-success{
+    font-size: 11px;
+    color: rgb(35, 230, 35)
+}
+.register-container .otp-resend .resend {
+    background: var(--veryLightBlue) !important;
     color: var(--blueColor) !important;
-    width: auto !important
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: 100px;
 }
 
 .pwdRequisite {
     padding-top: 10px;
+    padding-left: 130px;   
+    text-align: right;
 }
 
 .pwdRequisite span {
     font-size: 11px;
-    padding-right: 10px;
+    width: 400px;
+    text-align: right;
+    
+    /* padding-right: 10px;
+    text-align: right;
+    width: 400px; */
 }
 
 .valid {

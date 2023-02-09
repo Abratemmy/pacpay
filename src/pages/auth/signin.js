@@ -10,8 +10,9 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import brush from "../../assets/brush.png";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
-import { useDispatch } from "react-redux";
-import { signin } from "../actions/auth"
+import { useDispatch, useSelector } from "react-redux";
+import { signin } from "../actions/auth";
+import line from "../../assets/line.png";
 
 
 function Signin() {
@@ -51,8 +52,18 @@ function Signin() {
 
     };
 
+    const state = useSelector((state) => state);
+    const [ApiError, setApiError] = useState(null)
+
+    useEffect(() => {
+        setApiError(ApiError)
+
+    }, [ApiError])
+    const loading = state.authReducer.authData.loading
+
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [checkRoute, setCheckRoute] = useState(JSON.parse(localStorage.getItem('Users')))
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
@@ -62,8 +73,23 @@ function Signin() {
         }
         //submit form here if no error availble
         else {
-            dispatch(signin(values, navigate))
-            navigate("/dashboard")
+            dispatch(signin(values, navigate, checkRoute))
+            setApiError(state?.authReducer?.authData?.error?.response?.data.meta.error.message)
+        }
+    }
+
+    const handleSubmitPop = (ev) => {
+        ev.preventDefault()
+        let v = handleError(values);
+        // check if there is any eror available and handle here 
+        if (v > 0) {
+            console.log("error");
+        }
+        //submit form here if no error availble
+        else {
+            dispatch(signin(values, navigate, checkRoute))
+            setApiError(state?.authReducer?.authData?.error?.response?.data.meta.error.message)
+            localStorage.setItem("rememberMe", JSON.stringify(values))
         }
     }
 
@@ -86,8 +112,9 @@ function Signin() {
         const token = res?.tokenId;
 
         try {
-            dispatch({ type: 'AUTH', data: { result, token } });
-            navigate("/dashboard")
+            // dispatch({ type: 'AUTH', data: { result, token } });
+            dispatch(signin(values, navigate, checkRoute))
+            // navigate("/dashboard")
         } catch (error) {
             console.log(error)
         }
@@ -121,7 +148,7 @@ function Signin() {
                             <label>Email Address</label>
                             <div className="inner-addon left-addon">
                                 <i className="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
-                                <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
+                                <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} value={values.email} />
                             </div>
                             {errors ? <p className='error'> {errors.email}</p> : ""}
                         </div>
@@ -130,66 +157,37 @@ function Signin() {
                             <label>Password</label>
                             <div className="inner-addon left-addon">
                                 <i className="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
-                                <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
+                                <input type={passwordShown ? "text" : "password"} placeholder="Enter password" value={values.password} name="password" onChange={handleChange} />
                                 <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
                             </div>
                             {errors ? <p className='error'> {errors.password}</p> : ""}
                         </div>
 
                         <div className='forgot-session'>
-                            <div className=''>
-                                <input type="checkbox" id="login" className="headerinput" onClick={toggleModal} />
+                            <div className='checkbox-div'>
+                                <span className='spanCheck'><input type="checkbox" id="login" className="headerinput" onClick={toggleModal} /></span>
 
-                                <label htmlFor="login" className="headerlabel" >
+                                <label htmlFor="login" className="headerlabel" style={{ fontWeight: "normal" }}>
                                     Remember me
                                 </label>
-                                {
-                                    modal && (
-                                        <div className='remember_content'>
-                                            <div onClick={toggleModal} className="close"><h6>X</h6></div>
-                                            <div className="">
-                                                <label>Email Address</label>
-                                                <div className="inner-addon left-addon">
-                                                    <i className="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
-                                                    <input type="text" placeholder="Enter Email Address" name="email" onChange={handleChange} />
-                                                </div>
-                                                {errors ? <p className='error'> {errors.email}</p> : ""}
-                                            </div>
-
-                                            <div className=''>
-                                                <label>Password</label>
-                                                <div className="inner-addon left-addon">
-                                                    <i className="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
-                                                    <input type={passwordShown ? "text" : "password"} placeholder="Enter password" name="password" onChange={handleChange} />
-                                                    <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
-                                                </div>
-                                                {errors ? <p className='error'> {errors.password}</p> : ""}
-                                            </div>
-
-                                            <div className='' style={{ padding: "20px 0px", cursor: "pointer" }}>
-                                                <button type="submit" onSubmit={handleSubmit} className="nav-link" style={{ border: "0" }}>save and proceed</button>
-                                            </div>
-                                            <div className='text' onClick={toggleModal}>Never <BsArrowUpRight className="icon" /> </div>
-
-                                        </div>
-
-                                    )
-                                }
                             </div>
                             <NavLink to="/forgot_password" className="nav">Forgot Password?</NavLink>
                         </div>
 
 
-
+                        <div className='ApiError' style={{ top: "10px" }}>{ApiError}</div>
 
                         <div className='button' style={{ padding: "20px 0px", cursor: "pointer" }}>
-                            <button type="submit" className="nav-link" style={{ border: "0" }}>Sign in</button>
+                            {loading === true ? (<button type="submit" className="nav-link" disabled style={{ border: "0", background: "var(--lightblue)" }} >Sign in...</button>) : (
+                                <button type="submit" className="nav-link" style={{ border: "0" }}>Sign in</button>
+                            )}
+
                         </div>
 
 
 
 
-                        <div className='line'>
+                        {/* <div className='line'>
                             <div className="or-line">OR </div>
                             <span>
                                 <GoogleLogin
@@ -208,12 +206,12 @@ function Signin() {
                             </span>
 
                         </div>
-
+ */}
 
                     </form>
                 </div>
 
-                <div className='last' style={{ bottom: "5px" }} >
+                <div className='last' style={{ position: "relative", top: "30px" }} >
                     <div className='no-acc' >
                         Don't have an account? <NavLink to="/register" className="signup"><div>Register Here</div>
                             <span><img src={brush} alt="" /></span></NavLink>
@@ -223,6 +221,15 @@ function Signin() {
 
 
             <div className='second'>
+                <div className="mobile">
+                    <div className='logo'>
+                        <div className='img1'>
+                            <img src={blacklogo} alt="" />
+                            <div className='black-text'>p</div>
+                        </div>
+                        <div className='img2'><img src={logo} alt="" /></div>
+                    </div>
+                </div>
                 <div className='content'>
                     <div className='image'><img src={handshake} alt="" /></div>
                     <div className=''>
@@ -230,10 +237,44 @@ function Signin() {
                         <p>sustaining Value from Generation to Generation</p>
                     </div>
                 </div>
-
-
-
+                <div className='mobile'>
+                    <div className='text'>How it works?</div>
+                </div>
             </div>
+
+            {
+                modal && (
+                    <form onSubmit={handleSubmitPop}>
+                        <div className='remember_content'>
+                            <span><img src={line} alt="" className='line' /></span>
+                            <div onClick={toggleModal} className="close"><h6>X</h6></div>
+                            <div className="">
+                                <label>Email Address</label>
+                                <div className="inner-addon left-addon">
+                                    <i className="glyphicon glyphicon-user"><MdOutlineEmail className='icon' /></i>
+                                    <input type="text" placeholder="Enter Email Address" name="email" value={values.email} onChange={handleChange} />
+                                </div>
+                                {errors ? <p className='error'> {errors.email}</p> : ""}
+                            </div>
+
+                            <div className=''>
+                                <label>Password</label>
+                                <div className="inner-addon left-addon">
+                                    <i className="glyphicon glyphicon-user"><AiOutlineLock className='icon' /></i>
+                                    <input type={passwordShown ? "text" : "password"} placeholder="Enter password" value={values.password} name="password" onChange={handleChange} />
+                                    <AiFillEyeInvisible onClick={togglePassword} className="show-icon" />
+                                </div>
+                                {errors ? <p className='error'> {errors.password}</p> : ""}
+                            </div>
+
+                            <div className='' style={{ padding: "20px 0px", cursor: "pointer", display: "flex", justifyContent: "center" }}>
+                                <button type="submit" className="remembernav-link" style={{ border: "0" }}>Save and Proceed</button>
+                            </div>
+                            <div className='text' onClick={toggleModal}>Never <BsArrowUpRight className="icon" /> </div>
+                        </div>
+                    </form>
+                )
+            }
         </div>
     )
 }

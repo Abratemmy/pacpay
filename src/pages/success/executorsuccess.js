@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./success.css";
 import Thumb from "../../assets/Thumb.png";
 import Rectangle from "../../assets/Rectangle.png"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Executorsuccess() {
+    const checkRoute = JSON.parse(localStorage.getItem("fromDashboard"))
+    // const goBackSpouse = JSON.parse(localStorage.getItem("SpouseBackBtn"))
+
+    const navigate = useNavigate()
+    const goToNavigate = () => {
+        if(checkRoute === "true"){
+            navigate("/dashboard")
+        } else{
+            navigate("/flex_will_assets_landing")
+        }
+    }
+    
+
     return (
         <div>
             <div className='success-page'>
@@ -25,8 +38,8 @@ function Executorsuccess() {
                         <p>You have completed the all stages of executors!</p>
 
                         <div className='text'>Kindly continue with the button below</div>
-                        <div className='general-btn'>
-                            <NavLink to="/flex_will_assets_landing" className="general-navlink">proceed</NavLink>
+                        <div className=''>
+                            <button onClick={goToNavigate} className="general-btn">proceed</button>
                         </div>
                     </div>
                 </div>

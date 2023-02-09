@@ -1,0 +1,75 @@
+.Editpop_up_body{
+    padding: 30px 60px 30px 30px;
+    font-family: var(--textFamily);
+    color: var(--blackColor)
+}
+.Editpop_up_body .top{
+    padding-bottom: 30px;
+}
+.Editpop_up_body .edit-content{
+    padding: 30px;
+    border: 1px solid rgba(163, 161, 161, 0.452);
+    border-radius: 20px;
+    padding: 10px 25px;
+}
+.Editpop_up_body .viewContent{
+    margin: 10px 0px;
+}
+.Editpop_up_body .label{
+    font-size: 13px;
+    padding-bottom: 3px;
+    font-weight: 600;
+}
+.Editpop_up_body .inputBox{
+    border: 1.5px solid #D3D5D6;
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--veryLightBlue);
+}
+.Editpop_up_body .inputBox span{
+    background:  rgba(0, 109, 91, 0.096);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 8px;
+    margin-left: 5px;
+}
+.Editpop_up_body .inputBox .icon{
+    font-size: 13px;
+    color: var(--blueColor);
+}
+.Editpop_up_body input,
+.Editpop_up_body select{
+    width: 90%;
+    outline: none;
+    border: none;
+    background:transparent;
+    font-size: 13px;
+    color: var(--inputColor)
+}
+
+.Editpop_up_body .submit{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 30px 0px 5px;
+    flex-direction: column;
+}
+.Editpop_up_body .submit .success{
+    font-size: 12px;
+    padding-bottom: 3px;
+    font-style: italic;
+    color: rgba(27, 216, 37, 0.904)
+}
+.Editpop_up_body .title{
+    padding-top: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    border-bottom: 1px solid var(--grayColor);
+}

@@ -8,6 +8,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 350px;
 }
 
 .will .first-session span {
@@ -51,7 +53,20 @@
     border: none;
     font-size: 16px;
 }
-
+.will .other .title{
+    margin: 5px 0px 20px  0px;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+}
+.will .other .title:before{
+    content: "";
+    position: absolute;
+    width: 8%;
+    height: 1px;
+    bottom: 0;
+    border-bottom: 3px solid var(--blueColor)
+}
 .will .other .will-nav {
     text-decoration: none;
 }
@@ -73,8 +88,8 @@
 
 .will .other .will-content .image {
     background: #fff;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     padding: 5px 8px;
     border-radius: 50%;
     display: flex;
@@ -84,7 +99,7 @@
 }
 
 .will .other .will-content .image img {
-    width: 50px
+    width: 35px
 }
 
 .will .other .will-content .text {
@@ -95,4 +110,68 @@
     display: block;
     font-size: 13px;
     padding-top: 5px;
+}
+.download-bg{
+    text-align: center;
+    width: 350px;
+    height: 300px;
+    border-radius: 37px;
+    background: var(--blueColor);
+    padding: 50px;
+    position: relative;
+    font-family: var(--textFamily);
+    color:#fff;
+    animation: downloadbg 1s;
+}
+
+@keyframes downloadbg {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.will .download-bg span{
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.will .download-bg span img{
+    width: 37px;
+}
+.will .balloon img{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 24%;
+}
+.will .download-bg .title{
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px;
+}
+.will .download-bg p{
+    padding-top: 10px
+}
+
+@media screen and (max-width: 800px) {
+    .will .other .will-content {
+        width: 100%;
+        height: 110px;
+    }
+    .will {
+        padding: 20px;
+    }
 }

@@ -9,10 +9,10 @@ function PwdRequisite({
 
     return (
         <div className="pwdRequisite">
-            <span className={capsLetterFlag}>Must contain 1 Capital Letter</span>
-            <span className={numberFlag}>Must contain number</span>
-            <span className={pwdLengthFlag}>Must be 8 Chars long</span>
-            <span className={specialCharFlag}> Must contain special character</span>
+            <span className={capsLetterFlag }>Password must contain 1 Capital Letter, </span>
+            <span className={numberFlag}> contain number,</span>
+            <span className={pwdLengthFlag}> Must be 8 Chars long and </span>
+            <span className={specialCharFlag}> must contain special character</span>
         </div>
     )
 }

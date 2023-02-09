@@ -1,14 +1,12 @@
 import React from 'react'
 import "./form.css";
-import { BiMessageAltDetail, BiMessageDots } from "react-icons/bi";
+import {  BiMessageDots } from "react-icons/bi";
 import { BsPersonSquare } from "react-icons/bs";
 
-function Guardian({ formData, setFormData, guardianSecondShow, guardianFirstShow }) {
+function Guardian({ guardian, setGuardian , errors}) {
     return (
         <div className="personal-info-container container">
-            {
-                guardianFirstShow &&
-                <div className=' guardianfirstshow'>
+            <div className=' guardianfirstshow'>
                     {/* <div className='col-lg-10 col-md-10 col-sm-12'> */}
                     <div className='row'>
 
@@ -18,13 +16,15 @@ function Guardian({ formData, setFormData, guardianSecondShow, guardianFirstShow
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                                     <input type="text" placeholder="Enter Full Name"
-                                        value={formData.guardianName}
+                                        value={guardian.fullName}
                                         onChange={(e) => {
-                                            setFormData({ ...formData, guardianName: e.target.value });
+                                            setGuardian({ ...guardian, fullName: e.target.value });
                                         }}
                                     />
                                 </div>
+                                {errors.fullName && <p className='error'> {errors.fullName}</p>}
                             </div>
+                            
                         </div>
 
                         <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -33,12 +33,13 @@ function Guardian({ formData, setFormData, guardianSecondShow, guardianFirstShow
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                                     <input type="email" placeholder="Enter email address"
-                                        value={formData.guardianEmail}
+                                        value={guardian.email}
                                         onChange={(e) => {
-                                            setFormData({ ...formData, guardianEmail: e.target.value });
+                                            setGuardian({ ...guardian, email: e.target.value });
                                         }}
                                     />
                                 </div>
+                                {errors.email && <p className='error'> {errors.email}</p>}
                             </div>
                         </div>
 
@@ -48,12 +49,13 @@ function Guardian({ formData, setFormData, guardianSecondShow, guardianFirstShow
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                                     <input type="text" placeholder="Enter Phone Number"
-                                        value={formData.guardianPhone}
+                                        value={guardian.mobile}
                                         onChange={(e) => {
-                                            setFormData({ ...formData, guardianPhone: e.target.value });
+                                            setGuardian({ ...guardian, mobile: e.target.value });
                                         }}
                                     />
                                 </div>
+                                {errors.mobile && <p className='error'> {errors.mobile}</p>}
                             </div>
                         </div>
 
@@ -62,13 +64,14 @@ function Guardian({ formData, setFormData, guardianSecondShow, guardianFirstShow
                                 <label>How many years</label>
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                                    <input type="text" placeholder="Enter City where you live"
-                                        value={formData.guardianYears}
+                                    <input type="number" placeholder="Enter City where you live"
+                                        value={guardian.duration}
                                         onChange={(e) => {
-                                            setFormData({ ...formData, guardianYears: e.target.value });
+                                            setGuardian({ ...guardian, duration: e.target.value });
                                         }}
                                     />
                                 </div>
+                                {errors.duration && <p className='error'> {errors.duration}</p>}
                             </div>
                         </div>
 
@@ -78,90 +81,18 @@ function Guardian({ formData, setFormData, guardianSecondShow, guardianFirstShow
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-user"><BiMessageDots className='icon' /></i>
                                     <textarea rows="5" placeholder="Describe" className="textarea"
-                                        value={formData.guardianAddress}
+                                        value={guardian.residentialAddress}
                                         onChange={(e) => {
-                                            setFormData({ ...formData, guardianAddress: e.target.value });
+                                            setGuardian({ ...guardian, residentialAddress: e.target.value });
                                         }}
                                     ></textarea>
                                 </div>
+                                {errors.residentialAddress && <p className='error'> {errors.residentialAddress}</p>}
                             </div>
                         </div>
                     </div>
 
-                </div>
-            }
-
-
-            {
-                guardianSecondShow &&
-                <div className='secondshow'>
-                    <div className='row'>
-
-                        <div className='col-lg-6 col-md-6 col-sm-12'>
-                            <div className='input-container'>
-                                <label>Full Name </label>
-                                <div class="inner-addon left-addon">
-                                    <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                                    <input type="text" placeholder="Enter Full Name"
-                                        value={formData.phyguardianName}
-                                        onChange={(e) => {
-                                            setFormData({ ...formData, phyguardianName: e.target.value });
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='col-lg-6 col-md-6 col-sm-12'>
-                            <div className='input-container'>
-                                <label>Email Address </label>
-                                <div class="inner-addon left-addon">
-                                    <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                                    <input type="email" placeholder="Enter email address"
-                                        value={formData.phyguardianEmail}
-                                        onChange={(e) => {
-                                            setFormData({ ...formData, phyguardianEmail: e.target.value });
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='col-lg-6 col-md-6 col-sm-12'>
-                            <div className='input-container'>
-                                <label>Phone Number</label>
-                                <div class="inner-addon left-addon">
-                                    <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                                    <input type="text" placeholder="Enter Phone Number"
-                                        value={formData.phyguardianPhone}
-                                        onChange={(e) => {
-                                            setFormData({ ...formData, phyguardianPhone: e.target.value });
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='col-lg-6 col-md-6 col-sm-12'>
-                            <div className='input-container'>
-                                <label>Residential Address</label>
-                                <div class="inner-addon left-addon">
-                                    <i class="glyphicon glyphicon-user"><BiMessageDots className='icon' /></i>
-                                    <textarea rows="5" placeholder="Describe" className="textarea"
-                                        value={formData.phyAddress}
-                                        onChange={(e) => {
-                                            setFormData({ ...formData, phyAddress: e.target.value });
-                                        }}
-                                    ></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            }
-
-
+             </div> 
         </div >
     );
 }

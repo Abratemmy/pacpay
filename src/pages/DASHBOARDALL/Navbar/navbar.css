@@ -5,6 +5,7 @@
     height: 80px;
     font-family: var(--textFamily);
     color: var(--blackColor);
+    position: relative;
 }
 
 .navbar-container {
@@ -50,7 +51,7 @@
 }
 
 .navbar-container .right .notification .header {
-    background: var(--lightblue);
+    background: var(--veryLightBlue);
     padding: 5px;
     border-radius: 7px;
     cursor: pointer;
@@ -59,7 +60,14 @@
 
 .navbar-container .right .notification .icon {
     color: var(--blueColor);
-    font-size: 18px
+    font-size: 18px;
+    position: relative;
+}
+.navbar-container .right .notification .header .dot{
+    position: absolute;
+    right: 1px;
+    top: 0px;
+    color: crimson
 }
 
 .nav-dropdown {
@@ -72,7 +80,8 @@
     animation: navmodal 0.5s;
     z-index: 100;
     border-radius: 10px;
-    width: 250px;
+    min-width: 250px;
+    transition: 0.4s all ease
 }
 
 @keyframes navmodal {
@@ -91,6 +100,8 @@
     display: flex;
     text-decoration: none;
     color: var(--blueColor);
+    background: none;
+    border: none;
 }
 
 .Navbar .nav-icon .icon2 {
@@ -114,17 +125,26 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--blueColor);
-    padding-bottom: 10px;
+    padding: 10px 0px;
     cursor: pointer;
 }
 
 .Navbar .notification-content .content-div {
     display: flex;
     align-items: flex-start;
-    gap: 5px;
-    margin: 8px 0px
+    gap: 6px;
+    border: none;
+    border-bottom: 1px solid rgba(140, 146, 171, 0.32);
+    padding: 10px 0px; 
+    background: none;
+}
+.Navbar .notification .first{
+    flex: 5;
+    display: flex!important;
+    gap: 10px;
+    align-items: flex-start;
 }
 
 .notification-content .icon {
@@ -133,19 +153,29 @@
 
 .notification-content .content-text {
     font-size: 12px;
-    color: var(--blackColor)
+    color: var(--blackColor);
+    font-weight: 500;
+    font-family: var(--textFamily);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    text-align: left;
 }
 
-.notification-content .content-text .date {
+.notification-content .content-div .date {
     display: block;
     padding: 4px 0px;
-    font-size: 11px;
-    color: var(--blueColor)
+    font-size: 10px;
+    color: var(--blueColor);
+    text-align: left;
 }
 
 .notification .content-div .image {
+    flex:1;
     background: var(--blueColor2);
-    padding: 4px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -155,13 +185,16 @@
 }
 
 .notification-content .image img {
-    width: 15px;
+    width: 10px;
 }
 
 .notification-content .dot {
     position: relative;
     top: 8px;
-    width: 5px;
+    width: 7px;
+}
+.viewAllNotification{
+    padding-top: 10px !important
 }
 
 /* css for profile dropdown */
@@ -170,7 +203,8 @@
 }
 
 .nav-dropdown1 .top .logout {
-    color: crimson
+    color: crimson;
+    font-weight: normal;
 }
 
 .Navbar .nav-dropdown1 .image-session {
@@ -192,64 +226,48 @@
 .Navbar .nav-dropdown1 .name {
     font-size: 15px;
     text-align: center;
-    padding: 10px 0px
-}
-
-.Navbar .nav-dropdown1 .name span {
-    display: block;
-    font-weight: normal;
+    padding: 10px 0px;
+    text-transform: capitalize;
 }
 
 .profile-upload .action {
     width: 100%;
-    border-top: 1px solid rgba(87, 87, 87, 0.349);
-    padding: 7px 0px;
+    border-top: 1px solid rgba(87, 87, 87, 0.349)
 }
 
-.profile-upload .action>:nth-child(1) {
-    border-right: 1px solid rgba(87, 87, 87, 0.349);
-    padding-right: 30px;
-}
 
 .profile-upload .action button {
     border: none;
     background: none;
-    font-size: 14px
+    font-size: 14px;
+    padding: 7px 5px;
 }
 
 .profile-upload .action button .icon {
     color: var(--blueColor);
     margin-right: 5px;
+    font-size: 18px;
 }
 
 .profile-upload .profile-text {
     border-top: 1px solid rgba(87, 87, 87, 0.349);
-    padding: 7px 0px;
-    font-size: 14px;
+    padding: 7px 5px;
+    font-size: 12px;
+    pointer-events: none;
+    color: var(--inputColor);
+    margin: 5px 0px
 }
 
 .profile-upload .profile-text .icon {
     font-size: 13px;
+    color: var(--blackColor)
 }
 
 .profile-upload .profile-text span {
     padding-left: 10px;
 }
 
-.profile-upload .profile-contact {
-    text-align: center;
-    border-top: 1px solid rgba(87, 87, 87, 0.349);
-    margin-bottom: 30px;
-}
 
-.profile-upload .profile-contact .contact {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.profile-upload .profile-contact span {
-    font-size: 13px;
-}
 
 .Navbar .editprofile .edit-btn {
     display: flex;
@@ -268,4 +286,129 @@
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
+}
+.nav-mobile{
+    display: none;
+}
+@media screen and (max-width:800px) {
+    .nav-desktop{
+        display: none
+    }
+    .nav-mobile{
+        display: block;
+    }
+    .nav-mobile .icon-search{
+        font-size: 20px;
+        cursor:pointer
+    }
+}
+
+@media screen and (max-width:500px) {
+    .nav-dropdown {
+        position: absolute;
+        top: 50px;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        right: none;
+        left:none;
+        padding: 5px 10px;
+        animation: navmodal 0.5s;
+        z-index: 100;
+        border-radius: 10px;
+        width: 250px;
+        transition: 0.4s all ease
+    }
+     
+}
+
+.ImageDisplay{
+    position: absolute;
+    text-align: center;
+    top: 4%;
+    width: 80%;
+    height: 70vh;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 1000;
+    color: blue;
+    padding: 5% 0;
+}
+.ImageDisplay .top{
+    display: flex;
+    border-bottom: 1px solid var(--blackColor);
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.ImageDisplay .title{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--blackColor);
+    font-family: var(--textFamily);
+    text-align: center;
+    
+}
+.ImageDisplay  span{
+    text-align: right;
+    border: 1px solid var(--grayColor);
+    padding: 0px 6px;
+    margin-bottom: 3px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.ImageDisplay .image{
+    width: 70%;
+    height: 250px;
+    margin: auto;
+}
+.ImageDisplay .image img{
+    width: 100%;
+    object-fit: contain;
+    height: 250px
+}
+.nav-dropdown .single-top{
+    padding: 10px 0px 20px;
+}
+.nav-dropdown .single-top .image{
+    background: var(--blueColor2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.nav-dropdown .single-top img{
+    width: 15px
+}
+.nav-dropdown .single-top .close{
+    border: none;
+    background: none;
+    color: var(--blackColor);
+    font-size: 16px
+}
+.single-dropdown .message{
+    font-size: 14px;
+    text-align: left;
+    color: var(--blackColor)
+}
+.single-dropdown .close-button{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.single-dropdown .close-btn{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid var(--blueColor);
+    padding: 2px 7px;
+    color: var(--blueColor);
+    border-radius: 5px;
+    width: 70px;
+    margin-bottom: 20px;
+    cursor: pointer;
 }

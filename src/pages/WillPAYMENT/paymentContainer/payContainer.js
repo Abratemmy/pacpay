@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { MdArrowBackIosNew } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
 import hiIcon from "../../../assets/hiIcon.png";
+import { useDispatch, useSelector } from 'react-redux';
+import {  getLoggedInUser } from '../../actions/auth';
+
 
 function PaymentContainer({ children, name, amount, backlink }) {
+    const dispatch = useDispatch();
+
+    const loggedinUser = useSelector((state) => state.loggedInUserReducer);
+
+    useEffect(() => {
+        dispatch(getLoggedInUser())
+    }, [ dispatch])
+
     return (
         <div className='' >
 
@@ -15,7 +26,7 @@ function PaymentContainer({ children, name, amount, backlink }) {
                             <MdArrowBackIosNew className='icon icon2' /></NavLink>
                         </span>
 
-                        <div className='name'>Hi Name <img src={hiIcon} alt="" /></div>
+                        <div className='name'>Hi {loggedinUser?.data?.firstName} <img src={hiIcon} alt="" /></div>
                     </div>
 
                     <div className='middle'>

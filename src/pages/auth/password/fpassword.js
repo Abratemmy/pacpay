@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./password.css";
 import handshake from "../../../assets/handshake.png";
 import { MdOutlineEmail, MdArrowBackIosNew } from "react-icons/md";
@@ -7,9 +7,14 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import white from "../../../assets/whitebg.png";
 import lock from "../../../assets/lock.png";
 import question from "../../../assets/question.png";
+import MainModal from '../../../components/mainModal/MainModal';
+import phone from "../../../assets/phone.png";
+import { sendResetCode } from "../../actions/auth";
+import { useDispatch, useSelector } from "react-redux";
 
 
 function Fpassword() {
+    const [buttonpopup, setbuttonpopup] = useState(false);
     const [values, setValues] = useState({
         email: "",
     });
@@ -33,20 +38,73 @@ function Fpassword() {
 
     };
 
-    const navigate = useNavigate()
+    const state = useSelector((state) => state);
+    const [ApiError, setApiError]= useState(null)
+    console.log("Api error", ApiError)
+    
+    useEffect(()=>{  
+        setApiError(ApiError)
+        
+    },[ApiError])
+    const loading= state.authReducer.authData.loading
+
+    const dispatch = useDispatch()
+    const buttonpop = () => {
+        setbuttonpopup(true)
+    }
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
+        if (v > 0) {
+            console.log("error");
+        }
+        else {
+            dispatch(sendResetCode(values, buttonpop))
+            setApiError(state?.authReducer?.authData?.error?.response?.data.meta.error.message)
+        }
+    }
+
+    // handling su mit form for the otp modal
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('Payload')));
+
+    const [otpvalues, setOtpValues] = useState({
+        email: user.email,
+        passwordResetCode: "",
+    });
+    const [otperrors, setOtpErrors] = useState({});
+
+    // get input values
+    const otpChange = (ev) => {
+        setOtpValues({
+            ...otpvalues,
+            [ev.target.name]: ev.target.value,
+        });
+    };
+
+    const navigate = useNavigate();
+    const handleOtpError = (targets) => {
+        let errorsValue = {};
+        if (!targets.passwordResetCode) errorsValue.passwordResetCode = "Reset code  is required";
+        if (Object.keys(errorsValue).length > 0) setOtpErrors({ ...errorsValue });
+        else setErrors({});
+        return Object.keys(errorsValue).length;
+    };
+    const handleOtpSubmit = (ev) => {
+        ev.preventDefault()
+        let v = handleOtpError(otpvalues);
         // check if there is any eror available and handle here 
         if (v > 0) {
             console.log("error");
         }
         //submit form here if no error availble
         else {
-            console.log("submitted");
-            navigate("/forgot_otp_password")
+            console.log("resetverify", otpvalues);
+            navigate("/create_new_password");
+            // dispatch(resetverifyEmail(otpvalues, navigate))
+            localStorage.setItem('resetpassword', JSON.stringify(otpvalues));
         }
     }
+
     return (
         <div className='password-container'>
             <div className="landing-page auth" >
@@ -70,9 +128,22 @@ function Fpassword() {
                             </div>
 
 
-                            <div className='button' style={{ padding: "100px 0px 20px 0px", cursor: "pointer" }}>
-                                <button type="submit" className="nav-link" style={{ border: "0" }}>Proceed</button>
-                            </div>
+                            <div className='ApiError' style={{top:"10px"}}>{ApiError}</div>
+
+                          
+                            {loading === true ? (
+                                <div className='button' style={{ margin: "100px 0px 20px 0px", cursor: "pointer"}}>
+                                    <button type="submit" className="nav-link" disabled style={{ border: "0", background:"var(--lightblue)" }}>Proceed ...</button>
+                                </div>) : (
+                                <div className='button' style={{ margin: "100px 0px 20px 0px", cursor: "pointer" }}>
+                                    <button type="submit" className="nav-link" style={{ border: "0" }}>Proceed</button>
+                                </div>
+                                )
+                            }
+                            
+                         
+
+            
 
                             <div className='line'>
                                 <div className="or-line">OR </div>
@@ -84,7 +155,7 @@ function Fpassword() {
                 </div>
 
 
-                <div className='second'>
+                <div className='secondPasword'>
                     <div className='password-content'>
                         <div className='image'><img src={handshake} alt="" /></div>
                         <div className=''>
@@ -105,6 +176,42 @@ function Fpassword() {
                     </div>
 
                 </div>
+
+
+                <MainModal trigger={buttonpopup} setTrigger={setbuttonpopup} style={{ zIndex: "900" }}>
+                    <div className='modalContent'>
+                        <div className='resetpassword-page'>
+                            <div className='register-container'>
+
+                                <div className="image">
+                                    <img src={phone} alt="" style={{ width: "20px" }} />
+                                </div>
+                                <div className='title'>OTP NOTIFICATION</div>
+                                <div className='text'>Please enter the OTP we sent to you for you to  continue</div>
+
+
+                                <form onSubmit={handleOtpSubmit}>
+                                    <div className='otp-session'>
+
+                                        <div className="otp">
+                                            <input type="text" name="passwordResetCode" onChange={otpChange} />
+                                        </div>
+                                        {otperrors ? <p className='error'> {otperrors.passwordResetCode}</p> : ""}
+
+
+                                        <div className="otp-resend">I didn’t receive a message <span><button>Resend</button></span></div>
+                                    </div>
+
+                                    <div className='navButtton' style={{ marginBottom: "30px" }}>
+                                        <button type="submit" className="general-btn" >Submit</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </MainModal>
             </div>
         </div>
     )

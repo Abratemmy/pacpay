@@ -1,25 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WillLanding from '../../../components/willLanding/willLanding';
 import { BsArrowRight, BsArrowDown, BsArrowLeft } from "react-icons/bs";
 import asset from "../../../assets/flex-assets.png";
-import executor from "../../../assets/flex-assets.png";
-import info from "../../../assets/flex-info.png";
+import executor11 from "../../../assets/flex-assets.png";
 import personal from "../../../assets/flex-personal.png"
 import executorimg from "../../../assets/executorimg.png";
-import { NavLink } from 'react-router-dom';
+import { useNavigate ,NavLink } from 'react-router-dom';
 import MainModal from '../../../components/mainModal/MainModal';
 import emoji from "../../../assets/emoji.png";
+import { useDispatch} from 'react-redux';
+import { updateExecutor } from "../../actions/auth"
 
+import * as Yup from 'yup'
+import { useForm } from 'react-hook-form'
 function FlexwillExecutorLanding() {
     const [buttonpopup, setbuttonpopup] = useState(false);
     const [buttonpopup1, setbuttonpopup1] = useState(false);
     const [buttonpopup2, setbuttonpopup2] = useState(false);
     const [buttonpopup3, setbuttonpopup3] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setbuttonpopup3(true)
+    const schema = Yup
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+
+    const [executor, setexecutor] = React.useState({
+        isPersonal: false,
+        pacTrustees: false
+    });
+
+    const handleChange = (event) => {
+       setexecutor(event.target.value)
     }
+   
+    const onSubmit = () => {
+        console.log("data", executor)
+        setbuttonpopup3(true);
+        if(executor=== "pacTrustees"){
+            JSON.stringify(localStorage.setItem("executors", true))
+        }else{
+            JSON.stringify(localStorage.setItem("executors", false))
+        }
+    }
+    const getExecutor= JSON.parse(localStorage.getItem("executors"))
+    
+    const [executorForm, setexecutorForm] = useState({
+        isPac: getExecutor
+    });
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    
+    const handleSubmitExecutor = (e)=>{
+        e.preventDefault()
+        const payload = {
+            executors:{
+                isPac: getExecutor
+            },
+            // transId:"hello hi transId"
+        }
+        console.log("payload", payload)
+        dispatch(updateExecutor(payload, navigate));
+    }
+
+    useEffect(() => {
+        setexecutorForm(getExecutor)
+    }, [getExecutor])
+
+    console.log("execu", executorForm)
+     
     return (
         <div>
             <WillLanding >
@@ -43,7 +93,7 @@ function FlexwillExecutorLanding() {
                             onClick={() => setbuttonpopup(true)}
                         >
                             <div className="card active">
-                                <span><img src={executor} alt="" /></span>
+                                <span><img src={executor11} alt="" /></span>
                                 <p>Executors</p>
                             </div>
                         </button>
@@ -52,7 +102,7 @@ function FlexwillExecutorLanding() {
 
                 <div className='will-landingpage-2'>
 
-                    <div className='col-lg-2 col-md-2 col-sm-12'>
+                    <div className='col-lg-2 col-md-2 col-sm-12 arrowstyle'>
                         <div className="arrow">
                             <BsArrowDown className="icon icon2" />
                         </div>
@@ -98,16 +148,36 @@ function FlexwillExecutorLanding() {
                 <div className='modalContent'>
                     <div className='title'>EXECUTOR</div>
                     <div className='subtitle'>By checking the box below, you authorize the PAC team to act as your executor</div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group group">
-                            <input type="checkbox" id="pro" />
-                            <label for="pro"> Select the PAC Trustees limited as your executor.</label>
+                            <div className='checkbox-div'>
+                                <span className='spanCheck'><input type="radio" id="pro" name="executor"
+                                    value="pacTrustees"
+                                    checked={executor === 'pacTrustees'}
+                                    {...register('executor', { required: true })}
+                                    onChange={handleChange}
+                                />
+                                </span>
+                                <label for="pro"> Select the PAC Trustees limited as your executor.</label>
+                            </div>
                         </div>
 
-                        <div className="form-groupb group">
-                            <input type="checkbox" id="propersonal" />
-                            <label for="propersonal"> Assign your personal Executor</label>
+
+                        <div className="form-group group">
+                            <div className='checkbox-div'>
+                                <span className='spanCheck'><input type="radio" id="propersonal" name="executor"
+                                value="isPersonal"
+                                checked={executor === 'isPersonal'}
+                                {...register('executor', { required: true })}
+                                onChange={handleChange}
+                                />
+                                </span>
+                                <label for="propersonal"> Assign your personal Executor</label>
+                            </div>
                         </div>
+                        <p style={{color:"crimson", fontSize: "12px"}}>{errors.executor?.type === 'required' &&
+                                'Select your executor.'
+                        }</p>
                         <div className='navButtton'>
                             <button type="submit" >Continue</button>
                         </div>
@@ -125,10 +195,14 @@ function FlexwillExecutorLanding() {
                     <div className='title'>EXECUTOR</div>
                     <div className='modalimage' style={{ marginBottom: "40px" }}><img src={emoji} alt="" style={{ width: "40%" }} /> </div>
                     <div className='subtitle'>By checking the box below, you authorize the PAC team to act as your executor</div>
-
-                    <div className='navButtton' style={{ marginBottom: "30px" }}>
-                        <NavLink to="/flex_executor_success" className="modal-nav" >Complete</NavLink>
-                    </div>
+                    
+                    <form onSubmit={handleSubmitExecutor}>
+                        <div className='navButtton' style={{ marginBottom: "30px" }}>
+                            <button className="modal-nav" tupe="submit" >Complete</button>
+                            {/* <NavLink to="/flex_executor_success" className="modal-nav" >Complete</NavLink> */}
+                        </div>
+                    </form >
+                    
 
                     <div className='last'>
                         <p>Not sure how to proceed,</p>

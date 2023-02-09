@@ -4,166 +4,57 @@
     position: relative;
 }
 
-/* .stepperss {
+.stepping-start{
     display: flex;
-    gap: 1rem;
-    align-items: center;
     justify-content: center;
+}
+.step-item{
     position: relative;
-    width: 100%;
-    max-width: 350px;
-    margin: auto;
-}
-
-.stepperss::before {
-    content: "";
-    background-color: rgba(39, 50, 56, 0.281);
-    position: absolute;
-    top: 20%;
-    left: 0;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 100%;
-    z-index: -1;
-    transition: 0.4s all ease;
-}
-
-.stepperss::before .active {
-    background-color: red;
-}
-
-.stepperss .progressbar {
-    background-color: var(--orangeColor);
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 0%;
-    z-index: -1;
-    transition: 0.4s all ease;
-}
-
-.personal-iteration {
-    background-color: rgba(39, 50, 56, 0.7);
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-}
-
-.personal-iteration.active {
-    background-color: var(--orangeColor);
-} */
-
-.stepperss {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-}
-
-.stepperss p {
-    font-size: 12px;
-    padding-left: 20px;
-    width: 80px
-}
-
-
-.step {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    position: relative;
+    width: 12%;
+}
+.step-item:not(:first-child)::before{
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(165, 164, 164, 0.671);
+    right: 50%;
+    top: 14.333333%;
+    transform: translateY(50%);
 }
 
-.personal-iteration {
-    position: relative;
-    background: rgba(39, 50, 56, 0.7);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.step{
+    width: 28px;
+    height: 28px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: var(--blackColor);
-    z-index: 2
-}
-
-
-.personal-iteration::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 67px;
-    background-color: rgba(39, 50, 56, 0.7);
-    background-position: center;
-    background-size: 2.25rem;
-    background-repeat: no-repeat;
-    left: 30px;
-    z-index: 1;
-}
-
-/* .personal-iteration:last-child:before {
-    background-color: transparent;
-} */
-/* .step:not(:last-child):before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 67px;
-    background-color: rgba(39, 50, 56, 0.7);
-    background-position: center;
-    background-size: 2.25rem;
-    background-repeat: no-repeat;
-    left: 30px;
-    z-index: 1;
-}
-
-.step:last-child:before {
-    content: "" !important;
-    background-color: transparent !important;
-} */
-
-.step .active {
-    color: var(--blackColor);
+    align-items: center;
     position: relative;
-    background: var(--orangeColor);
-    width: 30px;
-    height: 30px;
+    background-color: rgba(128, 128, 128, 0.897);
+    color: var(--blackColor);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 10
 }
-
-.step .active::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 67px;
+.stepping-start .stepActive .step{
     background-color: var(--orangeColor);
-    background-position: center;
-    background-size: 2.25rem;
-    background-repeat: no-repeat;
-    left: 30px;
-    z-index: 1;
 }
-
-
-
+.stepping-start .complete .step{
+    background-color: var(--orangeColor);
+}
+.stepping-start .complete:not(:first-child)::before,
+.stepping-start .stepActive:not(:first-child):before{
+    background-color: var(--orangeColor);
+}
+.stepName{
+    width: 50px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--blackColor)
+}
 .Personal-container .top {
     display: flex;
     justify-content: space-between;
@@ -176,6 +67,8 @@
 .Personal-container .top .personal-nav {
     color: var(--blueColor);
     position: relative;
+    background: none;
+    border: none;
 }
 
 .Personal-container .top .icon2 {
@@ -225,11 +118,20 @@
 
 .Personal-list-content .image {
     background: var(--blueColor);
-    padding: 9px 12px;
     border-radius: 50%;
     color: #fff;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.Personal-list-content .even{
+    background: var(--blueColor2);
 }
 
 .Personal-list-content .image1 {
@@ -253,22 +155,38 @@
     font-size: 13px;
     font-weight: 600;
     padding-bottom: 5px;
+    color: var(--inputColor)
 }
 
 .Personal-list-content .details {
     border: 1px solid var(--blueColor);
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 15px;
-    background: rgba(240, 250, 255, 0.68);
+    height: 35px;
+    background: var(--veryLightBlue);
     font-size: 13px;
-    color: var(--blackColor)
+    color: var(--inputColor);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+}
+.Personal-list-content .details .icon1{
+    background: rgba(0, 109, 91, 0.096);
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Personal-list-content .details .icon{
+    color: var(--blueColor);
+    font-size: 11px;
 }
 
-.Personal-list-content .details span {
-    padding-left: 15px;
-}
 
 .Personal-container .Personal-list-button {
     position: fixed;
@@ -290,4 +208,42 @@
 
 .Personal-container .Personal-list-button .nav-link1 {
     background: var(--blueColor2);
+}
+
+
+/* tabs */
+.Personal-bloc-tabs{
+    display: none;
+}
+.register-bloc-tabs {
+    display: none;
+}
+
+.PersonalFormcontent {
+    width: 100%;
+    display: none;
+}
+
+.active-PersonalFormcontent {
+    display: block;
+}
+.Personal-container .toptext{
+    font-size: 17px;
+    font-family: var(--textFamily);
+    color: var(--blackColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.Personal-container .toptext1{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+/* .Personal-container .toptext span{
+    padding: 0px 7px;
+} */
+.Personal-container .toptext .icon{
+    color: var(--blueColor)
 }

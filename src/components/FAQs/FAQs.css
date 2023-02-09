@@ -57,3 +57,21 @@
 .faq .content .answer {
     padding: 30px;
 }
+
+.faq-nav{
+    border: none;
+    background: none;
+    color: var(--blueColor);
+    padding-left: 30px;
+    position: relative;
+}
+.faq-nav .icon2{
+    position: relative;
+    left:-7px;
+}
+
+@media screen and (max-width:780px) {
+    .faq {
+        padding: 20px;
+    }
+}

@@ -30,7 +30,6 @@ import ProExecutorLanding from '../pages/PROWILLALL/LANDING/ProExecutorLanding';
 import Proexecutorsuccess from '../pages/success/proexecutorsuccess';
 import FlexAssetsuccess from '../pages/success/flexassetsuccess';
 import Flexwilldetails from '../pages/ReviewDetails/flexwilldetails';
-import Flexwillpayment from '../pages/payments/flexwillpayment';
 import BookanAppointment from '../pages/success/bookappointment';
 import FlexPersonalSuccess from '../pages/success/flexpersonalsuccess';
 import SpouseReview from '../pages/allaboutflexwill/flexwillpersonal/spouseReview';
@@ -39,7 +38,6 @@ import ProChildReview from '../pages/PROWILLALL/PersonalInformation/childreview'
 import ProSpouseReview from '../pages/PROWILLALL/PersonalInformation/spousereview';
 import ProPersonalSuccess from '../pages/success/proPersonalsuccess';
 import Registerpop from '../pages/auth/registerpop';
-import ForgotOtp from '../pages/auth/password/forgotOtp';
 import ProRsa from '../pages/PROWILLALL/proAsset/Assets/ProRsa';
 import Prodistribute1 from '../pages/PROWILLALL/proAsset/Assets/prodistribute1';
 import AssetsRSA from '../pages/PROWILLALL/proAsset/Assets/AssetsRSA';
@@ -137,6 +135,18 @@ import FlexForeignCashForm from '../pages/allaboutflexwill/flexwillassets/flexwi
 import ProForeignCashForm from '../pages/PROWILLALL/proAsset/Assets/proForeignCashform';
 import CompactAssetNew from '../pages/COMPACTALL/CompactAsset/CompactAssetNew';
 import MainREGISTER from '../pages/auth/mainREGISTER';
+import FlexAssets from '../pages/allaboutflexwill/flexwillassets/flexwillpage/FlexAssets';
+import ViewPersonal from '../pages/DASHBOARDALL/ViewWill/viewPersonal';
+import Notification from '../pages/DASHBOARDALL/Notifications/Notification';
+import ViewExecutor from '../pages/DASHBOARDALL/ViewWill/viewExecutor';
+import ViewChildren from '../pages/DASHBOARDALL/ViewWill/viewChildren';
+import OtherFlex from '../pages/willproducts/otherProducts/otherFlex';
+import OtherTestamentary from '../pages/willproducts/otherProducts/otherTestamentary';
+import OtherCompact from '../pages/willproducts/otherProducts/otherCompact';
+import OtherPro from '../pages/willproducts/otherProducts/otherPro';
+import AuthorizationUrl from '../pages/WillPAYMENT/authorizationUrl';
+import Error404 from './errorPage/error404';
+import MainProForm from '../pages/PROWILLALL/proAsset/mainProForm';
 
 
 const Router = () => {
@@ -145,13 +155,15 @@ const Router = () => {
 
     return (
         <Routes>
+
+            <Route exact path="/viewchildren/:childId" caseSensitive={false} element={<ViewChildren />} />
+            <Route exact path="/flexasset/:page" caseSensitive={false} element={<FlexAssets />} />
             <Route exact path="/" caseSensitive={false} element={<Landing />} />
             <Route exact path="/register" caseSensitive={false} element={<MainREGISTER />} />
             <Route exact path="/login" caseSensitive={false} element={<Signin />} />
-            <Route exact path="/register_pop/:userEmail" caseSensitive={false} element={<Registerpop />} />
+            <Route exact path="/register_pop" caseSensitive={false} element={<Registerpop />} />
             <Route exact path="/register_success" caseSensitive={false} element={<Registersuccess />} />
             <Route exact path="/forgot_password" caseSensitive={false} element={<Fpassword />} />
-            <Route exact path="/forgot_otp_password" caseSensitive={false} element={<ForgotOtp />} />
             <Route exact path="/create_new_password" caseSensitive={false} element={<Createpassword />} />
             <Route exact path="/createpassword_success" caseSensitive={false} element={<CreatePwdsuccess />} />
             <Route exact path="/product_landing" caseSensitive={false} element={<Productlanding />} />
@@ -187,8 +199,7 @@ const Router = () => {
 
 
             <Route path="/flex_will_personal_info/:page" key={"/flex_will_personal_info"} caseSensitive={false} element={<Personalform />} />
-            <Route exact path="/spouse_review" caseSensitive={false} element={<SpouseReview />} />
-            <Route exact path="/child_review" caseSensitive={false} element={<ChildReview />} />
+
 
 
             {/* pro will route */}
@@ -197,9 +208,10 @@ const Router = () => {
             <Route exact path="/pro_executor_landing" caseSensitive={false} element={<ProExecutorLanding />} />
             <Route exact path="/pro_executor_success" caseSensitive={false} element={<Proexecutorsuccess />} />
             <Route exact path="/pro_personalinfo/:page" caseSensitive={false} element={<Propersonalinfo />} />
-            <Route exact path="/pro_child_review" caseSensitive={false} element={<ProChildReview />} />
-            <Route exact path="/pro_spouse_review" caseSensitive={false} element={<ProSpouseReview />} />
             <Route exact path="/pro_assets" caseSensitive={false} element={<ProAssets />} />
+            <Route exact path="/pro_form/:page" caseSensitive={false} element={<MainProForm />} />
+
+
             <Route exact path="/pro_rsa_form" caseSensitive={false} element={<ProRsa />} />
             <Route exact path="/pro_distribute_assets1" caseSensitive={false} element={<Prodistribute1 />} />
             <Route exact path="/pro_assetrsa" caseSensitive={false} element={<AssetsRSA />} />
@@ -234,16 +246,16 @@ const Router = () => {
             {/* testamentary trust */}
             <Route exact path="/trust_personal_landing" caseSensitive={false} element={<TrustPersonalLanding />} />
             <Route exact path="/trust_personalinfo/:page" caseSensitive={false} element={<TrustPersonalinfo />} />
-            <Route exact path="/trust_child_review" caseSensitive={false} element={<TrustChildReview />} />
-            <Route exact path="/trust_spouse_review" caseSensitive={false} element={<TrustSpouseReview />} />
+            {/* <Route exact path="/trust_child_review" caseSensitive={false} element={<TrustChildReview />} />
+            <Route exact path="/trust_spouse_review" caseSensitive={false} element={<TrustSpouseReview />} /> */}
             <Route exact path="/trust_executor_landing" caseSensitive={false} element={<TrustExecutorLanding />} />
             <Route exact path="/trust_reviewdetails" caseSensitive={false} element={<TrustReviewDetails />} />
 
             {/* compact will */}
             <Route exact path="/compact_personal_landing" caseSensitive={false} element={<CompactPersonalLanding />} />
             <Route exact path="/compact_personalinfo/:page" caseSensitive={false} element={<Compactpersonalinfo />} />
-            <Route exact path="/compact_child_review" caseSensitive={false} element={<CompactChildReview />} />
-            <Route exact path="/compact_spouse_review" caseSensitive={false} element={<CompactSpouseReview />} />
+            {/* <Route exact path="/compact_child_review" caseSensitive={false} element={<CompactChildReview />} />
+            <Route exact path="/compact_spouse_review" caseSensitive={false} element={<CompactSpouseReview />} /> */}
             <Route exact path="/compact_executor_landing" caseSensitive={false} element={<CompactExecutorLanding />} />
             <Route exact path="/compact_assets_landing" caseSensitive={false} element={<CompactAssetLanding />} />
             <Route exact path="/compact_assets" caseSensitive={false} element={<CompactAsset />} />
@@ -294,16 +306,15 @@ const Router = () => {
             <Route exact path="/compact_asset_success" caseSensitive={false} element={<CompactAssetSuccess />} />
             <Route exact path="/compact_review_success" caseSensitive={false} element={<CompactReviewSuccess />} />
 
-
             {/* review details */}
             <Route exact path="/flex_review_details" caseSensitive={false} element={<Flexwilldetails />} />
             <Route exact path="/pro_review_details" caseSensitive={false} element={<ProReviewDetails />} />
             <Route exact path="/compact_review_details" caseSensitive={false} element={<CompactReviewDetails />} />
             {/* payment */}
-            <Route exact path="/flex_will_payment" caseSensitive={false} element={<Flexwillpayment />} />
             <Route exact path="/pro_payment" caseSensitive={false} element={<ProPayment />} />
             <Route exact path="/flex_payment" caseSensitive={false} element={<FlexPayment />} />
             <Route exact path="/compact_payment" caseSensitive={false} element={<CompactPayment />} />
+            <Route exact path="/autorization_url" caseSensitive={false} element={<AuthorizationUrl />} />
 
             <Route exact path="/spouse_review" caseSensitive={false} element={<SpouseReview />} />
 
@@ -313,6 +324,18 @@ const Router = () => {
             <Route exact path="/will" caseSensitive={false} element={<Will />} />
             <Route exact path="/settings" caseSensitive={false} element={<Settings />} />
             <Route exact path="/dashboard_faqs" caseSensitive={false} element={<DashboardFaqs />} />
+            <Route exact path="/notifications" caseSensitive={false} element={<Notification />} />
+            <Route exact path="/view_personal" caseSensitive={false} element={<ViewPersonal />} />
+            <Route exact path="/view_executor" caseSensitive={false} element={<ViewExecutor />} />
+
+            <Route exact path="/flexwill_other" caseSensitive={false} element={<OtherFlex />} />
+            <Route exact path="/prowill_other" caseSensitive={false} element={<OtherPro />} />
+            <Route exact path="/compactwill_other" caseSensitive={false} element={<OtherCompact />} />
+            <Route exact path="/testamentarywill_other" caseSensitive={false} element={<OtherTestamentary />} />
+
+
+            {/* page not found */}
+            <Route path='*' caseSensitive={false} element={<Error404 />} />
         </Routes>
     )
 }

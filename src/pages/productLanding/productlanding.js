@@ -27,7 +27,9 @@ function Productlanding() {
                 <div className='row'>
                     <div className='col-lg-6 col-md-6 col-sm-12'>
                         <div className='landing-image' >
-                            <img src={bgpic} alt="image heres" width="90%" height="auto" />
+                            {/* <div className='landingblur'></div> */}
+                            <img src={bgpic} alt="image heres" width="100%" />
+                            <div className='landingblur'></div>
                         </div>
                     </div>
 
@@ -45,7 +47,7 @@ function Productlanding() {
                                         <span className='image'><img src={will} alt="" /></span> <span>Will  <BsArrowUpRight className='icon' /></span>
                                     </NavLink>
 
-                                    <NavLink to="/will_products" className="nav-link nav-link-trust">
+                                    <NavLink to="" className="nav-link nav-link-trust">
                                         <span className='image'><img src={trust} alt="" /></span> <span>Trust <BsArrowUpRight className='icon' /></span>
                                     </NavLink>
                                 </div>

@@ -23,3 +23,7 @@
 .payment-button button {
     border: none;
 }
+.display-paystack{
+    width:100%;
+    height: 500px
+}

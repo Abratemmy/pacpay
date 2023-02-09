@@ -1,21 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./form.css";
 import { BiMessageAltDetail, BiMessageDots } from "react-icons/bi";
 import { BsPersonSquare } from "react-icons/bs";
 
-function Spouse({ spouse, setSpouse }) {
+function Spouse({ spouse, setSpouse, errors, currentId, setCurrentId }) {
+    
+    
     return (
         <div className="personal-info-container container">
             <div className='row'>
-                <div className='col-lg-6 col-md-6 col-sm-12'>
+                {/* <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
                         <label>Title (Mr,  Mrs e.t.c)</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BiMessageAltDetail className='icon' /></i>
                             <select name="title" placeholder='Select an option'
-                                value={spouse.spousetitle}
+                                value={spouse.title}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spousetitle: e.target.value });
+                                    setSpouse({ ...spouse, title: e.target.value });
                                 }}
                             >
                                 <option >Select Option </option>
@@ -25,20 +27,22 @@ function Spouse({ spouse, setSpouse }) {
                                 <option value="master"><i class="fa fa-home"></i>Master</option>
                             </select>
                         </div>
+                        {errors.title && <p className='error'> {errors.title}</p>}
                     </div>
-                </div>
+                </div> */}
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
                         <label>Full Name (Spouse)</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                            <input type="text" placeholder="Enter First Name"
-                                value={spouse.spouseName}
+                            <input type="text" placeholder="Enter Full Name"
+                                value={spouse.fullName}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spouseName: e.target.value });
+                                    setSpouse({ ...spouse, fullName: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.fullName && <p className='error'> {errors.fullName}</p>}
                     </div>
                 </div>
 
@@ -47,13 +51,14 @@ function Spouse({ spouse, setSpouse }) {
                         <label>Date Of Birth</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                            <input type="text" placeholder="Enter Last Name"
-                                value={spouse.spousebirth}
+                            <input type="date" placeholder="Enter Date of Birth"
+                                value={spouse.dateOfBirth}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spousebirth: e.target.value });
+                                    setSpouse({ ...spouse, dateOfBirth: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.dateOfBirth && <p className='error'> {errors.dateOfBirth}</p>}
                     </div>
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
@@ -61,58 +66,62 @@ function Spouse({ spouse, setSpouse }) {
                         <label>Phone Number</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                            <input type="text" placeholder="Enter Middle Name"
-                                value={spouse.spousephone}
+                            <input type="phone" placeholder="Enter phone number"
+                                value={spouse.mobile}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spousephone: e.target.value });
+                                    setSpouse({ ...spouse, mobile: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.mobile && <p className='error'> {errors.mobile}</p>}
                     </div>
                 </div>
-                <div className='col-lg-6 col-md-6 col-sm-12'>
+                {/* <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
                         <label>State Of Residence</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="text" placeholder="Enter State where you live"
-                                value={spouse.spouseresState}
+                                value={spouse.state}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spouseresState: e.target.value });
+                                    setSpouse({ ...spouse, state: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.state && <p className='error'> {errors.state}</p>}
                     </div>
-                </div>
-                <div className='col-lg-6 col-md-6 col-sm-12'>
+                </div> */}
+                {/* <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
                         <label>City Of Residence</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
                             <input type="text" placeholder="Enter City where you live"
-                                value={spouse.spouseresCity}
+                                value={spouse.city}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spouseresCity: e.target.value });
+                                    setSpouse({ ...spouse, city: e.target.value });
                                 }}
                             />
                         </div>
+                        {errors.city && <p className='error'> {errors.city}</p>}
                     </div>
-                </div>
+                </div> */}
 
-                <div className='col-lg-6 col-md-6 col-sm-12'>
+                {/* <div className='col-lg-6 col-md-6 col-sm-12'>
                     <div className='input-container'>
                         <label>Residential Address</label>
                         <div class="inner-addon left-addon">
                             <i class="glyphicon glyphicon-user"><BiMessageDots className='icon' /></i>
                             <textarea rows="5" placeholder="Describe" className="textarea"
-                                value={spouse.spouseresAddress}
+                                value={spouse.contactAddress}
                                 onChange={(e) => {
-                                    setSpouse({ ...spouse, spouseresAddress: e.target.value });
+                                    setSpouse({ ...spouse, contactAddress: e.target.value });
                                 }}
                             ></textarea>
                         </div>
+                        {errors.contactAddress && <p className='error'> {errors.contactAddress}</p>}
                     </div>
-                </div>
+                </div> */}
             </div>
 
         </div >

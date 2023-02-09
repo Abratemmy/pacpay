@@ -98,3 +98,41 @@
     color: #fff;
     text-decoration: none;
 }
+
+.booking-Calendar{
+    background: var(--veryLightBlue);
+    box-shadow: 0px 6px 24px rgba(7, 125, 174, 0.16);
+    border-radius: 16px;
+    padding: 5px 15px;
+}
+.scheduling .title{
+    font-size: 17px;
+    color: var(--blackColor);
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+.scheduling .Timetime{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.scheduling .schedule-time{
+    background: #fff;
+    box-shadow: 0px 10.8889px 37.3333px rgba(127, 147, 183, 0.19);
+    border-radius: 12.4444px;
+    font-size: 14px;
+    padding: 10px 15px;
+    color: var(--blackColor);
+    cursor: pointer;
+}
+.scheduling  .timeactive{
+    background: var(--blueColor2)!important;
+    color:#fff;
+}
+
+.react-horizontal-datepicker__navigation--next {
+    width: 60px;
+    height: 60px;
+    border: none;
+    background: red;
+}

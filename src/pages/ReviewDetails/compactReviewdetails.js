@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./willdetails.css"
 import Interface from '../../components/flexwillinterface/interface'
 import { MdArrowBackIosNew, MdOutlinePersonPin } from "react-icons/md"
 import { useNavigate, NavLink } from 'react-router-dom';
 import personal from "../../assets/flex-personal.png";
 import executor from "../../assets/flex-executor.png";
-import assets from "../../assets/flex-assets.png"; import MainModal from '../../components/mainModal/MainModal';
-;
+import assets from "../../assets/flex-assets.png";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserWill } from '../actions/auth';
+import MainModal from '../../components/mainModal/MainModal';
+import moment from "moment"
 
 function CompactReviewDetails() {
     const navigate = useNavigate()
@@ -16,6 +19,17 @@ function CompactReviewDetails() {
         e.preventDefault()
         navigate("/compact_payment")
     }
+
+    const dispatch = useDispatch();
+    const will = useSelector((state) => state.willReducer);
+    const willPersonal = will?.data?.personalInformation
+
+
+    console.log("get products", will)
+
+    useEffect(() => {
+        dispatch(getUserWill())
+    }, [dispatch])
     return (
         <div>
             <Interface>
@@ -50,7 +64,7 @@ function CompactReviewDetails() {
                                                     <label>Full  Name</label>
                                                     <div className='group'>
                                                         <span><MdOutlinePersonPin className="icon" /></span>
-                                                        <div className='text'>Tolu Boluwatife</div>
+                                                        <div className='text'>{willPersonal.firstName} {willPersonal.lastName}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -59,7 +73,7 @@ function CompactReviewDetails() {
                                                     <label>Date Of Birth</label>
                                                     <div className='group'>
                                                         <span><MdOutlinePersonPin className="icon" /></span>
-                                                        <div className='text'>22/12/180</div>
+                                                        <div className='text'>{moment(willPersonal.dateOfBirth).format("DD")} - {moment(willPersonal.dateOfBirth).format("MM")} - {moment(willPersonal.dateOfBirth).format("YYYY")}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,7 +82,7 @@ function CompactReviewDetails() {
                                                     <label>Phone Number</label>
                                                     <div className='group'>
                                                         <span><MdOutlinePersonPin className="icon" /></span>
-                                                        <div className='text'>08047839202</div>
+                                                        <div className='text'>{willPersonal.mobile}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,7 +91,7 @@ function CompactReviewDetails() {
                                                     <label>City of residence</label>
                                                     <div className='group'>
                                                         <span><MdOutlinePersonPin className="icon" /></span>
-                                                        <div className='text'>Lagos</div>
+                                                        <div className='text'>{willPersonal.contactAddress}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,22 +112,6 @@ function CompactReviewDetails() {
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className='col-12'>
-                                    <div className='content content-asset'>
-                                        <div className='review-top-wrapper'>
-                                            <span><img src={assets} alt="" /> </span>
-                                            <div className='title'>
-                                                Assets
-                                            </div>
-                                            <div className="edit">
-                                                <button >Edit</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
 
                             </div>
                         </div>

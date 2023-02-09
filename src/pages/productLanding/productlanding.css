@@ -21,6 +21,26 @@
     color: var(--blackColor);
     font-size: 15px;
 }
+.productlanding-container .landing-image{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+.productlanding-container .landing-image img{
+    z-index: 100!important;
+    filter: blur(0px);
+}
+.productlanding-container .landingblur{
+    background:radial-gradient(50% 50% at 50% 50%, rgba(0, 179, 255, 0.404) 41.65%, rgba(21, 40, 74, 0.507) 100%);
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    width: 100%;
+    height: 100%;
+    top:20%;
+    bottom: 0%
+}
 
 .productlanding-container .nav-container {
     margin-left: 30%;

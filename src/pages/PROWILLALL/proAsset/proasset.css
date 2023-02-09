@@ -53,3 +53,38 @@
     font-size: 14px;
     padding-top: 10px;
 }
+
+.newasset-list .asset-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--lightblue);
+    width: 90%;
+    height: 70px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 13px 0px;
+    transition: 0.4s all ease;
+    cursor: pointer;
+    color: var(--blackColor);
+    font-size: 13px;
+}
+.newasset-list .asset-nav:hover{
+    background: var(--blueColor);
+    color:#fff;
+}
+.newasset-list .first {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+.newasset-list .first span {
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

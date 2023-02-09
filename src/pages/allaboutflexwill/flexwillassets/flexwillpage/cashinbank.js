@@ -1,183 +1,153 @@
 import React, { useState } from 'react'
 import Interface from '../../../../components/flexwillinterface/interface'
 import Topasset from '../interfaceasset/topasset';
-import { MdOutlinePersonPin } from "react-icons/md";
+import { MdOutlinePersonPin, MdArrowBackIosNew } from "react-icons/md";
 import { FaRegListAlt } from "react-icons/fa"
 import { useNavigate } from "react-router-dom";
 import { BsPersonSquare } from 'react-icons/bs';
-import MainModal from '../../../../components/mainModal/MainModal';
-import Beneficiary from '../../../../components/beneficiarypop/beneficiary';
 
-function Cashinbank() {
-    const [values, setValues] = useState({
-        bankname: "",
-        bvn: "",
-        accountType: "",
-        branch: "",
-        accNo: "",
-        ownership: "",
-        checked: ""
-    });
-    const [errors, setErrors] = useState({});
+function Cashinbank({ cashInBank, setCashInBank, errors, setToggle }) {
 
-    // get input values
-    const handleChange = (ev) => {
-        setValues({
-            ...values,
-            [ev.target.name]: ev.target.value,
-        });
-    };
-    const handleError = (targets) => {
-        let errorsValue = {};
-        if (!targets.bankname) errorsValue.bankname = "Pension banknameistration  is required";
-        if (!targets.bvn) errorsValue.bvn = "BVN  is required";
-        if (!targets.accountType) errorsValue.accountType = "Account type  is required";
-        if (!targets.branch) errorsValue.branch = "Branch  is required";
-        if (!targets.accNo) errorsValue.accNo = "Account number is required";
-        if (!targets.ownership) errorsValue.ownership = "Onership status  is required";
-        if (!targets.checked) errorsValue.checked = "Checked the box";
-
-        if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
-        else setErrors({});
-
-        return Object.keys(errorsValue).length;
-
-    };
-
-    const [beneficiary, setbeneficiary] = useState(false);
-
-    const handleSubmit = (ev) => {
-        ev.preventDefault()
-        let v = handleError(values);
-        // check if there is any eror available and handle here 
-        if (v > 0) {
-            console.log("error");
-        }
-        //submit form here if no error availble
-        else {
-            console.log("submitted", values);
-            setbeneficiary(true)
-        }
-    }
     return (
         <div>
-            <Interface>
-                <Topasset name="Cash In Bank" link="flex_cashinbank_landing" />
+            <div className='top'>
+                <span className="personal-nav" onClick={setToggle} >
+                    <MdArrowBackIosNew className='icon' />
+                    <MdArrowBackIosNew className='icon icon2' />
+                </span>
 
-                <div className='flexwillpage Assets-container' >
-                    <div className='container'>
-                        <form onSubmit={handleSubmit} style={{ position: "relative" }}>
-                            <div className='row'>
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='asset-content' style={{ padding: "20px 0px" }}>
-                                        <label style={{ color: "#7c848a " }}>Type of Asset</label>
-                                        <div class="inner-addon left-addon assetType disable">
-                                            <i class="glyphicon glyphicon-user"><MdOutlinePersonPin className='icon' /></i>
-                                            <span >CASH IN BANK (NIGERIA)</span>
-                                        </div>
-                                    </div>
+                <div className='text'>Cash in Bank</div>
+            </div>
+
+            <div className='flexwillpage Assets-container' >
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-lg-6 col-md-6 col-sm-12'>
+                            <div className='asset-content' style={{ padding: "20px 0px" }}>
+                                <label style={{ color: "#7c848a " }}>Type of Asset</label>
+                                <div class="inner-addon left-addon assetType disable">
+                                    <i class="glyphicon glyphicon-user"><MdOutlinePersonPin className='icon' /></i>
+                                    <span >CASH IN BANK (NIGERIA)</span>
                                 </div>
-                                <div className='col-lg-6 col-md-6 col-sm-12'></div>
+                            </div>
+                        </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12'></div>
 
-                                <div className='col-lg-6 col-md-6 col-sm-12' >
-                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
-                                        <label>Bank Name</label>
-                                        <div class="inner-addon left-addon">
-                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
-                                            <input type="text" placeholder="Enter Bank Name" name="bankname" onChange={handleChange}
-                                            />
-                                        </div>
-                                        {errors ? <p className='error'> {errors.bankname}</p> : ""}
-                                    </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12' >
+                            <div className='asset-content' style={{ padding: "5px 0px" }}>
+                                <label>Bank Name</label>
+                                <div class="inner-addon left-addon">
+                                    <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                    <input type="text" placeholder="Enter Bank Name" name="bankname"
+                                        value={cashInBank.bankName}
+                                        onChange={(e) => {
+                                            setCashInBank({ ...cashInBank, bankName: e.target.value });
+                                        }}
+                                    />
                                 </div>
+                                {errors ? <p className='error'> {errors.bankName}</p> : ""}
+                            </div>
+                        </div>
 
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
-                                        <label>BVN</label>
-                                        <div class="inner-addon left-addon">
-                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
-                                            <input type="text" placeholder="Enter BVN " name="bvn" onChange={handleChange}
-                                            />
-                                        </div>
-                                        {errors ? <p className='error'> {errors.bvn}</p> : ""}
-                                    </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12'>
+                            <div className='asset-content' style={{ padding: "5px 0px" }}>
+                                <label>BVN</label>
+                                <div class="inner-addon left-addon">
+                                    <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                    <input type="text" placeholder="Enter BVN " name="bvn"
+                                        value={cashInBank.bvn}
+                                        onChange={(e) => {
+                                            setCashInBank({ ...cashInBank, bvn: e.target.value });
+                                        }}
+                                    />
                                 </div>
+                                {errors ? <p className='error'> {errors.bvn}</p> : ""}
+                            </div>
+                        </div>
 
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
-                                        <label>Account Type</label>
-                                        <div class="inner-addon left-addon">
-                                            <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
-                                            <select placeholder='Select an option' name="accountType" onChange={handleChange}
-                                            >
-                                                <option >Select Option </option>
-                                                <option value="savings"><i class="fa fa-email"></i>Savings</option>
-                                                <option value="current"><i class="fa fa-email"></i>Current</option>
-                                                <option value="corporate"><i class="fa fa-home"></i>Corporate</option>
-                                            </select>
-                                        </div>
-                                        {errors ? <p className='error'> {errors.accountType}</p> : ""}
-                                    </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12'>
+                            <div className='asset-content' style={{ padding: "5px 0px" }}>
+                                <label>Account Type</label>
+                                <div class="inner-addon left-addon">
+                                    <i class="glyphicon glyphicon-user"><BsPersonSquare className='icon' /></i>
+                                    <select placeholder='Select an option' name="accountType"
+                                        value={cashInBank.accountType}
+                                        onChange={(e) => {
+                                            setCashInBank({ ...cashInBank, accountType: e.target.value });
+                                        }}
+                                    >
+                                        <option >Select Option </option>
+                                        <option value="savings"><i class="fa fa-email"></i>Savings</option>
+                                        <option value="current"><i class="fa fa-email"></i>Current</option>
+                                        <option value="corporate"><i class="fa fa-home"></i>Corporate</option>
+                                    </select>
                                 </div>
+                                {errors ? <p className='error'> {errors.accountType}</p> : ""}
+                            </div>
+                        </div>
 
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='asset-content' sstyle={{ padding: "5px 0px" }}>
-                                        <label>Branch</label>
-                                        <div class="inner-addon left-addon">
-                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
-                                            <input type="text" placeholder="Enter First Name" name="branch" onChange={handleChange}
-                                            />
-                                        </div>
-                                        {errors ? <p className='error'> {errors.branch}</p> : ""}
-                                    </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12'>
+                            <div className='asset-content' sstyle={{ padding: "5px 0px" }}>
+                                <label>Branch</label>
+                                <div class="inner-addon left-addon">
+                                    <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                    <input type="text" placeholder="Enter First Name" name="branch"
+                                        value={cashInBank.branch}
+                                        onChange={(e) => {
+                                            setCashInBank({ ...cashInBank, branch: e.target.value });
+                                        }}
+                                    />
                                 </div>
+                                {errors ? <p className='error'> {errors.branch}</p> : ""}
+                            </div>
+                        </div>
 
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
-                                        <label>Account Number</label>
-                                        <div class="inner-addon left-addon">
-                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
-                                            <input type="text" placeholder="Enter First Name" name="accNo" onChange={handleChange}
-                                            />
-                                        </div>
-                                        {errors ? <p className='error'> {errors.accNo}</p> : ""}
-                                    </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12'>
+                            <div className='asset-content' style={{ padding: "5px 0px" }}>
+                                <label>Account Number</label>
+                                <div class="inner-addon left-addon">
+                                    <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                    <input type="text" placeholder="Enter First Name" name="accNo"
+                                        value={cashInBank.accountNumber}
+                                        onChange={(e) => {
+                                            setCashInBank({ ...cashInBank, accountNumber: e.target.value });
+                                        }}
+                                    />
                                 </div>
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className='asset-content' style={{ padding: "5px 0px" }}>
-                                        <label>Ownership Status</label>
-                                        <div class="inner-addon left-addon">
-                                            <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
-                                            <input type="text" placeholder="Enter Ownership status" name="ownership" onChange={handleChange}
-                                            />
+                                {errors ? <p className='error'> {errors.accountNumber}</p> : ""}
+                            </div>
+                        </div>
+                        <div className='col-lg-6 col-md-6 col-sm-12'>
+                            <div className='asset-content' style={{ padding: "5px 0px" }}>
+                                <label>Ownership Status</label>
+                                <div class="inner-addon left-addon">
+                                    <i class="glyphicon glyphicon-user"><FaRegListAlt className='icon' /></i>
+                                    <input type="text" placeholder="Enter Ownership status" name="ownership"
+                                        value={cashInBank.ownershipStatus}
+                                        onChange={(e) => {
+                                            setCashInBank({ ...cashInBank, ownershipStatus: e.target.value });
+                                        }}
+                                    />
 
-                                        </div>
-                                        {errors ? <p className='error'> {errors.ownership}</p> : ""}
-                                    </div>
                                 </div>
+                                {errors ? <p className='error'> {errors.ownershipStatus}</p> : ""}
+                            </div>
+                        </div>
 
-                                <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <div className="form-group">
-                                        <input type="checkbox" id="flexCash" name="checked" onChange={handleChange} />
-                                        <label for="flexCash" className='asset-check'> I declare that I own and operate the bank details above</label>
-                                    </div>
-                                    {errors ? <p className='error'> {errors.checked}</p> : ""}
+                        <div className=''>
+                            <div className="form-group">
+                                <div className='checkbox-div'>
+                                    <input type="checkbox" id="flexCash" name="checked" />
+                                    <label for="flexCash" className='asset-check'> I declare that I own and operate the bank details above</label>
                                 </div>
                             </div>
 
-                            <div className='asset-btn'>
-                                <div className='asset-button'><button type="submit" className="asset-nav">Assign Beneficiary</button></div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+
                 </div>
+            </div>
 
-                <MainModal trigger={beneficiary} setTrigger={setbeneficiary}>
-                    <div className='modalContent'>
-                        <Beneficiary submitFormLink="flex_will_distribute_cash_assets1" />
-                    </div>
-                </MainModal>
-            </Interface>
         </div>
     )
 }

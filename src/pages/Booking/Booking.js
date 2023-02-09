@@ -1,14 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./booking.css"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io"
 import Interface from '../../components/flexwillinterface/interface';
-import booking from "../../assets/bookingperson.png";
 import { MdLocationOn } from "react-icons/md";
-import { AiFillHeart, AiFillStar } from "react-icons/ai"
-import CalendarDate from '../../components/Calendar/CalendarDate';
+import { AiFillHeart, AiFillStar } from "react-icons/ai";
+import DatePicker from "react-horizontal-datepicker";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateBooking } from "../actions/bookingAction";
+import { CREATESCHEDULE } from '../constants/actionTypes';
 
 function Booking() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    const selectedDay = (val) => {
+        console.log(val.toISOString())
+        dispatch({ type: CREATESCHEDULE, payload: val });
+    };
+
+    const [active, setActive] = useState(null);
+
+    const handleClick = (event) => {
+        setActive(event.target.id);
+        console.log(event.target.id)
+
+    }
+
+    const booking = new Date(useSelector((state) => state.bookingReducer));
+    booking.setHours(active)
+    console.log("BOOKING123", booking)
+
+    console.log("active", active);
+
+    const [errors, setErrors] = useState(false);
+    const [loading, setLoading] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (active === null) {
+            setErrors(true)
+            console.log("errortime")
+        } else {
+            setLoading(true)
+            const payload = {
+                appointmentDate: booking
+            }
+            dispatch(updateBooking(payload, navigate, setLoading));
+            console.log("submitted")
+        }
+
+    }
+
     return (
         <Interface>
             <div className='booking'>
@@ -56,18 +99,86 @@ function Booking() {
                     </div>
                 </div>
 
-                <div className='' style={{ padding: "30px 0" }}>
 
-                    <CalendarDate />
+                <div className='scheduling' style={{ padding: "30px 0" }}>
+                    <div className='title'>Schedule</div>
 
-                </div>
+                    <div className='booking-Calendar'>
+                        <DatePicker
+                            getSelectedDay={selectedDay}
+                            labelFormat={"MMMM"}
+                            color={"#374e8c"}
+                            name="appointmentDate"
+                        />
 
-                <div className='booking-btn'>
-
-                    <div className='general-btn'>
-                        <NavLink to="/booking_success" className="general-navlink">Complete</NavLink>
                     </div>
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="time" style={{ paddingTop: "30px" }}>
+                            <div className='title'>Choose Time(WAT)</div>
+                            <div className='Timetime'>
+                                <span className={active === "9" ? "schedule-time timeactive" : 'schedule-time'}
+                                    id={"9"}
+                                    onClick={handleClick}
+                                >
+                                    09:00am
+                                </span>
+
+                                <span className={active === "10" ? "schedule-time timeactive" : 'schedule-time'}
+                                    id={"10"}
+                                    onClick={handleClick}
+                                >
+                                    10:00am
+                                </span>
+                                <span className={active === "12" ? "schedule-time timeactive" : 'schedule-time'}
+                                    id={"12"}
+                                    onClick={handleClick}
+                                >
+                                    12:00pm
+                                </span>
+                                <span className={active === "14" ? "schedule-time timeactive" : 'schedule-time'}
+                                    id={"14"}
+                                    onClick={handleClick}
+                                >
+                                    02:00pm
+                                </span>
+                                <span className={active === "15" ? "schedule-time timeactive" : 'schedule-time'}
+                                    id={"15"}
+                                    onClick={handleClick}
+                                >
+                                    03:00pm
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className='booking-btn' style={{ paddingTop: "50px" }}>
+                            {loading ? (
+                                <button type="submit" className="general-btn" disabled style={{ border: "0", background: "var(--lightblue)" }} >
+                                    <div className='loader-spinner'>
+                                        <div className="spinner-border spinner-border-sm" role="status">
+                                            <span className="sr-only"></span>
+                                        </div>
+                                        <span >Completing...</span>
+                                    </div>
+                                </button>
+                            )
+                                :
+                                <div className=''>
+                                    <p className='error' style={{ textAlign: "center" }}>{errors && (<p>Please select date and time</p>)}</p>
+                                    <button type="submit" className="general-btn">Complete</button>
+                                </div>
+                            }
+                        </div>
+
+
+                    </form>
+
+
                 </div>
+
+
+
+
             </div>
         </Interface>
     )

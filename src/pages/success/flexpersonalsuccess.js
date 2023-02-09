@@ -10,8 +10,8 @@ function FlexPersonalSuccess() {
             <div className='success-page'>
                 <div className='top'>
                     <div className='content'>
-                        <img src={Thumb} alt="" />
-                        <div className='rectangle'>
+                        <img src={Thumb} alt="" className='wow pulse' data-wow-duration="5s"  data-wow-offset="5"  data-wow-iteration="infinite" />
+                        <div className='rectangle wow bounceInUp'>
                             <img src={Rectangle} alt="" />
                             <div className='text'>Great!</div>
                         </div>

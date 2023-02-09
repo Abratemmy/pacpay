@@ -1,0 +1,189 @@
+.viewPersonal{
+    padding: 10px 60px 20px 10px;
+    font-family: var(--textColor);
+    width: 100%;
+}
+.viewPersonal .subtitle{
+    border-bottom: 1px solid var(--grayColor);
+    font-size: 18px;
+    color: var(--blackColor);
+    font-weight: 600;
+    text-transform: capitalize;
+    
+}
+.viewPersonal .details{
+    margin-top: 15px;
+    border: 1px solid rgba(163, 161, 161, 0.452);
+    border-radius: 20px;
+    padding: 10px 25px;
+    background: #fff;
+}
+.viewPersonal .details .top{
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 20px;
+}
+.viewPersonal .details .top .image{
+    width: 50px;
+    height: 50px;
+    background: var(--blueColor);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+}
+.viewPersonal .details .top .name{
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--blackColor);
+    text-transform: capitalize;
+}
+.viewPersonal .details .top span{
+    display: block;
+    color: var(--blueColor);
+    font-size: 13px;
+    padding-top: 7px;
+}
+
+.viewPersonal .details .otherDetails{
+    border-top: 1px solid rgba(180, 176, 176, 0.342);
+    padding: 15px 0px
+}
+.viewPersonal .otherDetails .label{
+    color: var(--inputColor);
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+}
+.viewPersonal .otherDetails{
+    display: flex;
+    gap: 4rem;
+    width: 100%;
+    justify-content: space-between;
+}
+.viewPersonal .otherDetails .viewContent{
+    width: 100%;
+    position: relative;
+}
+.viewPersonal .otherDetails .inputBox{
+    display: flex;
+    border-radius: 9px;
+    border: 1px solid rgba(180, 176, 176, 0.452);
+    background:rgba(240, 250, 255, 0.801);
+    padding: 5px;
+    cursor: default;
+    gap: 1rem;
+    align-items: center;
+    color: var(--inputColor)
+}
+.viewPersonal .inputBox span{
+    background: rgba(0, 109, 91, 0.06);
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewPersonal .inputBox span .icon{
+    font-size: 13px;
+    color: var(--blueColor)
+}
+.viewPersonal .inputBox  .name{
+    text-transform: capitalize;
+    font-size: 13px;
+    /* color: var(--blackColor) */
+}
+.viewPersonal .wrapper{
+    margin-top: 15px;
+    border: 1px solid rgba(163, 161, 161, 0.452);
+    border-radius: 20px;
+    padding: 15px 25px;
+    background: #fff;
+    margin: 35px 0px
+}
+.viewPersonal .wrapper .title{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--blackColor)
+}
+.viewPersonal .wrapper .details .otherDetails{
+    border-top: none;
+    padding: 5px 0px;
+    position: relative;
+}
+.viewPersonal .session{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.viewPersonal .session .view{
+    text-decoration: none;
+    background: var(--blueColor);
+    color:#fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.viewPersonal .even{
+    background: var(--blueColor2)!important;
+}
+.viewPersonal .executor{
+    font-size: 20px!important;
+    font-weight: 600;
+    color: var(--blueColor)
+}
+.viewPersonal .executor-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.viewPersonal .navLink{
+    color:#fff;
+    padding-top:6px;
+}
+.viewPersonal .wrapper .nav-link{
+    text-decoration: none;
+}
+.viewPersonal .executorEdit{
+    background: var(--blueColor);
+    color:#fff!important;
+    padding: 6px 20px;
+    border-radius: 8px;
+    text-decoration: none!important;
+    font-size: 16px;
+    transition: 0.4s all ease;
+}
+.viewPersonal .executorEdit:hover{
+    background: var(--blueColor2);
+    color:#fff;
+}
+@media screen and (max-width: 780px) {
+    .viewPersonal{
+        padding: 20px
+    }
+}
+@media screen and (max-width: 600px) {
+    .viewPersonal .otherDetails{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .viewPersonal{
+        padding: 20px
+    }
+    .viewPersonal .details{
+        padding: 10px;
+    }
+    .viewPersonal .wrapper{
+        padding: 15px;
+        margin:35px 0px
+    }
+}

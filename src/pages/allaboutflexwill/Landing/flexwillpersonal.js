@@ -37,7 +37,7 @@ function FlexwillPersonalLanding() {
                 </div>
                 <div className='will-landingpage-2'>
 
-                    <div className='col-lg-2 col-md-2 col-sm-12'>
+                    <div className='col-lg-2 col-md-2 col-sm-12 arrowstyle' >
                         <div className="arrow">
                             <BsArrowDown className="icon icon2" />
                         </div>

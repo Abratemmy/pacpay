@@ -1,84 +1,139 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserWill } from '../../pages/actions/auth';
+import MainModal from '../mainModal/MainModal';
+import emoji from "../../assets/emoji.png"
 
-function Beneficiary({ submitFormLink }) {
+function Beneficiary({ addBeneficiary, onBeneficiariesChanged, isEdit }) {
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(getUserWill())
+        console.log("useEffect1")
+    }, [dispatch])
+
+    const will = useSelector((state) => state.willReducer);
+    const willPersonal = will?.data?.personalInformation;
+    console.log("get products", will);
+
+    useEffect(() => {
+        let getChildrenData = willPersonal?.children;
+        let getSpouseData = willPersonal?.spouse
+        let getData = getChildrenData?.concat(getSpouseData)
+        console.log("useEffect22", getData)
+        if (getData) {
+            setAssignben(getData);
+            console.log("item", getData)
+        }
+    }, [willPersonal]);
 
     // handle events 
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    // handle submit ;
-    const navigate = useNavigate()
-    const onSubmit = data => {
-        console.log(JSON.stringify(data));
-        navigate(`/${submitFormLink}`)
+    const [assignben, setAssignben] = useState([])
+
+    const onSubmit = (data, ev) => {
+        ev.preventDefault()
+        const list = assignben.filter((beneficiary) => data.beneficiaries.includes(beneficiary.fullName));
+        console.log("listitem", list)
+        // const payload = [{
+        //     fullName: list.map((name) => name.fullName),
+        //     state: "lagos"
+        // }]
+        localStorage.setItem('BeneficiaryList', JSON.stringify(list))
+        console.log("Benelist", list)
+
+        if (isEdit) {
+            onBeneficiariesChanged?.(list);
+        } else {
+            addBeneficiary();
+        }
+
     };
 
+    const handleOnChange = (event, option, index) => {
+        const values = [...assignben];
+        values[index].isAdded = event.target.checked;
+        setAssignben(values);
+    };
+
+    const [addMore, setAddMore] = useState(false)
+    const addMoreBeneficiciary = () => {
+        setAddMore(!addMore)
+    }
 
     return (
-        <div>
-            <form className='beneficiary-modal' onSubmit={handleSubmit(onSubmit)}>
-                <div className='input-content'>
-                    <div className="form-group">
-                        <input type="checkbox" id="compactRSA1" name="compactrsa" value="compactrsa1"
-                            {...register("compactrsa", {
-                                required: {
-                                    value: true,
-                                    message: 'Please assign a beneficiary'
-                                }
-                            }
-                            )}
-                        />
-                        <div className='name'>
-                            <label for="compactRSA1">Taofeeqah Bello</label>
-                            <div className='identity'><span>Female</span><span>Wife</span></div>
-                        </div>
-                    </div>
+        <>
+            {
+                assignben.length < 1 ? <div>loading</div>
+                    :
+                    <>
+                        <form className='beneficiary-modal' onSubmit={handleSubmit(onSubmit)}>
+                            <div className='input-content'>
+                                {assignben.map((Beneficiary, index) => {
+                                    return (
+                                        <div className='form-group'>
+                                            <span>
+                                                <input type="checkbox" value={Beneficiary.fullName} onChange={(e) => handleOnChange(e, Beneficiary, index)}
+                                                    {...register("beneficiaries", {
+                                                        required: {
+                                                            value: true,
+                                                            message: 'Please assign a beneficiary'
+                                                        }
+                                                    }
+                                                    )}
+                                                />
+                                            </span>
 
-                    <div className="form-group">
-                        <input type="checkbox" id="compactRSA2" name="compactrsa" value="compactrsa2"
-                            {...register("compactrsa", {
-                                required: {
-                                    value: true,
-                                    message: 'Please assign a beneficiary'
-                                }
-                            }
-                            )}
-                        />
-                        <div className='name'>
-                            <label for="compactRSA2">Taofeeqah Bello</label>
-                            <div className='identity'><span>Female</span><span>Wife</span></div>
-                        </div>
-                    </div>
+                                            <div className='name'>
+                                                <label htmlFor={Beneficiary.fullName}>
+                                                    {Beneficiary.fullName}
+                                                </label>
+                                                <div className='identity'><span>{Beneficiary.gender}</span>
+                                                    {(assignben.includes(Beneficiary.isDisabled)) ? <span>Child</span> : <span>Spouse</span>}
+                                                </div>
+                                            </div>
 
-                    <div className="form-group">
-                        <input type="checkbox" id="compactRSA3" name="compactrsa" value="compactrsa3"
-                            {...register("compactrsa", {
-                                required: {
-                                    value: true,
-                                    message: 'Please assign a beneficiary'
-                                }
-                            }
-                            )}
-                        />
-                        <div className='name'>
-                            <label for="compactRSA3">Taofeeqah Bello</label>
-                            <div className='identity'><span>Female</span><span>Wife</span></div>
-                        </div>
-                    </div>
-                    {errors.compactrsa && <span className='beneficiary-error'>{errors.compactrsa.message}</span>}
 
-                </div>
-                <div className='' style={{ margin: "15px 0px 30px 0px" }}>
-                    <NavLink to=" " className="beneficiary-nav">Add Beneficiary <IoMdAddCircleOutline className='icon' /></NavLink>
-                </div>
-                <div className='' style={{ marginBottom: "30px" }}>
-                    <button type='submit' value="submit" >Proceed</button>
-                </div>
-            </form>
+                                        </div>
+                                    )
+                                })}
+                                {errors.beneficiaries && <span className='beneficiary-error'>{errors.beneficiaries.message}</span>}
+                            </div>
+                            <div className='add_asset'>
+                                <span to=" " onClick={addMoreBeneficiciary}>Add Beneficiary <IoMdAddCircleOutline className='icon' /></span>
+                            </div>
 
-        </div>
+                            <div className='' style={{ marginBottom: "30px" }}>
+                                <button type='submit' value="submit" >Proceed</button>
+                            </div>
+                        </form>
+
+                        <MainModal trigger={addMore} setTrigger={setAddMore}>
+                            <div className='addMoreAsset'>
+                                <div className='subtitle'>Add Beneficiary</div>
+                                <div className='image'><img src={emoji} alt="emoji" /> </div>
+                                <div className='assetText'>Kindly click on the button below to fill a form for a beneficiary</div>
+                                <div className=''>
+                                    <button className='deep-button'>Add a Child</button>
+                                    <button>Add a Spouse</button>
+                                </div>
+                                <div className='last'>
+                                    <span>Not sure how to proceed</span>
+                                    <NavLink to=" " className="addmoreasset-nav">OPEN FAQs</NavLink>
+                                </div>
+                            </div>
+                        </MainModal>
+                    </>
+
+
+            }
+        </>
     )
 }
 

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import "./interface.css";
-import { FaSignOutAlt } from "react-icons/fa";
 import icon1 from "../../assets/icon1.png";
-import icon2 from "../../assets/icon2.png";
-import icon3 from "../../assets/icon3.png";
 import { useNavigate, NavLink } from "react-router-dom";
 import blacklogo from "../../assets/blacklogo.png";
 import logo from "../../assets/logo.png";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { FaQuestionCircle } from "react-icons/fa";
+import { AiFillLock } from "react-icons/ai"
+import { MdOutlineKeyboardArrowRight, MdLogout } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 
 function Interface({ children }) {
@@ -52,18 +51,18 @@ function Interface({ children }) {
 
                         <li >
                             <NavLink to='/faqs' exact className="sidebar-navlink ">
-                                <span className="icon"><img src={icon2} alt="" className="sidebar-icons" /></span><span className="text">FAQs</span>
+                                <span className="icon"><FaQuestionCircle className="sidebar-icons" /></span><span className="text">FAQs</span>
                             </NavLink>
 
                         </li>
                         <li>
                             <NavLink to='/change_password' exact className="sidebar-navlink ">
-                                <span className="icon"><img src={icon3} alt="" className="sidebar-icons" /></span><span className="text">Change Password</span>
+                                <span className="icon"><AiFillLock className="sidebar-icons" /></span><span className="text">Change Password</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='help_support' exact className="sidebar-navlink ">
-                                <span className="icon"><img src={icon2} alt="" className="sidebar-icons" /></span><span className="text">Help & Support </span>
+                                <span className="icon"><FaQuestionCircle className="sidebar-icons" /></span><span className="text">Help & Support </span>
                             </NavLink>
                         </li>
 
@@ -71,7 +70,8 @@ function Interface({ children }) {
                             <button onClick={logout} exact className="sidebar-navlink sidebar-signout"
                                 style={{ border: "none", background: "transparent", textAlign: "left" }}
                             >
-                                <FaSignOutAlt className="sidebar-icons" /><span className="text">Signout</span></button>
+                                <span className="icon"><MdLogout className="sidebar-icons" /></span><span className="text">Signout</span>
+                            </button>
                         </li>
                     </ul>
 

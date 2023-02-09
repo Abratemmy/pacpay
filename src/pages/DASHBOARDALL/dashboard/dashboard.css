@@ -46,7 +46,14 @@
     color: var(--blueColor2)
 }
 
-.dashboard .dashboard-content button {
+.dashboard .dashboard-content .button {
     border: none;
     background: none;
+    text-decoration: none;
+}
+
+@media screen and (max-width:800px) {
+    .dashboard {
+        padding: 20px;
+    }
 }

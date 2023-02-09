@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdArrowBackIosNew } from "react-icons/md";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import hiIcon from "../../../assets/hiIcon.png";
 import "./containerdesign.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoggedInUser } from '../../actions/auth';
 
-function Containerdesign({ children, name, img }) {
+function Containerdesign({ children, name, img, link }) {
+    const dispatch = useDispatch();
+
+    const loggedinUser = useSelector((state) => state.loggedInUserReducer);
+
+    useEffect(() => {
+        dispatch(getLoggedInUser())
+    }, [ dispatch])
+
     return (
         <div className='' >
 
             <div className='product-type-page' style={{ position: "relative", height: "100vh" }}>
                 <div className='first'>
                     <div className='top'>
-                        <span><NavLink to="/will_products" className="will-nav">
-                            <MdArrowBackIosNew className='icon' />
-                            <MdArrowBackIosNew className='icon icon2' /></NavLink>
+                        <span>
+                            {link === "true" ? <NavLink to="/will" className="will-nav">
+                                <MdArrowBackIosNew className='icon' />
+                                <MdArrowBackIosNew className='icon icon2' /></NavLink>
+                                :
+
+                                <NavLink to="/will_products" className="will-nav">
+                                <MdArrowBackIosNew className='icon' />
+                                <MdArrowBackIosNew className='icon icon2' /></NavLink>
+                                
+                            }
+                            
                         </span>
 
-                        <div className='name'>Hi Name <img src={hiIcon} alt="" /></div>
+                        <div className='name' >Hi {loggedinUser?.data?.firstName} <img src={hiIcon} alt="" /> </div>
+                        
                     </div>
 
                     <div className='middle'>

@@ -1,12 +1,23 @@
 .input-container {
     padding: 10px 0px
 }
+/* .Personal-container .col-lg-6, .col-md-6, .col-md-12 .col-sm-12{
+    padding:0;
+    margin:0;
+} */
 
 .input-container-check {
     display: flex;
     gap: 5px;
 }
 
+.input-container label{
+    color: var(--blackColor);
+    font-size: 13px;
+    padding-bottom: 2px;
+    font-weight: 600;
+    text-transform: capitalize
+}
 .inner-addon {
     position: relative;
 }
@@ -21,20 +32,20 @@
 /* align icon */
 .left-addon .glyphicon {
     left: 7px;
-    width: 25px;
-    height: 25px;
-    margin-top: 10px;
-    background: rgba(0, 109, 91, 0.06);
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 7px;
+    background: rgba(0, 109, 91, 0.096);
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 6px;
+    padding: 1px;
 }
 
 .left-addon .glyphicon .icon {
     color: var(--blueColor);
-
+    font-size: 13px;
 }
 
 /* add padding  */
@@ -42,27 +53,39 @@
 .left-addon select {
     padding-left: 45px;
     width: 90%;
-    background: rgba(240, 250, 255, 0.68);
-    height: 45px;
+    background: var(--veryLightBlue);
+    height: 42px;
     outline: none;
     border: 1px solid var(--blueColor);
     border-radius: 10px;
-    color: var(--blackColor);
-    color: #383838d3;
+    color: var(--inputColor);
     font-size: 14px;
 }
 
 .left-addon textarea {
     padding-left: 45px;
     width: 90%;
-    background: rgba(240, 250, 255, 0.68);
+    background: var(--veryLightBlue);
     outline: none;
     border: 1px solid var(--blueColor);
     border-radius: 10px;
-    color: var(--blackColor);
+    color: var(--inputColor);
 }
-
+.left-addon textarea::first-letter{
+    text-transform: uppercase;
+}
 .left-addon input:focus,
 .left-addon textarea:focus {
     border: 1px solid var(--blueColor2);
+}
+
+.left-addon input:-webkit-autofill {
+    -webkit-text-fill-color: var(--inputColor)!important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(240, 250, 255, 0.68) inset!important ;
+    /* -webkit-background-clip:rgba(240, 250, 255, 0.68)!important ; */
+}
+.form-text .text{
+    font-size: 14px;
+    color: var(--blackColor);
+    padding: 7px 0px;
 }

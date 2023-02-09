@@ -8,9 +8,9 @@ function Registersuccess() {
     return (
         <div className='success-page'>
             <div className='top'>
-                <div className='content'>
-                    <img src={Thumb} alt="" />
-                    <div className='rectangle'>
+                <div className='content '>
+                    <img src={Thumb} alt="" className='wow pulse' data-wow-duration="5s"  data-wow-offset="5"  data-wow-iteration="infinite" />
+                    <div className='rectangle wow bounceInUp'>
                         <img src={Rectangle} alt="" />
                         <div className='text'>Awesome!</div>
                     </div>
@@ -25,7 +25,7 @@ function Registersuccess() {
 
                     <div className='text'>Kindly continue with the button below</div>
                     <div className='general-btn'>
-                        <NavLink to="/product_landing" className="genaral-navlink">proceed</NavLink>
+                        <NavLink to="/login" className="genaral-navlink">Proceed</NavLink>
                     </div>
                 </div>
             </div>

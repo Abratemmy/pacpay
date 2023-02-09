@@ -36,7 +36,7 @@ function Testamentarycontainer() {
 
                             <div className='general-btn'>
                                 <NavLink to="/trust_personal_landing" className="genaral-navlink">
-                                    proceed
+                                    Proceed
                                 </NavLink>
                             </div>
                         </div>

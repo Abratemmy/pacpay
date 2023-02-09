@@ -47,11 +47,14 @@
     background: var(--blueColor);
     color: #fff;
     text-decoration: none;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     margin: 10px 0;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
+    border: none;
+    height: 130px;
+    width: 90%;
 }
 
 .will-products .will-nav-darkblue {
@@ -60,12 +63,16 @@
 
 .will-products .will-nav .image {
     background: #fff;
-    padding: 10px;
     border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .will-products .will-nav img {
-    width: 35px;
+    width: 50px;
 }
 
 .will-products .will-nav .title {
@@ -73,7 +80,9 @@
     line-height: 30px;
     padding-bottom: 7px;
 }
-
+.will-products .will-content{
+    text-align: left;
+}
 .will-products .will-nav p {
     font-size: 15px;
     line-height: 27px;
@@ -100,7 +109,8 @@
     background: #fff;
     color: var(--blackColor);
     padding: 20px 35px;
-    height: 220px;
+    height: auto;
+    min-height: 220px;
 }
 
 .willproduct-page .content-container {

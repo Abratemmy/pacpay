@@ -25,7 +25,7 @@ function ProAssets() {
                         <div className='container'>
                             <div className='row'>
                                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                                    <NavLink to="/pro_rsa_form" className="asset-nav">
+                                    <NavLink to="/pro_form/1" className="asset-nav">
                                         <div className='asset-content'>
                                             <div className="first">
                                                 <span><img src={asset1} alt="" width="50%" /></span>

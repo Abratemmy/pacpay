@@ -1,24 +1,30 @@
 .landing-page {
     display: flex;
-    height: 100%;
     width: 100%;
     font-family: var(--textFamily);
     position: relative;
 }
-
+.mobile{
+    display: none;
+}
 .landing-page .first {
-    flex: 1 1;
     padding: 20px 60px;
     background-color: #fff;
-    height: 100vh;
+    height: auto;
+    width: 53%;
+    position: relative;
 }
 
 .landing-page .second {
     flex: 1 1;
     background: url("../../assets/secondbg.png");
     height: 100vh;
-    position: relative;
-    border-top-left-radius: 100px;
+    width: 100%;
+    top:0;
+    bottom:0;
+    left:54%;
+    right: 0;
+    position: fixed;
     border-bottom-left-radius: 100px;
     align-items: center;
     width: 100%;
@@ -27,10 +33,10 @@
 .landing-page .second .content {
     display: flex;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    gap: 10px;
+    top: 45%;
+    left: 20%;
+    transform: translate(-45%, -20%);
+    gap: 2rem;
     align-items: center;
 }
 
@@ -138,7 +144,7 @@
 }
 
 .landing-page .nav-link {
-    width: 100%;
+    width: 350px;
     background-color: var(--blueColor);
     text-align: center;
     color: #fff;
@@ -160,4 +166,159 @@
     display: flex;
     gap: 1rem;
     font-size: 15px;
+}
+.landing-page .copyright{
+    position: fixed;
+    bottom: 15px;
+    color: rgba(148, 142, 142, 0.836);
+    font-size: 14px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .landing-page .second{
+        position: relative;
+        width: 100%;
+        top:0;
+        bottom:0;
+        left:0%;
+        right:0;
+        transform: none;
+        background: url("../../assets/mobilebg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        height: 40vh!important;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        padding: 30px 60px 0px 60px;
+    }
+    .landing-page .second .content {
+        display: flex;
+        position: relative;
+        top: 20px;
+        left: none;
+        transform: none;
+        gap: 2rem;
+        align-items: center;
+    }
+    .landing-page{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%!important;
+    }
+    .landing-page .first .top{
+        display: none;
+    }
+    .landing-page .mobile{
+        display: block;
+    }
+    .landing-page .first .mobile {
+        margin-bottom: 20px;
+    }
+    
+    .landing-page .mobile .logo {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+    
+    .landing-page .mobile .logo .img1 {
+        position: relative;
+    }
+    
+    .landing-page .mobile .logo img {
+        width: 100%;
+    }
+    .landing-page .mobile .logo .black-text {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--blueColor);
+        font-weight: 900;
+        font-size: 20px;
+    }
+    .landing-page .mobile .text{
+        text-align: right;
+        color: #FDC559;
+        font-size: 13px;
+        padding-bottom: 10px;
+    }
+    .landing-page .second .title {
+        font-weight: 900;
+        color: #fff;
+        font-size: xx-large;
+    }
+
+    .landing-page .first {
+        padding: 20px 50px;
+        height: auto;
+        width: 100%;
+        position: relative;
+    }
+}
+@media screen and (max-width: 500px) {
+    .landing-page .second{
+        padding: 20px;
+    }
+    .landing-page .second .title {
+        font-size: x-large;
+        padding-bottom: 10px;
+    }
+    .landing-page .second .content  p{
+        font-size: 13px;
+    }
+    .landing-page .second .content {
+        display: flex;
+        position: relative;
+        top: none;
+        left:0%;
+        transform: none;
+        gap: 1rem;
+        align-items: center;
+    }
+    .landing-page .first{
+        padding: 20px;
+    }
+
+    .landing-page .image-design img {
+        width: 35%;
+    }
+    
+    .landing-page .image-design .back-text {
+        font-size: 30px;
+    }
+    
+    .landing-page .content {
+        padding-bottom: 30px;
+        max-width: auto;
+    }
+    
+    .landing-page .content .other {
+        font-size: 30px;
+        line-height: 10px;
+    }
+    .landing-page .middle p{
+        font-size: 13px;
+    }
+    
+}
+
+.secondPasword{
+    background: url("../../assets/secondbg.png");
+    height: 100vh;
+    width: 100%;
+    top:0;
+    bottom:0;
+    left:54%;
+    right: 0;
+    position: fixed;
+    border-bottom-left-radius: 100px;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
